@@ -1,4 +1,13 @@
 @charset "utf-8";
+
+body
+{
+    width:1200px;
+    margin:auto;
+    min-height:800px;
+    position:relative;
+}
+
 #header
 {
     float:left;
@@ -14,6 +23,7 @@
     width:233px;
     height:131px;
     margin-bottom:30px;
+    cursor:pointer;
 }
 
 #header .menu

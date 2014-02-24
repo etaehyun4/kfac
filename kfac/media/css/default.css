@@ -1,14 +1,12 @@
 @charset "utf-8";
+
 body
 {
-    width:1200px;
-    margin:auto;
-    min-height:800px;
-    position:relative;
+    margin:0px;
 }
 
-p, pre, h1, textarea
+a, b, p, pre, h1, textarea
 {
     margin:0;
-    font-family:Helvetica;
+    font-family:Helvetica, 굴림;
 }
