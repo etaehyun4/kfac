@@ -7,6 +7,7 @@ class Member(models.Model):
     picture = models.ImageField(upload_to = 'profiles/', default = '')
     kor_name = models.CharField(max_length = 10)
     eng_name = models.CharField(max_length = 50)
+    position = models.CharField(max_length = 100)
     major = models.CharField(max_length = 30)
     status = models.CharField(max_length = 100)
     def __unicode__(self):
@@ -27,7 +28,7 @@ class Work(models.Model):
     text = models.CharField(max_length = 100)
 
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ('generation', 'kor_name', 'eng_name', 'major', 'status')
+    list_display = ('generation', 'kor_name', 'eng_name', 'position', 'major', 'status')
 
 class EducationAdmin(admin.ModelAdmin):
     list_display = ('user', 'start', 'end', 'to_present', 'text')
