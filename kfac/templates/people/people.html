@@ -1,8 +1,13 @@
 {% extends 'layout.html' %}
 {% block header %}
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/people.css"/>
+<script type="text/javascript" src="{{MEDIA_URL}}js/people.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+			people.initialize();
+			});
+</script>
 {% endblock %}
-
 {% block content %}
 <div id="people_content">
 <h1>Member Information</h1>
@@ -12,27 +17,5 @@
 </div>
 <br>
 <div class="member_list">
-{% for gen in all %}
-<h1>{{gen.num}}{{gen.word}} Generation</h1>
-<br>
-    <div class="generation">
-    {% for member in gen.member %}
-    <div class="member">
-        <div class="table_cell">
-            <img class="member_picture" src={{member.picture.url}}>
-            <div class="member_name">{{member.kor_name}}({{member.eng_name}})</div>
-        </div>
-        <div class="table_cell">
-            <div class="member_major">{{member.major}}</div>
-        </div>
-        <div class="table_cell">
-            <div class="member_status">{{member.status}}</div>
-        </div>
-    </div>
-    <hr class="member_line">
-    {% endfor %}
-    </div>
-{% endfor %}
-</div>
 </div>
 {% endblock %}

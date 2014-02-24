@@ -20,9 +20,6 @@
     border-radius:5px;
     border-width:2px;
     border-color:#dedede;
-    background:url("/media/image/people/clickphoto.png");
-    background-repeat:no-repeat;
-    background-position:center;
 }
 
 .member_list
@@ -32,6 +29,10 @@
     overflow-y:scroll;
 }
 
+.generation_name
+{
+    font-size:20px;
+}
 .generation
 {
     display:table;
