@@ -5,6 +5,7 @@
     width:233px;
     background-image:url('/media/image/layout/header.gif');
     padding-bottom:100px;
+    height:100%;
 }
 
 #header #logo
@@ -12,18 +13,91 @@
     float:left;
     width:233px;
     height:131px;
-    margin-bottom:50px;
+    margin-bottom:30px;
 }
 
 #header .menu
 {
-    font-family:Arial;
     float:left;
-    font-weight:bold;
-    width:233px;
     color:#505050;
+    margin-top:10px;
+    margin-left:35px;
+    clear:both;
+    font-size:18px;
+    line-height:30px;
+    cursor:pointer;
 }
 
-#haeder .submenu
+#header .submenu
 {
+    float:left;
+    color:#6FA8EE;
+    margin-left:35px;
+    clear:both;
+    font-size:13px;
+    line-height:20px;
+    cursor:pointer;
+    padding-left:10px;
+    background-image:url('/media/image/layout/submenu_left.gif');
+    background-repeat:no-repeat;
+    background-position:0px;
+}
+
+#header .menu:hover, #header .submenu:hover, #header .selected, #header .sselected
+{
+    color:#043EAC;
+}
+
+#header .sselected
+{
+    background-image:url('/media/image/layout/submenu_left_selected.gif');
+    background-repeat:no-repeat;
+    background-position:0px;
+}
+
+#account-bar
+{
+    position:absolute;
+    right:132px;
+    top:35px;
+}
+
+#account-bar .account_button
+{
+    float:left;
+    cursor:pointer;
+}
+
+#container
+{
+    float:left;
+    width:967px;
+}
+
+#footer
+{
+    float:left;
+    width:1200px;
+    height:77px;
+    position:relative;
+}
+
+#footer #cyworld
+{
+    position:absolute;
+    right:169px;
+    bottom:20px;
+    width:45px;
+    height:28px;
+    cursor:pointer;
+}
+
+#footer #facebook
+{
+    position:absolute;
+    right:109px;
+    bottom:20px;
+    width:45px;
+    height:28px;
+    cursor:pointer;
 }

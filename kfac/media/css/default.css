@@ -4,4 +4,11 @@ body
     width:1200px;
     margin:auto;
     min-height:800px;
+    position:relative;
+}
+
+p, pre, h1, textarea
+{
+    margin:0;
+    font-family:Helvetica;
 }
