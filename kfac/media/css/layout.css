@@ -48,6 +48,19 @@
     color:#043EAC;
 }
 
+#account-bar
+{
+    position:absolute;
+    right:132px;
+    top:35px;
+}
+
+#account-bar .account_button
+{
+    float:left;
+    cursor:pointer;
+}
+
 #container
 {
     float:left;
