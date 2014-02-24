@@ -47,6 +47,9 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+import os.path
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
@@ -105,9 +108,6 @@ ROOT_URLCONF = 'kfac.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'kfac.wsgi.application'
-
-import os.path
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates')
