@@ -40,8 +40,16 @@ def getList(request):
         item['eng_name']=member.eng_name
         item['major']=member.major
         item['status']=member.status
+        item['id']=member.id
         all[-1]['member'].append(item)
 
     return HttpResponse(json.dumps(
         all, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder))
 
+@csrf_exempt
+def profile(request):
+    id = int(request.POST.get('id', -1))
+
+    all = []
+    return HttpResponse(json.dumps(
+        all, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder))

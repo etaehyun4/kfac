@@ -1,8 +1,26 @@
 var people = {
 	initialize:function(){
-		var member_info=$('.member_info');
-		member_info.css({'background':'url("/media/image/people/clickphoto.png")', 'background-repeat':'no-repeat', 'background-position': 'center'});
+		this.info=$('.member_info');
+		this.info.css({'background':'url("/media/image/people/clickphoto.png")', 'background-repeat':'no-repeat', 'background-position': 'center'});
+		this.infocall = 0;
 		this.showMembers();
+	
+	},
+	showProfile:function(data){
+		if(people.infocall == 0)
+		{
+			people.infocall = 1;
+			people.info.css({'background':'none'});
+		}
+		console.log(data.data);
+		$.ajax({
+			type: 'POST',
+			url: '/people/profile/',
+			dataType: 'json',
+			data: {'id': data.data},
+			success: $.proxy(function(all) {
+			}, this)
+		});
 	},
 	showMembers:function(){
 		var list=$('.member_list');
@@ -26,7 +44,9 @@ var people = {
 						var member = all[i]['member'][j];
 						var cell;
 					    cell = $('<div>', {'class':'table_cell'});
-						$('<img>', {'class':'member_picture', 'src':member['picture']}).appendTo(cell);
+						var pic = $('<img>', {'class':'member_picture', 'src':member['picture']});
+						pic.bind('click', {'id': member['id'], 'picture': member['picture']}, this.showProfile);
+						pic.appendTo(div);
 						$('<div>', {'class':'member_name'}).text(member['kor_name']+'('+member['eng_name']+')').appendTo(cell);
 						cell.appendTo(div);
 
