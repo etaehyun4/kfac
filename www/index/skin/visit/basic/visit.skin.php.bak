@@ -1,0 +1,146 @@
+<?
+if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가 
+
+global $is_admin;
+?>
+
+<?
+function size($size) {
+	if(!$size) return "0 Byte";
+	if($size < 1024) {
+		return "$size Byte";
+	} elseif($size >= 1024 && $size < 1024 * 1024) {
+		return sprintf("%0.1f",$size / 1024)." KB";
+	} elseif($size >= 1024 * 1024 && $size < 1024 * 1024 * 1024) {
+		return sprintf("%0.1f",$size / 1024 / 1024)." MB";
+	} else {
+		return sprintf("%0.1f",$size / 1024 / 1024 / 1024)." GB";
+	}
+}
+/*
+$q_count = mysql_query("select * from g4_board");
+$count_write = 0;
+$count_comment = 0;
+$count_board = 0;
+$bo_tb = "0";
+while($data=mysql_fetch_array($q_count)) {
+	$count_write += $data[bo_count_write];
+	$count_comment += $data[bo_count_comment];
+	$count_board++;
+	$bo_tb = $bo_tb."|".$data[bo_table];
+}
+
+$bo_tb = explode("|", $bo_tb);
+$i = 1;
+$new_comment = 0;
+$new_article = 0;
+while($i<=$count_board) {
+	$q_new = mysql_query("select * from g4_write_".$bo_tb[$i]);
+	$m_total[$bo_tb[$i]] = 0;
+	while($dat=mysql_fetch_array($q_new)) {
+		$m_total[$bo_tb[$i]]++;
+		$m_article[$bo_tb[$i]] = 0;
+		if(substr($dat[wr_datetime],0,10)!=date("Y-m-d")) continue;
+		if($dat[wr_comment]<0) $new_comment++;
+		else {
+			$new_article++;
+			$m_article[$bo_tb[$i]]++;
+		}
+	}
+	$i++;
+}
+
+$q_connect = mysql_query("select * from g4_login");
+$count_no_mb = 0;
+$count_mb = 0;
+while($data=mysql_fetch_array($q_connect)) {
+	if($data[mb_id] == "") $count_no_mb++;
+	elseif($data[mb_id] != "yhs6374") $count_mb++;
+}
+
+$q_point = mysql_query("select * from g4_point");
+$new_point = 0;
+$all_point = 0;
+while($data=mysql_fetch_array($q_point)) {
+	if(substr($data[po_datetime],0,10)==date("Y-m-d")) $new_point += $data[po_point];
+	$all_point += $data[po_point];
+}
+
+$m_count = mysql_query("select * from g4_member");
+$new_member = 0;
+$count_member = 0;
+while($data=mysql_fetch_array($m_count)) {
+	if($data[mb_nick]=="[삭제됨]") continue;
+	if(substr($data[mb_datetime],0,10)==date("Y-m-d")) $new_member++;
+	$count_member++;
+}
+
+$d_count = mysql_query("select * from g4_board_file");
+$count_data = 0;
+while(mysql_fetch_row($d_count)) {
+	$count_data++;
+}
+*/
+$account_space = `du -sb $g4[path]`;
+$account_space = substr($account_space,0,strlen($account_space)-3);
+/*
+$data_space = `du -sb $g4[path]/data`;
+$data_space = substr($data_space,0,strlen($data_space)-8);
+*/
+	/*
+$result = mysql_query("SHOW TABLE STATUS");
+$db_using = 0;
+while($dbData=mysql_fetch_array($result)) {
+	$db_using += $dbData[Data_length]+$dbData[Index_length];
+}
+*/
+?>
+
+<table width="220" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+    <td colspan="3"><img src="<?=$visit_skin_path?>/img/visit_top.gif" width="220" height="11"></td>
+</tr>
+<tr> 
+    <td width="15" height="88" rowspan="8" bgcolor="#F4F4F4"></td>
+    <td width="73" height="22"><img src="<?=$visit_skin_path?>/img/visit_1.gif" width="73" height="22"></td>
+    <td width="132" height="22" bgcolor="#F4F4F4"><font color="#4B4B4B"><?=number_format($visit[1])?></font>
+        <? if ($is_admin == "super") { ?><a href="<?=$g4['admin_path']?>/visit_list.php"><img src="<?=$visit_skin_path?>/img/admin.gif" width="33" height="15" border="0" align="absmiddle"></a><?}?></td>
+</tr>
+<tr> 
+    <td width="73" height="22"><img src="<?=$visit_skin_path?>/img/visit_2.gif" width="73" height="22"></td>
+    <td width="132" height="22" bgcolor="#F4F4F4"><font color="#4B4B4B"><?=number_format($visit[2])?></font></td>
+</tr>
+<tr> 
+    <td width="73" height="22"><img src="<?=$visit_skin_path?>/img/visit_3.gif" width="73" height="22"></td>
+    <td width="132" height="22" bgcolor="#F4F4F4"><font color="#4B4B4B"><?=number_format($visit[3])?></font></td>
+</tr>
+<tr> 
+    <td width="73" height="22"><img src="<?=$visit_skin_path?>/img/visit_4.gif" width="73" height="22"></td>
+    <td width="132" height="22" bgcolor="#F4F4F4"><font color="#4B4B4B"><?=number_format($visit[4])?></font></td>
+</tr>
+<tr> 
+    <td colspan="3" height="2" bgcolor="#330000"></td>
+</tr>
+<tr> 
+    <td colspan="3" height="10" bgcolor="#F4F4F4" ></td>
+</tr>
+<tr> 
+    <td width="73" height="22" bgcolor="#F4F4F4">사용 용량</td>
+    <td width="132" height="22" bgcolor="#F4F4F4"><font color="#4B4B4B">
+	<?
+	$space = (1024*1024*1024 - 1024*1024*24) - $account_space;
+	echo size($account_space)."/1G </br><font color=#FF6600>".size($space)." 사용가능</font>";
+
+	
+
+	?> 
+	</font></td>
+</tr>
+<tr> 
+    <td width="73" height="22" bgcolor="#F4F4F4">트 &nbsp;랙&nbsp; 픽</td>
+    <td width="132" height="22" bgcolor="#F4F4F4"><font color="#4B4B4B"><A HREF="\cband-status-me" target=_balnk>트래픽 사용량 보기</A></td>
+</tr>
+<tr> 
+    <td colspan="3"><img src="<?=$visit_skin_path?>/img/visit_down.gif" width="220" height="11"></td>
+</tr>
+</table>

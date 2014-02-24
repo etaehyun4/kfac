@@ -1,0 +1,114 @@
+<? include ("../include/head_index.php"); ?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>KAIST Financial Analysis Club - www.kfac.kr</title>
+</head>
+
+<body leftmargin="0" topmargin="0">
+<table width="1200" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td align="left" valign="top"><table width="1200" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="top" background="/index/kfac_sub01/images/sub_left_back.gif" style="background-repeat:repeat-y;">
+			<table width="233" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+				<td align="left" valign="top">
+					
+					<a href="/index/kfac_main/main.html">
+					<img src="/index/kfac_main/images/main_01.gif" width="233" height="131" border=0></a></td>
+			  </tr>
+			  <tr>
+				<td align="left" valign="top">
+
+					<img src="/index/kfac_main/images/mypage_13.gif" width="233" height="482" border="0" usemap="#leftmenu"></td>
+
+
+						<map name="leftmenu">
+						  <area shape="rect" coords="1,42,232,75" href="/index/kfac_main/main.html" />
+						  <area shape="rect" coords="1,80,233,113" href="/index/bbs/login.php" />
+						  <area shape="rect" coords="1,117,232,150" href="/index/kfac_main/mypage.html" />
+						</map>
+
+			  </tr>
+			  <tr>
+				<td align="left" valign="top"><img src="/index/kfac_sub01/images/sub01_14.gif" width="233" height="137"></td>
+			  </tr>
+			  <tr>
+				<td align="left" valign="top" height="50"></td>
+			  </tr>
+			</table>
+		</td>
+		<td align="left" valign="top" background="/index/kfac_sub01/images/sub01_02.gif" style="background-repeat:repeat-y;">
+			<img src="/index/kfac_sub01/images/sub01_02.gif" width="41" height="500"></td>
+		<td align="left" valign="top"><table width="926" border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td align="left" valign="top"><img src="/index/kfac_sub01/images/sub01_03.gif" width="926" height="35"></td>
+		  </tr>
+		  <tr>
+			<td align="left" valign="top"><table width="926" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+
+			  <? if ($member[mb_level] > 1) { ?>
+
+				<td align="left" valign="top"><img src="/index/kfac_sub01/images/sub01_04.gif" width="601" height="14"></td>
+				<td align="left" valign="top">
+					
+					<A HREF="/index/kfac_main/main.html">
+					<img src="/index/kfac_main/images/main_05.gif" width="34" height="14" border=0></a></td>
+
+				<td align="left" valign="top">
+
+					<A HREF="javascript:void(window.open('/index/bbs/login.php','_blank','width=670,height=300'))">
+					<img src="/index/kfac_main/images/main_logout_06.gif" width="38" height="14" border=0></a></td>
+
+				<td align="left" valign="top">
+					
+					<A HREF="/index/kfac_main/mypage.html">
+					<img src="/index/kfac_main/images/main_logout_07.gif" width="43" height="14" border=0></a></td>
+
+				<td align="left" valign="top">
+					
+					<A HREF="javascript:void(window.open('/index/bbs/password_forget.php','_blank','width=600,height=500,'))">
+					<img src="/index/kfac_main/images/main_08.gif" width="85" height="14" border=0></a></td>
+				<td align="left" valign="top"><img src="/index/kfac_sub01/images/sub01_09.gif" width="125" height="14"></td>
+			  
+			  <? } else { ?>
+
+				<td align="left" valign="top"><img src="/index/kfac_sub01/images/sub01_04.gif" width="611" height="14"></td>
+				<td align="left" valign="top">
+
+					<A HREF="/index/kfac_main/main.html">
+					<img src="/index/kfac_main/images/main_05.gif" width="34" height="14" border=0></a></td>
+
+				<td align="left" valign="top">
+					
+					<A HREF="javascript:void(window.open('/index/bbs/login.php','_blank','width=670,height=300'))">
+					<img src="/index/kfac_main/images/main_06.gif" width="33" height="14" border=0></a></td>
+				<td align="left" valign="top">
+
+					<A HREF="javascript:void(window.open('/index/bbs/register.php','_blank','width=750,height=790, scrollbars=yes'))">
+					<img src="/index/kfac_main/images/main_07.gif" width="31" height="14" border=0></a></td>
+
+				<td align="left" valign="top">
+					
+					<A HREF="javascript:void(window.open('/index/bbs/password_forget.php','_blank','width=600,height=500,'))">
+					<img src="/index/kfac_main/images/main_08.gif" width="85" height="14" border=0></a></td>
+				<td align="left" valign="top"><img src="/index/kfac_sub01/images/sub01_09.gif" width="132" height="14"></td>
+			  
+			  <? } ?>
+
+			  </tr>
+			</table></td>
+		  </tr>
+		  <tr>
+			<td align="left" valign="top"><table width="926" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+				<td align="left" valign="top"><table width="750" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+					<td align="left" valign="top">
+						<img src="/index/kfac_login/images/login_10.gif" width="750" height="53"></td>
+					
+				  </tr>
+				  <tr>
+					<td align="left" valign="top" width="750">

@@ -1,0 +1,200 @@
+<? include ("../include/head_index.php"); ?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>KAIST Financial Analysis Club - www.kfac.kr</title>
+</head>
+
+<body leftmargin="0" topmargin="0">
+<table width="1200" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td align="left" valign="top"><table width="1200" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="top"><table width="233" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top">
+				
+				<a href="/index/kfac_main/main.html">
+				<img src="/index/kfac_main/images/main_01.gif" width="233" height="131" border=0></a></td>
+
+          </tr>
+          <tr>
+            <td align="left" valign="top">
+				<img src="/index/kfac_main/images/main_15.gif" width="233" height="482" border="0" usemap="#leftmenu"></td>
+
+					<map name="leftmenu">
+					  <area shape="rect" coords="1,41,232,77" href="/index/kfac_sub01/sub01.html?type=1">
+					  <area shape="rect" coords="1,78,232,114" href="/index/kfac_sub02/sub02.html?type=1">
+					  <area shape="rect" coords="1,116,232,152" href="/index/kfac_sub03/sub03.html?type=1">
+					  <area shape="rect" coords="1,154,232,190" href="/index/kfac_sub04/sub04.html?type=1">
+					  <area shape="rect" coords="1,192,232,228" href="/index/bbs/board.php?bo_table=comm_02">
+					</map>
+
+          </tr>
+          <tr>
+            <td align="left" valign="top"><img src="/index/kfac_main/images/main_26.gif" width="233" height="137"></td>
+          </tr>
+        </table></td>
+        <td align="left" valign="top"><img src="/index/kfac_main/images/main_02.gif" width="691" height="750"></td>
+        <td align="left" valign="top"><table width="276" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top"><img src="/index/kfac_main/images/main_03.gif" width="276" height="36"></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><table width="276" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+
+			  <? if ($member[mb_level] > 1) { ?>
+
+                <td align="left" valign="top"><img src="/index/kfac_main/images/main_04.gif" width="38" height="14"></td>
+                <td align="left" valign="top">
+					
+					<A HREF="/index/kfac_main/main.html">
+					<img src="/index/kfac_main/images/main_05.gif" width="34" height="14" border=0></a></td>
+
+                <td align="left" valign="top">
+
+					<A HREF="javascript:void(window.open('/index/bbs/login.php','_blank','width=670,height=300'))">
+					<img src="/index/kfac_main/images/main_logout_06.gif" width="38" height="14" border=0></a></td>
+
+                <td align="left" valign="top">
+					
+					<A HREF="/index/kfac_main/mypage.html">
+					<img src="/index/kfac_main/images/main_logout_07.gif" width="43" height="14" border=0></a></td>
+
+                <td align="left" valign="top">
+					
+					<A HREF="javascript:void(window.open('/index/bbs/password_forget.php','_blank','width=600,height=500,'))">
+					<img src="/index/kfac_main/images/main_08.gif" width="85" height="14" border=0></a></td>
+
+				<td align="left" valign="top"><img src="/index/kfac_main/images/main_09.gif" width="38" height="14"></td>
+
+			  <? } else { ?>
+				<td align="left" valign="top"><img src="/index/kfac_main/images/main_04.gif" width="48" height="14"></td>
+				<td align="left" valign="top">
+
+					<A HREF="/index/kfac_main/main.html">
+					<img src="/index/kfac_main/images/main_05.gif" width="34" height="14" border=0></a></td>
+
+                <td align="left" valign="top">
+					
+					<A HREF="javascript:void(window.open('/index/bbs/login.php','_blank','width=670,height=300'))">
+					<img src="/index/kfac_main/images/main_06.gif" width="33" height="14" border=0></a></td>
+                <td align="left" valign="top">
+
+					<A HREF="javascript:void(window.open('/index/bbs/register.php','_blank','width=750,height=790, scrollbars=yes'))">
+					<img src="/index/kfac_main/images/main_07.gif" width="31" height="14" border=0></a></td>
+
+                <td align="left" valign="top">
+					
+					<A HREF="javascript:void(window.open('/index/bbs/password_forget.php','_blank','width=600,height=500,'))">
+					<img src="/index/kfac_main/images/main_08.gif" width="85" height="14" border=0></a></td>
+				
+				<td align="left" valign="top"><img src="/index/kfac_main/images/main_09.gif" width="45" height="14"></td>
+				
+			  <? } ?>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><img src="/index/kfac_main/images/main_10.gif" width="276" height="19"></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><img src="/index/kfac_main/images/main_11.gif" width="276" height="48"></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><table width="276" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" valign="top"><img src="/index/kfac_main/images/main_12.gif" width="17" height="88"></td>
+                <td align="left" valign="top" width="211" height="88">
+					
+					<?=latest("basic1","comm_06",4,22); ?>
+
+<!--					
+					<img src="/index/kfac_main/images/main_13.gif" width="211" height="84"></td>
+-->
+
+                <td align="left" valign="top"><img src="/index/kfac_main/images/main_14.gif" width="48" height="88"></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><img src="/index/kfac_main/images/main_16.gif" width="276" height="46"></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top">
+				
+				<a href="/index/kfac_sub01/sub01_2.html?type=2">
+				<img src="/index/kfac_main/images/main_17.gif" width="276" height="122" border=0></a></td>
+
+          </tr>
+          <tr>
+            <td align="left" valign="top"><img src="/index/kfac_main/images/main_18.gif" width="276" height="30"></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top">
+				
+				<a href="https://www.google.com/calendar/embed?src=kfac.president%40gmail.com&ctz=Asia/Seoul" target="_blank">
+				<img src="/index/kfac_main/images/main_19.gif" width="276" height="107" border=0></a></td>
+
+          </tr>
+          <tr>
+            <td align="left" valign="top"><img src="/index/kfac_main/images/main_20.gif" width="276" height="30"></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><table width="276" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" valign="top"><img src="/index/kfac_main/images/main_21.gif" width="23" height="210"></td>
+                <td align="left" valign="top"><table width="176" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="left" valign="top">
+						
+						<a href="/index/kfac_sub02/sub02.html?type=1">
+						<img src="/index/kfac_main/images/main_22.gif" width="176" height="58" border=0></a></td>
+
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top"><img src="/index/kfac_main/images/main_24.gif" width="176" height="5"></td>
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top">
+						
+						<a href="/index/kfac_sub04/sub04.html?type=1">
+						<img src="/index/kfac_main/images/main_25.gif" width="176" height="58" border=0></a></td>
+
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top"><img src="/index/kfac_main/images/main_27.gif" width="176" height="5"></td>
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top">
+						
+						<a href="/index/bbs/board.php?bo_table=comm_01">
+						<img src="/index/kfac_main/images/main_28.gif" width="176" height="58" border=0></a></td>
+
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top"><img src="/index/kfac_main/images/main_29.gif" width="176" height="26"></td>
+                  </tr>
+                </table></td>
+                <td align="left" valign="top"><img src="/index/kfac_main/images/main_23.gif" width="77" height="210"></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+		<img src="/index/kfac_main/images/main_30.gif" width="1200" height="77" border="0" usemap="#heejae"></td>
+
+			<map name="heejae">
+			  <area shape="rect" coords="985,28,1032,56" href="http://club.cyworld.com/clubV1/Home.cy/51553637" target="_blank">
+			  <area shape="rect" coords="1045,28,1092,56" href="http://www.facebook.com/pages/KFAC-KAIST-Financial-Analysis-Club/171559606288773" target="_blank">
+			</map>
+
+  </tr>
+</table>
+</body>
+</html>
