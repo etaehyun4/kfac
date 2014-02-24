@@ -9,7 +9,7 @@ class People(models.Model):
     eng_name = models.CharField(max_length = 50)
     major = models.CharField(max_length = 30)
     status = models.CharField(max_length = 100)
-    def __str__(self):
+    def __unicode__(self):
         return self.kor_name
 
 class Education(models.Model):
