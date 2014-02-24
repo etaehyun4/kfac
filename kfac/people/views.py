@@ -2,6 +2,7 @@
 
 from django.shortcuts import render_to_response
 from models import *
+from django.template import RequestContext, Context
 
 # Create your views here.
 def view(request):
@@ -25,4 +26,4 @@ def view(request):
         all[-1]['member'].append(member)
 
     return render_to_response('people/people.html', {
-        'all': all})
+        'all': all}, context_instance=RequestContext(request))

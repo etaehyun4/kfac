@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+#people_content
+{
+    margin-left:41px;
+}
+
+.member_information
+{
+    width:670px;
+    height:250px;
+}
+
+.member_info
+{
+    width:650px;
+    height:250px;
+    float:left;
+    border-style:solid;
+    border-radius:5px;
+    border-width:2px;
+    border-color:#dedede;
+    background:url("/media/image/people/clickphoto.png");
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.member_list
+{
+    width:670px;
+    height:400px;
+    overflow-y:scroll;
+}
+
+.generation
+{
+    display:table;
+}
+
+.member
+{
+    display:table-row;
+    font-size:9pt;
+    font-family:"Verdana, Arial, Helvetica, sans-serif";
+    padding-bottom:10px;
+}
+
+.table_cell
+{
+    float:left;
+    display:table-cell;
+    text-align:center;
+}
+
+.member_picture
+{
+    float:left;
+    height:38px;
+    width:52px;
+    padding-right:6px;
+}
+
+.member_name
+{
+    text-align:initial;
+    float:left;
+    width:152px;
+    padding-right:4px;
+    height:38px;
+}
+
+.member_major
+{
+    float:left;
+    width:303px;
+    padding-right:1px;
+    height:38px;
+}
+
+.member_status
+{
+    float:left;
+    width:132px;
+    height:38px;
+}
+
+.member_line
+{
+    height:1px;
+    width:650px;
+    background-color:#dedede;
+    margin-left:0px;
+}
