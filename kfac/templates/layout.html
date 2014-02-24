@@ -2,19 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>KFAC</title>
-        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/layout.css" />
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/default.css" />
+        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/layout.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script language="javascript" src="{{ MEDIA_URL }}js/layout.js"></script>
+        <script language="javascript" src="{{ MEDIA_URL }}js/default.js"></script>
         {% block header %}{% endblock %}
-        <script>
-            function newWindow(url,width,height)
-            {
-                window.open(url,'_blank','width='+width+',height='+height+',toolbar=no,menubar=no');
-            }
-        </script>
     </head>
     <body>
         <div id="header">
@@ -33,7 +28,7 @@
         </div>
         <div id="account-bar">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/home.gif" onclick="window.location='/'">
-            <img class="account_button" src="{{MEDIA_URL}}image/layout/login.gif" onclick="newWindow('/account/login_window/',300,300);">
+            <img class="account_button" src="{{MEDIA_URL}}image/layout/login.gif" onclick="newWindow('/account/login_window/',668,320);">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/join.gif" onclick="newWindow('/account/join/',300,300);">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/id_password_lost.gif" onclick="newWindow('/account/id_password_lost/',300,300);">
         </div>

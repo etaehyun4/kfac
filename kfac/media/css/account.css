@@ -1,1 +1,48 @@
 @charset "utf-8";
+
+#login-window
+{
+    width:668px;
+    height:294px;
+    padding-top:26px;
+}
+
+#line
+{
+    width:628px;
+    height:2px;
+    background:#8F8F8F;
+    margin:0px 20px;
+}
+
+#login-image
+{
+    width:344px;
+    height:48px;
+    float:right;
+    margin-right:20px;
+}
+
+#login-input
+{
+    float:left;
+    width:100%;
+}
+
+#login-input form
+{
+    width:350px;
+    padding:41px 0px;
+    height:141px;
+    margin:auto;
+}
+
+#login-input form b
+{
+    font-size:9pt;
+}
+
+#login-input form td
+{
+    font-size:9pt;
+}
