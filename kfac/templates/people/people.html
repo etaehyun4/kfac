@@ -1,3 +1,9 @@
+{% extends 'layout.html' %}
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/people.css"/>
+{% endblock %}
+
+{% block content %}
 <h1>Member Information</h1>
 <div class="member_info">
 </div>
@@ -5,10 +11,23 @@
 {% for gen in all %}
 <h1>{{gen.num}}{{gen.word}} Generation</h1>
 <br>
+    <div class="generation">
     {% for member in gen.member %}
     <div class="member">
-        <img src={{member.picture.url}} style="height:38px;width:52px">
-        {{member.kor_name}}({{member.eng_name}})
+        <div class="table_cell">
+            <img class="member_picture" src={{member.picture.url}}>
+            <div class="member_name">{{member.kor_name}}({{member.eng_name}})</div>
+        </div>
+        <div class="table_cell">
+            <div class="member_major">{{member.major}}</div>
+        </div>
+        <div class="table_cell">
+            <div class="member_status">{{member.status}}</div>
+        </div>
     </div>
+    <hr class="member_line">
     {% endfor %}
+    </div>
 {% endfor %}
+
+{% endblock %}
