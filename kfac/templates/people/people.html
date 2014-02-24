@@ -4,10 +4,14 @@
 {% endblock %}
 
 {% block content %}
+<div id="people_content">
 <h1>Member Information</h1>
-<div class="member_info">
+<div class="member_information">
+	<div class="member_info">
+	</div>
 </div>
 <br>
+<div class="member_list">
 {% for gen in all %}
 <h1>{{gen.num}}{{gen.word}} Generation</h1>
 <br>
@@ -29,5 +33,6 @@
     {% endfor %}
     </div>
 {% endfor %}
-
+</div>
+</div>
 {% endblock %}
