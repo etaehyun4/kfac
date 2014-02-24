@@ -10,10 +10,21 @@
         <script language="javascript" src="{{ MEDIA_URL }}js/layout.js"></script>
         <script language="javascript" src="{{ MEDIA_URL }}js/default.js"></script>
         {% block header %}{% endblock %}
+        <script>
+            $(document).ready(function(){
+                var height = parseInt($('#container').height())-100;
+                var header_height = parseInt($('#header').height());
+                if(header_height < height)
+                    $('#header').css('height', height+'px');
+                {% ifequal menu 'main' %}
+                $('#account-bar').css('right', '45px');
+                {% endifequal %}
+            });
+        </script>
     </head>
     <body>
         <div id="header">
-            <img id="logo" src="{{MEDIA_URL}}image/layout/logo.gif">
+            <img id="logo" src="{{MEDIA_URL}}image/layout/logo.gif" onclick="window.location='/'">
             <p class="menu{% ifequal menu 'about' %} selected{% endifequal %}" onclick="window.location='/about/'">ABOUT KFAC</p>
             {% ifequal menu 'about' %}
             <p class="submenu{% ifequal submenu 'greeting' %} sselected {% endifequal %}">GREETINGS</p>

@@ -23,6 +23,7 @@ body
     width:233px;
     height:131px;
     margin-bottom:30px;
+    cursor:pointer;
 }
 
 #header .menu
