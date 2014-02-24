@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib import admin
 
 # Create your models here.
-class People(models.Model):
+class Member(models.Model):
     generation = models.IntegerField()
     picture = models.ImageField(upload_to = 'profiles/', default = '')
     kor_name = models.CharField(max_length = 10)
@@ -13,20 +13,20 @@ class People(models.Model):
         return self.kor_name
 
 class Education(models.Model):
-    user = models.ForeignKey(People)
+    user = models.ForeignKey(Member)
     start = models.DateField()
     end = models.DateField()
     to_present = models.BooleanField() # ~present
     text = models.CharField(max_length = 100)
 
 class Work(models.Model):
-    user = models.ForeignKey(People)
+    user = models.ForeignKey(Member)
     start = models.DateField()
     end = models.DateField()
     to_present = models.BooleanField() #~present
     text = models.CharField(max_length = 100)
 
-class PeopleAdmin(admin.ModelAdmin):
+class MemberAdmin(admin.ModelAdmin):
     list_display = ('generation', 'kor_name', 'eng_name', 'major', 'status')
 
 class EducationAdmin(admin.ModelAdmin):
@@ -35,7 +35,7 @@ class EducationAdmin(admin.ModelAdmin):
 class WorkAdmin(admin.ModelAdmin):
     list_display = ('user', 'start', 'end', 'to_present', 'text')
 
-admin.site.register(People, PeopleAdmin)
+admin.site.register(Member, MemberAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Work, WorkAdmin)
 

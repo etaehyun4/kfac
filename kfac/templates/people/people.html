@@ -1,0 +1,14 @@
+<h1>Member Information</h1>
+<div class="member_info">
+</div>
+<br>
+{% for gen in all %}
+<h1>{{gen.num}}{{gen.word}} Generation</h1>
+<br>
+    {% for member in gen.member %}
+    <div class="member">
+        <img src={{member.picture.url}} style="height:38px;width:52px">
+        {{member.kor_name}}({{member.eng_name}})
+    </div>
+    {% endfor %}
+{% endfor %}
