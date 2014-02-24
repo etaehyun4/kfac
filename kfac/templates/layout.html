@@ -19,15 +19,17 @@
     <body>
         <div id="header">
             <img id="logo" src="{{MEDIA_URL}}image/layout/logo.gif">
-            <p class="menu selected" onclick="/about/">ABOUT KFAC</p>
-            <p class="submenu selected">GREETINGS</p>
-            <p class="submenu">ABCD</p>
-            <p class="submenu">ABCD</p>
-            <p class="submenu">ABCD</p>
-            <p class="menu" onclick="/activities/">ACTIVITIES</p>
-            <p class="menu" onclick="/people/">PEOPLE</p>
-            <p class="menu" onclick="/recruiting/">RECRUITING</p>
-            <p class="menu" onclick="/only/">KFACIAN-ONLY</p>
+            <p class="menu{% ifequal menu 'about' %} selected{% endifequal %}" onclick="window.location='/about/'">ABOUT KFAC</p>
+            {% ifequal menu 'about' %}
+            <p class="submenu{% ifequal submenu 'greeting' %} sselected {% endifequal %}">GREETINGS</p>
+            <p class="submenu{% ifequal submenu 'vision' %} sselected {% endifequal %}">VISION</p>
+            <p class="submenu{% ifequal submenu 'organization' %} sselected {% endifequal %}">ORGANIZATION</p>
+            <p class="submenu{% ifequal submenu 'achievements' %} sselected {% endifequal %}">ACHIEVEMENTS</p>
+            {% endifequal %}
+            <p class="menu{% ifequal menu 'activities' %} selected{% endifequal %}" onclick="window.location='/activities/'">ACTIVITIES</p>
+            <p class="menu{% ifequal menu 'people' %} selected{% endifequal %}" onclick="window.location='/people/'">PEOPLE</p>
+            <p class="menu{% ifequal menu 'recruiting' %} selected{% endifequal %}" onclick="window.location='/recruiting/'">RECRUITING</p>
+            <p class="menu{% ifequal menu 'only' %} selected{% endifequal %}" onclick="window.location='/only/'">KFACIAN-ONLY</p>
         </div>
         <div id="account-bar">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/home.gif" onclick="window.location='/'">

@@ -43,9 +43,16 @@
     background-position:0px;
 }
 
-#header .menu:hover, #header .submenu:hover, #header .selected
+#header .menu:hover, #header .submenu:hover, #header .selected, #header .sselected
 {
     color:#043EAC;
+}
+
+#header .sselected
+{
+    background-image:url('/media/image/layout/submenu_left_selected.gif');
+    background-repeat:no-repeat;
+    background-position:0px;
 }
 
 #account-bar
