@@ -5,3 +5,9 @@ body
     margin:auto;
     min-height:800px;
 }
+
+p, pre, h1, textarea
+{
+    margin:0;
+    font-family:Helvetica;
+}

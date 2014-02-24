@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Chalk</title>
+        <title>KFAC</title>
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/layout.css" />
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/default.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -13,16 +13,23 @@
     <body>
         <div id="header">
             <img id="logo" src="{{MEDIA_URL}}image/layout/logo.gif">
-            <p class="menu">ABOUT KFAC</p>
-            <p class="menu">ABOUT KFAC</p>
-            <p class="menu">ABOUT KFAC</p>
-            <p class="menu">ABOUT KFAC</p>
-            <p class="menu">ABOUT KFAC</p>
+            <p class="menu selected" onclick="/about/">ABOUT KFAC</p>
+            <p class="submenu selected">GREETINGS</p>
+            <p class="submenu">ABCD</p>
+            <p class="submenu">ABCD</p>
+            <p class="submenu">ABCD</p>
+            <p class="menu" onclick="/activities/">ACTIVITIES</p>
+            <p class="menu" onclick="/people/">PEOPLE</p>
+            <p class="menu" onclick="/recruiting/">RECRUITING</p>
+            <p class="menu" onclick="/only/">KFACIAN-ONLY</p>
         </div>
         <div id="container">
             {% block content %}{% endblock %}
         </div>
         <div id="footer">
+            <img src="{{MEDIA_URL}}image/layout/footer.gif">
+            <div id="cyworld" onclick="window.location='http://club.cyworld.com/clubV1/Home.cy/51553637'"></div>
+            <div id="facebook" onclick="window.location='http://www.facebook.com/pages/KFAC-KAIST-Financial-Analysis-Club/171559606288773'"></div>
         </div>
     </body>
 </html>
