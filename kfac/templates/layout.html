@@ -27,10 +27,10 @@
             <img id="logo" src="{{MEDIA_URL}}image/layout/logo.gif" onclick="window.location='/'">
             <p class="menu{% ifequal menu 'about' %} selected{% endifequal %}" onclick="window.location='/about/'">ABOUT KFAC</p>
             {% ifequal menu 'about' %}
-            <p class="submenu{% ifequal submenu 'greeting' %} sselected {% endifequal %}">GREETINGS</p>
-            <p class="submenu{% ifequal submenu 'vision' %} sselected {% endifequal %}">VISION</p>
-            <p class="submenu{% ifequal submenu 'organization' %} sselected {% endifequal %}">ORGANIZATION</p>
-            <p class="submenu{% ifequal submenu 'achievements' %} sselected {% endifequal %}">ACHIEVEMENTS</p>
+            <p class="submenu{% ifequal submenu 'greetings' %} sselected {% endifequal %}" onclick="window.location='/about/greetings/'">GREETINGS</p>
+            <p class="submenu{% ifequal submenu 'vision' %} sselected {% endifequal %}" onclick="window.location='/about/vision/'">VISION</p>
+            <p class="submenu{% ifequal submenu 'organization' %} sselected {% endifequal %}" onclick="window.location='/about/organization/'">ORGANIZATION</p>
+            <p class="submenu{% ifequal submenu 'achievements' %} sselected {% endifequal %}" onclick="window.location='/about/achievements/'">ACHIEVEMENTS</p>
             {% endifequal %}
             <p class="menu{% ifequal menu 'activities' %} selected{% endifequal %}" onclick="window.location='/activities/'">ACTIVITIES</p>
             <p class="menu{% ifequal menu 'people' %} selected{% endifequal %}" onclick="window.location='/people/'">PEOPLE</p>
