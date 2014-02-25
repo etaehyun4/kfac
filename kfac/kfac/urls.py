@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     (ur'^main/', 'main.views.home'),
     (ur'^people/', 'people.views.view'),
     (ur'^about/', include('about.urls')),
+    (ur'^activities/', include('activities.urls')),
     (ur'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': './media'}),
     (ur'^admin/', include(admin.site.urls)),
 )
