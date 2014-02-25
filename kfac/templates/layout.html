@@ -25,6 +25,7 @@
     <body>
         <div id="header">
             <img id="logo" src="{{MEDIA_URL}}image/layout/logo.gif" onclick="window.location='/'">
+            <!-- about -->
             <p class="menu{% ifequal menu 'about' %} selected{% endifequal %}" onclick="window.location='/about/'">ABOUT KFAC</p>
             {% ifequal menu 'about' %}
             <p class="submenu{% ifequal submenu 'greetings' %} sselected {% endifequal %}" onclick="window.location='/about/greetings/'">GREETINGS</p>
@@ -32,15 +33,28 @@
             <p class="submenu{% ifequal submenu 'organization' %} sselected {% endifequal %}" onclick="window.location='/about/organization/'">ORGANIZATION</p>
             <p class="submenu{% ifequal submenu 'achievements' %} sselected {% endifequal %}" onclick="window.location='/about/achievements/'">ACHIEVEMENTS</p>
             {% endifequal %}
+
+            <!-- activities -->
             <p class="menu{% ifequal menu 'activities' %} selected{% endifequal %}" onclick="window.location='/activities/'">ACTIVITIES</p>
+
+            <!-- people -->
             <p class="menu{% ifequal menu 'people' %} selected{% endifequal %}" onclick="window.location='/people/'">PEOPLE</p>
+
+            <!-- recruiting -->
             <p class="menu{% ifequal menu 'recruiting' %} selected{% endifequal %}" onclick="window.location='/recruiting/'">RECRUITING</p>
+            {% ifequal menu 'recruiting' %}
+            <p class="submenu{% ifequal submenu 'require' %} sselected {% endifequal %}" onclick="window.location='/recruiting/require/'">REQUIRE</p>
+            <p class="submenu{% ifequal submenu 'process' %} sselected {% endifequal %}" onclick="window.location='/recruiting/process/'">PROCESS</p>
+            <p class="submenu{% ifequal submenu 'faq' %} sselected {% endifequal %}" onclick="window.location='/recruiting/faq/'">FAQ</p>
+            {% endifequal %}
+
+            <!-- only -->
             <p class="menu{% ifequal menu 'only' %} selected{% endifequal %}" onclick="window.location='/only/'">KFACIAN-ONLY</p>
         </div>
         <div id="account-bar">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/home.gif" onclick="window.location='/'">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/login.gif" onclick="newWindow('/account/login_window/',668,320);">
-            <img class="account_button" src="{{MEDIA_URL}}image/layout/join.gif" onclick="newWindow('/account/join/',300,300);">
+            <img class="account_button" src="{{MEDIA_URL}}image/layout/join.gif" onclick="newWindow('/account/join/',765,850);">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/id_password_lost.gif" onclick="newWindow('/account/id_password_lost/',300,300);">
         </div>
         <div id="container">

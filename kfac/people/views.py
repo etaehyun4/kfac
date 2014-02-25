@@ -10,8 +10,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def view(request):
-    return render_to_response('people/people.html', 
-            context_instance=RequestContext(request))
+    return render_to_response('people/people.html', {
+            'menu':'people',
+        }, context_instance=RequestContext(request))
 
 @csrf_exempt
 def getList(request):
@@ -33,7 +34,7 @@ def getList(request):
             item['word']=str(item['num'])+word
             item['member'] = []
             all.append(item)
-        
+
         item = {}
         item['picture']=member.picture.url
         item['kor_name']=member.kor_name
