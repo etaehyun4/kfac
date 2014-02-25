@@ -53,7 +53,13 @@
     height:825px;
 }
 
-#join-window label, b, textarea
+#join-window textarea
+{
+    border: 1px solid #CCCCCC;
+    resize:none;
+}
+
+#join-window label, #join-window b, #join-window textarea
 {
     font-size:9pt;
 }
