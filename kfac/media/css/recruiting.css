@@ -1,0 +1,13 @@
+.download
+{
+    float:left;
+    width:177px;
+    height:48px;
+    background-color:#105D96;
+    text-align:center;
+    vertical-align:middle;
+    border-radius:10px;
+    color:white;
+    margin:5px;
+    box-shadow:2px 2px 2px 2px #dedede;
+}

@@ -19,12 +19,110 @@
     border-style:solid;
     border-radius:5px;
     border-width:2px;
-    border-color:#dedede;
-    background:url("/media/image/people/clickphoto.png");
-    background-repeat:no-repeat;
-    background-position:center;
+    border-color:#3380CC;
 }
 
+.member_profile
+{
+    float:left;
+    width:618px;
+    padding-top:22px;
+    padding-left:14px;
+    padding-right:14px;
+    padding-bottom:22px;
+    border-style:solid;
+    border-radius:5px;
+    border-width:2px;
+    border-color:#3380CC
+}
+
+.profile_frame
+{
+    float:left;
+    width:145px;
+    padding-top:6px;
+    padding-bottom:6px;
+    border-style:solid;
+    border-width:1px;
+    border-color:#636363;
+    display:table-cell;
+}
+
+.profile_picture
+{
+    width:132px;
+    height:153px;
+}
+
+.profile_text
+{
+    float:left;
+    margin-left:17px;
+    display:table-cell;
+    font-size:9pt;
+    font-family:"Verdana, Arial, Helvetica, sans-serif";
+
+}
+
+.profile_intro
+{
+    float:left;
+    width:431px;
+    height:37px;
+    padding-top:7px;
+    padding-bottom:7px;
+    padding-left:13px;
+    border-style:solid;
+    border-width:1px;
+    border-color:#dedede;
+    border-radius:2px;
+    box-shadow:1px 1px 1px #888888;
+}
+
+.profile_name
+{
+    font-weight:bold;
+}
+
+.profile_pos
+{
+}
+
+.profile_edu
+{
+
+}
+
+.profile_work
+{
+
+}
+
+.profile_e
+{
+    display:table-row;
+}
+
+.profile_w
+{
+    display:table-row;
+}
+
+.profile_cell
+{
+    display:table-cell;
+    text-align:center;
+}
+
+.profile_date
+{
+    width:121px;
+}
+
+.profile_content
+{
+    width:314px;
+}
 .member_list
 {
     width:670px;
@@ -32,6 +130,10 @@
     overflow-y:scroll;
 }
 
+.generation_name
+{
+    font-size:20px;
+}
 .generation
 {
     display:table;
@@ -58,6 +160,7 @@
     height:38px;
     width:52px;
     padding-right:6px;
+    cursor: pointer;
 }
 
 .member_name

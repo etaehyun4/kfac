@@ -32,5 +32,12 @@ def _login(request):
         }, context_instance=RequestContext(request))
     '''
     return render_to_response('account/login.html',{
-        'section':'login',
+    }, context_instance=RequestContext(request))
+
+def _login_window(request):
+    return render_to_response('account/login_window.html',{
+    }, context_instance=RequestContext(request))
+
+def join(request):
+    return render_to_response('account/join.html',{
     }, context_instance=RequestContext(request))
