@@ -11,8 +11,8 @@
     </head>
     <body>
         <div id="login-window">
-        <div id="line"></div>
-        <img id="login-image" src="{{MEDIA_URL}}image/account/login_image.gif">
+            <div id="line"></div>
+            <img id="login-image" src="{{MEDIA_URL}}image/account/login_image.gif">
             <div id="login-input">
                 <form action="/account/login/" method='POST'>
                     {% csrf_token %}

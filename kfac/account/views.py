@@ -37,3 +37,7 @@ def _login(request):
 def _login_window(request):
     return render_to_response('account/login_window.html',{
     }, context_instance=RequestContext(request))
+
+def join(request):
+    return render_to_response('account/join.html',{
+    }, context_instance=RequestContext(request))
