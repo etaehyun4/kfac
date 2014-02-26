@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     (ur'^requirements/', 'recruiting.views.require'),
     (ur'^process/', 'recruiting.views.process'),
     (ur'^faq/', 'recruiting.views.faq'),
+    (ur'^faq_list/', 'recruiting.views.faq_list'),
 )

@@ -11,3 +11,61 @@
     margin:5px;
     box-shadow:2px 2px 2px 2px #dedede;
 }
+
+.faq_list
+{
+    margin-left:41px;
+    float:left;
+}
+
+.question
+{
+    display:table-row;
+    font-family:Tahoma;
+    font-size:9pt;
+}
+
+.question_col
+{
+    display:table-column;
+    float:left;
+}
+
+.question_id
+{
+    color:#222222;
+    width:50px;
+    text-align:center;
+}
+
+.question_text
+{
+    color:#466CBA;
+    width:453px;
+    padding-left:10px;
+}
+
+.question_writer
+{
+    width:100px;
+    text-align:center;
+}
+
+.question_date
+{
+    width:60px;
+    text-align:center;
+}
+
+.question_click
+{
+    width:50px;
+    text-align:center;
+}
+
+.question_line
+{
+    width:727px;
+    height:1px;
+    background-color:#E6E6E6;
+}

@@ -1,8 +1,17 @@
 {% extends 'layout.html' %}
 {% block header %}
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/recruiting.css"/>
+<script type="text/javascript" src="{{MEDIA_URL}}js/recruiting.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+			faq.initialize();
+			});
+</script>
 {% endblock %}
 {% block content %}
 <div id="faq" style="margin-top:49px;margin-left:41px;float:left;">
     <img src="{{MEDIA_URL}}image/recruiting/sub04_3_10.gif" width="750" height="53" style="float:left;">
+</div>
+<div class="faq_list">
 </div>
 {% endblock %}
