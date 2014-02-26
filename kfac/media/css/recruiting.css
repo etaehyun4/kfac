@@ -40,9 +40,14 @@
 
 .question_text
 {
-    color:#466CBA;
+    color:#466C8A;
     width:453px;
     padding-left:10px;
+}
+
+.question_text_q
+{
+    cursor:pointer;
 }
 
 .question_writer
@@ -61,6 +66,17 @@
 {
     width:50px;
     text-align:center;
+}
+
+.question_answer
+{
+    width:665px;
+    font-family:Tahoma;
+    font-size:9pt;
+    color:#0070c0;
+    margin-left:62px;
+    padding-top:5px;
+    padding-bottom:5px;
 }
 
 .question_line

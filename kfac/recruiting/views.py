@@ -54,14 +54,26 @@ def faq_list(request):
         item = {}
         item['id']=q.id
         item['question']=q.question
-        print q.writer
         item['writer']=str(q.writer)
         item['date']="%02d-%02d"%(q.date.month, q.date.day)
         item['answer']=q.answer
+        item['click']=q.click
         all.append(item)
 
     return HttpResponse(json.dumps(
         all, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder))
+
+@csrf_exempt
+def update_click(request):
+    id = int(request.POST.get('id', -1))
+    if id == -1:
+        return -1
+    
+    q = Question.objects.filter(id = id)[0]
+    q.click += 1
+    q.save()
+    return HttpResponse(json.dumps(
+        {'click': q.click}, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder))
 
 def faq(request):
     return render_to_response('recruiting/faq.html',{

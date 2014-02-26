@@ -23,7 +23,18 @@ var faq = {
 					
 				   	col = $('<div>', {'class':'question_col'});
 					var text = $('<div>', {'class':'question_text'});
-					text.text(q['question']);
+					var question = $('<div>', {'class':'question_text_q'});
+					question.text(q['question']);
+
+					question.bind('click', {'id': q['id'], 'length':all.length}, this.clickQuestion);
+
+					question.hover(function(){
+						$(this).css("text-decoration", "underline");
+					}, function(){
+						$(this).css("text-decoration", "none");
+					}
+					);
+					question.appendTo(text);
 					text.appendTo(col);
 					col.appendTo(line);
 
@@ -46,9 +57,41 @@ var faq = {
 					col.appendTo(line);
 
 					line.appendTo(list);
+
+					var answer = $('<div>', {'class':'question_answer'});
+					answer.text(q['answer']);
+					answer.css({'display':'none'});
+					answer.appendTo(list);
 					$('<div>', {'class':'question_line'}).appendTo(list);
 				}
 			}, this)
 		});
+	},
+	clickQuestion:function(data){
+		var x = data.data.length-data.data.id;
+		for(var i=0;i<data.data.length;i++)
+		{
+			if(i==x)
+			{
+				if($($('.question_answer')[i]).css("display") == "none")
+				{
+					console.log($($('.question_answer')[i]).css("display"));
+					$.ajax({
+						type: 'POST',
+						url:'/recruiting/update_click/',
+						dataType: 'json',
+						data: {'id':data.data.id},
+						success: $.proxy(function(data){
+							$($('.question_click')[x]).text(data['click']);
+						}, this)
+					});
+				}
+				$($('.question_answer')[i]).css({'display':'block'});
+			}
+			else
+			{
+				$($('.question_answer')[i]).css({'display':'none'});
+			}
+		}
 	},
 };
