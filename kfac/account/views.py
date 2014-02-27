@@ -1,8 +1,11 @@
 # -*- coding: utf-8-*-
 
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render_to_response
 from django.template import RequestContext, Context
+from django.utils import simplejson as json
+from django.http import HttpResponse, HttpResponseRedirect
 
 def _login(request):
     '''
@@ -45,3 +48,8 @@ def join(request):
 def join_form(request):
     return render_to_response('account/join_form.html',{
     }, context_instance=RequestContext(request))
+
+def join_id_check(request):
+    user_id = request.GET.get('id','')
+    user = User.objects.filter(username=user_id)
+    return HttpResponse(len(user))
