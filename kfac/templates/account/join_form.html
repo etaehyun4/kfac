@@ -43,7 +43,10 @@
                                         </TR>
                                         <TR bgcolor="#FFFFFF" class=m_row>
                                             <TD class=m_title>패스워드 확인</TD>
-                                            <TD class=m_padding><INPUT class=ed type=password name="mb_password_re" size=20 maxlength=20 itemname="패스워드 확인"></TD>
+                                            <TD class=m_padding>
+                                                <INPUT class=ed type=password name="mb_password_re" size=20 maxlength=20 itemname="패스워드 확인" onblur="reg_mb_passwd_check();">
+                                                <p id="msg_mb_passwd"></p>
+                                            </TD>
                                         </TR>
                                         <TR bgcolor="#FFFFFF" class=m_row>
                                             <TD class=m_title>패스워드 분실시 질문</TD>

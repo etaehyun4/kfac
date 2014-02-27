@@ -49,3 +49,21 @@ function reg_mb_id_check_sub(check){
         JoinCheck.id = true;
     }
 }
+
+function reg_mb_passwd_check(){
+    var passwd = $('input[type=password]')[0].value;
+    var re_passwd = $('input[type=password]')[1].value;
+    var status_p = $('#msg_mb_passwd')[0];
+    if (passwd.length < 6){
+        status_p.innerHTML = '최소 6자가 필요합니다.';
+        status_p.style.color = 'red';
+        JoinCheck.password = false;
+    }else if(passwd!=re_passwd){
+        status_p.innerHTML = '패스워드가 일치하지 않습니다.';
+        status_p.style.color = 'red';
+        JoinCheck.password = false;
+    }else{
+        status_p.innerHTML = '';
+        JoinCheck.password = true;
+    }
+}
