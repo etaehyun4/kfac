@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>KFAC</title>
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/default.css" />
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/account.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script language="javascript" src="{{ MEDIA_URL }}js/default.js"></script>
+        <script language="javascript" src="{{ MEDIA_URL }}js/account.js"></script>
+    </head>
+    <body>
+        <div id="join-form">
+            <img id="text-signup" src="{{ MEDIA_URL }}image/account/text_signup.gif">
+            <div class="box_component">
+                <img class="box_top_corner" src="{{ MEDIA_URL }}image/account/join_box_ltop.gif">
+                <div class="box_top">
+                    <img id="join-box-title" src="{{ MEDIA_URL }}image/account/join_box_title03.gif">
+                </div>
+                <img class="box_top_corner" src="{{ MEDIA_URL }}image/account/join_box_rtop.gif">
+            </div>
+            <div class="box_component">
+                <div class="box_left"></div>
+                <div class="box_content">
+                    <form action="/account/join_form/" method='POST'>
+                        {% csrf_token %}
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td bgcolor="#FFFFFF">
+                                    <TABLE cellSpacing=1 cellPadding=0 width=100%>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD width="160px" class=m_title>아이디</TD>
+                                            <TD class=m_padding>
+                                                <input class=ed maxlength=20 size=20 id='reg_mb_id' name="mb_id" onblur='reg_mb_id_check();'>
+                                                <p id='msg_mb_id'></p>
+                                                <p style="color:#66A2C8;">※ 영문자, 숫자, _ 만 입력 가능. 최소 3자이상 입력하세요.</p>
+                                            </TD>
+                                        </TR>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>패스워드</TD>
+                                            <TD class=m_padding><INPUT class=ed type=password name="mb_password" size=20 maxlength=20 itemname="패스워드"></TD>
+                                        </TR>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>패스워드 확인</TD>
+                                            <TD class=m_padding><INPUT class=ed type=password name="mb_password_re" size=20 maxlength=20 itemname="패스워드 확인"></TD>
+                                        </TR>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>패스워드 분실시 질문</TD>
+                                            <TD class=m_padding>
+                                                <select name=mb_password_q_select onchange="this.form.mb_password_q.value=this.value;">
+                                                    <option value="">선택하십시오.</option>
+                                                    <option value="내가 좋아하는 캐릭터는?">내가 좋아하는 캐릭터는?</option>
+                                                    <option value="타인이 모르는 자신만의 신체비밀이 있다면?">타인이 모르는 자신만의 신체비밀이 있다면?</option>
+                                                    <option value="자신의 인생 좌우명은?">자신의 인생 좌우명은?</option>
+                                                    <option value="초등학교 때 기억에 남는 짝꿍 이름은?">초등학교 때 기억에 남는 짝꿍 이름은?</option>
+                                                    <option value="유년시절 가장 생각나는 친구 이름은?">유년시절 가장 생각나는 친구 이름은?</option>
+                                                    <option value="가장 기억에 남는 선생님 성함은?">가장 기억에 남는 선생님 성함은?</option>
+                                                    <option value="친구들에게 공개하지 않은 어릴 적 별명이 있다면?">친구들에게 공개하지 않은 어릴 적 별명이 있다면?</option>
+                                                    <option value="다시 태어나면 되고 싶은 것은?">다시 태어나면 되고 싶은 것은?</option>
+                                                    <option value="가장 감명깊게 본 영화는?">가장 감명깊게 본 영화는?</option>
+                                                    <option value="읽은 책 중에서 좋아하는 구절이 있다면?">읽은 책 중에서 좋아하는 구절이 있다면?</option>
+                                                    <option value="기억에 남는 추억의 장소는?">기억에 남는 추억의 장소는?</option>
+                                                    <option value="인상 깊게 읽은 책 이름은?">인상 깊게 읽은 책 이름은?</option>
+                                                    <option value="자신의 보물 제1호는?">자신의 보물 제1호는?</option>
+                                                    <option value="받았던 선물 중 기억에 남는 독특한 선물은?">받았던 선물 중 기억에 남는 독특한 선물은?</option>
+                                                    <option value="자신이 두번째로 존경하는 인물은?">자신이 두번째로 존경하는 인물은?</option>
+                                                    <option value="아버지의 성함은?">아버지의 성함은?</option>
+                                                    <option value="어머니의 성함은?">어머니의 성함은?</option>
+                                                </select>
+
+                                                <input id=passwd_q_ans type=hidden name="mb_password_q" size=55 required itemname="패스워드 분실시 질문">
+                                            </TD>
+                                        </TR>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>패스워드 분실시 답변</TD>
+                                            <TD class=m_padding><input class=ed type=text name='mb_password_a' size=38 required itemname='패스워드 분실시 답변'></TD>
+                                        </TR>
+                                    </TABLE>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td height="1" bgcolor="#ffffff"></td>
+                            </tr>
+                        </table>
+
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td bgcolor="#FFFFFF">
+                                    <TABLE cellSpacing=1 cellPadding=0 width=100%>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD width="160" class=m_title>이름</TD>
+                                            <TD class=m_padding>
+                                                <input name=mb_name itemname="이름"> 
+                                                <p id="msg_mb_name">(공백없이 한글만 입력 가능)</p>
+                                            </TD>
+                                        </TR>
+
+                                        <input type=hidden name=mb_nick_default>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>별명</TD>
+                                            <TD class='m_padding lh'>
+                                                <input class=ed type=text id='reg_mb_nick' name='mb_nick' maxlength=20 onblur="reg_mb_nick_check();">
+                                                <p id='msg_mb_nick'></p>
+                                                <p>공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)</p>
+                                            </TD>
+                                        </TR>
+                                        <input type=hidden name='old_email'>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>E-mail</TD>
+                                            <TD class='m_padding lh'>
+                                                <input class=ed type=email id='reg_mb_email' name='mb_email' size=38 maxlength=100>
+                                                <span id='msg_mb_email'></span>
+                                            </TD>
+                                        </TR>
+
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>생년월일</TD>
+                                            <TD class=m_padding><input class=ed type=text id=mb_birth name='mb_birth' size=8 maxlength=8 minlength=8 required numeric itemname='생년월일' readonly title='옆의 달력 아이콘을 클릭하여 날짜를 입력하세요.'>
+                                                <a href="javascript:win_calendar('mb_birth', document.getElementById('mb_birth').value, '');"><img src='{{ MEDIA_URL }}image/account/calendar.gif' border=0 align=absmiddle title='달력 - 날짜를 선택하세요'></a></TD>
+                                        </TR>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>성별</TD>
+                                            <TD class=m_padding>
+                                                <select id=mb_sex name=mb_sex required itemname='성별'>
+                                                    <option value=''>선택하세요
+                                                    <option value='F'>여자
+                                                    <option value='M'>남자
+                                                </select>
+                                            </td>
+                                        </TR>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD class=m_title>핸드폰번호</TD>
+                                            <TD class=m_padding><input class=ed type=text name='mb_hp' size=21 maxlength=20></TD>
+                                        </TR>
+                                    </TABLE>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td height="1" bgcolor="#ffffff"></td>
+                            </tr>
+                        </table>
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td bgcolor="#FFFFFF">
+                                    <TABLE cellSpacing=1 cellPadding=0 width=100%>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD width="160" class=m_title>자기소개</TD>
+                                            <TD class=m_padding><textarea id="profile_textarea" name=mb_profile class=tx rows=3 style='width:95%;'></textarea></TD>
+                                        </TR>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD width="160" class=m_title>메일링서비스</TD>
+                                            <TD class=m_padding><input type=checkbox name=mb_mailling value='1'><p class="checkbox_text">정보 메일을 받겠습니다.</p></TD>
+                                        </TR>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD width="160" class=m_title>SMS 수신여부</TD>
+                                            <TD class=m_padding><input type=checkbox name=mb_sms value='1'><p class="checkbox_text">핸드폰 문자메세지를 받겠습니다.</p></TD>
+                                        </TR>
+                                        <input type=hidden name=mb_open_default>
+                                        <TR bgcolor="#FFFFFF" class=m_row>
+                                            <TD width="160" class=m_title>정보공개</TD>
+                                            <TD class=m_padding><input type=checkbox name=mb_open value='1'><p class="checkbox_text">다른분들이 나의 정보를 볼 수 있도록 합니다.</p>
+                                        </TR>
+                                    </TABLE>
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td height="1" bgcolor="#ffffff"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="box_right"></div>
+            </div>
+            <div class="box_component">
+                <img class="box_bottom_corner" src="{{ MEDIA_URL }}image/account/join_box_lbtm.gif">
+                <div class="box_bottom">
+                    <img id="submit-button" src="{{ MEDIA_URL }}image/account/btn_join_ok.gif">
+                </div>
+                <img class="box_bottom_corner" src="{{ MEDIA_URL }}image/account/join_box_rbtm.gif">
+            </div>
+        </div>
+    </body>
+</html>

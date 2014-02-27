@@ -68,3 +68,176 @@
 {
     margin:auto;
 }
+
+#join-form
+{
+    float:left;
+    width:750px;
+}
+
+#join-form #text-signup
+{
+    float:left;
+    width:155px;
+    height:44px;
+    margin-right:595px;
+    margin-bottom:10px;
+}
+
+#join-form .box_component
+{
+    float:left;
+    width:740px;
+}
+
+#join-form .box_top_corner
+{
+    float:left;
+    width:20px;
+    height:30px;
+}
+
+#join-form .box_top
+{
+    float:left;
+    width:700px;
+    height:30px;
+    background-image:url('/media/image/account/join_box_topbg.gif');
+}
+
+#join-form .box_left
+{
+    float:left;
+    width:20px;
+    height:900px;
+    background-image:url('/media/image/account/join_box_lbg.gif');
+}
+
+#join-form .box_right
+{
+    float:left;
+    width:20px;
+    height:900px;
+    background-image:url('/media/image/account/join_box_rbg.gif');
+}
+
+#join-form .box_bottom_corner
+{
+    float:left;
+    width:20px;
+    height:58px;
+}
+
+#join-form .box_bottom
+{
+    float:left;
+    width:700px;
+    height:58px;
+    background-image:url('/media/image/account/join_box_btmbg.gif');
+}
+
+#join-form #submit-button
+{
+    margin-left:295px;
+    width:110px;
+    height:27px;
+    cursor:pointer;
+}
+
+#join-form .box_content
+{
+    float:left;
+    width:700px;
+    height:900px;
+}
+
+#join-form #join-box-title
+{
+    float:left;
+    width:188px;
+    height:30px;
+}
+
+#join-form .ed
+{
+    float:left;
+    height:16px;
+    width:116px;
+    margin:2px;
+    padding:1px;
+}
+
+#join-form input
+{
+    float:left;
+    border:1px solid #CCCCCC;
+}
+
+#join-form .m_row td
+{
+    border-bottom:1px solid #CCCCCC;
+    padding:10px 0px;
+}
+
+#join-form .m_title
+{
+    font-size:9pt;
+    width:100px;
+    text-align:center;
+    padding-right:15px!important;
+}
+
+#join-form #msg_mb_id
+{
+    float:left;
+    width:350px;
+    height:33px;
+}
+
+#join-form #msg_mb_name
+{
+    float:left;
+    line-height:24px;
+    margin-left:10px;
+}
+
+#join-form #msg_mb_nick
+{
+    float:left;
+    width:350px;
+    height:33px;
+}
+
+#join-form p
+{
+    float:left;
+    font-size:9pt;
+}
+
+#join-form #profile_textarea
+{
+    height:150px;
+    width:500px;
+    resize:none;
+    border:1px solid #CCCCCC;
+}
+
+#join-form input[type=checkbox]
+{
+    margin-right:7px;
+}
+
+#join-form .checkbox_text
+{
+    line-height:19px;
+}
+
+#join-form #mb_birth
+{
+    margin-right:10px;
+}
+
+#join-form select
+{
+    border:1px solid #CCCCCC;
+}

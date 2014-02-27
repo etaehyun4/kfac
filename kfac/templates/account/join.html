@@ -20,8 +20,7 @@
                     f.agree2.focus();
                     return;
                 }
-                f.action = "/account/join/";
-                f.submit();
+                window.location = "/account/join_form/";
             }
 
             $(document).ready(function(){
@@ -60,7 +59,7 @@ KFAC은 회원의 개인정보를 개인정보취급방침의 "개인정보의 �
                 </table>
                 <br>
                 <div align=center>
-                    <input type=image width="66" height="20" src="{{MEDIA_URL}}image/account/join_ok_btn.gif" border=0>
+                    <input type="image" width="66" height="20" src="{{MEDIA_URL}}image/account/join_ok_btn.gif" border=0>
                 </div>
             </form>
         </div>
