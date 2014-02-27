@@ -16,6 +16,10 @@ function reg_mb_id_check(){
         status_p.innerHTML = '최소 3자가 필요합니다.';
         status_p.style.color = 'red';
         JoinCheck.id = false;
+    }else if(id.replace(/[a-zA-Z0-9_]/g,'').length>0){
+        status_p.innerHTML = '잘못된 기호가 포함되어있습니다.';
+        status_p.style.color = 'red';
+        JoinCheck.id = false;
     }else{
         conditions = {'id':id};
         $.ajax({
