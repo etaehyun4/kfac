@@ -214,8 +214,13 @@
 #join-form #msg_mb_nick
 {
     float:left;
-    width:350px;
-    height:33px;
+    line-height:24px;
+    margin-left:10px;
+}
+
+#join-form input[type=email]
+{
+    width:200px;
 }
 
 #join-form p

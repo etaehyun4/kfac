@@ -102,7 +102,7 @@
                                         <TR bgcolor="#FFFFFF" class=m_row>
                                             <TD width="160" class=m_title>이름</TD>
                                             <TD class=m_padding>
-                                                <input name=mb_name itemname="이름"> 
+                                                <input name=mb_name class=ed itemname="이름" onkeypress="if(!isHangul(event.keyCode))event.returnValue=false;"> 
                                                 <p id="msg_mb_name">(공백없이 한글만 입력 가능)</p>
                                             </TD>
                                         </TR>
@@ -111,9 +111,8 @@
                                         <TR bgcolor="#FFFFFF" class=m_row>
                                             <TD class=m_title>별명</TD>
                                             <TD class='m_padding lh'>
-                                                <input class=ed type=text id='reg_mb_nick' name='mb_nick' maxlength=20 onblur="reg_mb_nick_check();">
-                                                <p id='msg_mb_nick'></p>
-                                                <p>공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)</p>
+                                                <input class=ed type=text id='reg_mb_nick' name='mb_nick' maxlength=20 onkeypress="reg_mb_nick_check();">
+                                                <p id="msg_mb_nick">공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)</p>
                                             </TD>
                                         </TR>
                                         <input type=hidden name='old_email'>

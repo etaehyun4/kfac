@@ -2,7 +2,6 @@ var JoinCheck = {
     initialize:function(){
         id = false;
         password = false;
-        name = false;
         nick = false;
         birth = false;
     }
@@ -68,6 +67,12 @@ function reg_mb_passwd_check(){
     }
 }
 
+function reg_mb_nick_check(){
+    var val = event.keyCode;
+    if (!isHangul(val) && !isAlphabet(val) && !isNumber(val))
+        event.returnValue=false;
+}
+
 function join_submit(){
     if (!JoinCheck.id){
         alert('아이디가 올바르지 않습니다.');
@@ -77,12 +82,12 @@ function join_submit(){
             alert('비밀번호를 입력해 주세요.');
         else
             alert('비밀번호가 올바르지 않습니다.');
-    }else if(!JoinCheck.name){
-        alert('이름이 올바르지 않습니다.');
-    }else if(!JoinCheck.nick){
-        alert('닉네임이 올바르지 않습니다.');
+    //}else if(!JoinCheck.birth){
+        //alert('생년월일을 입력해 주세요.');
+    }else if($('#mb_sex')[0].selectedIndex == 0){
+        alert('성별을 입력해 주세요.');
     }else if(!JoinCheck.birth){
-        alert('생년월일을 입력해 주세요.');
+        alert('휴대폰 번호를 입력해 주세요.');
     }else{
     }
 }
