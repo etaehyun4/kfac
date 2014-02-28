@@ -229,6 +229,22 @@
     font-size:9pt;
 }
 
+div.ui-datepicker
+{
+    font-size:9pt;
+}
+
+.ui-datepicker select.ui-datepicker-month
+{
+    float:right;
+    width:40%;
+}
+.ui-datepicker select.ui-datepicker-year
+{
+    float:left;
+    width:40%;
+}
+
 #join-form #profile_textarea
 {
     height:150px;

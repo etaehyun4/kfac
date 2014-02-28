@@ -46,8 +46,12 @@ def join(request):
     }, context_instance=RequestContext(request))
 
 def join_form(request):
-    return render_to_response('account/join_form.html',{
-    }, context_instance=RequestContext(request))
+    if request.method == 'POST':
+        return render_to_response('account/join_success.html',{
+        }, context_instance=RequestContext(request))
+    else:
+        return render_to_response('account/join_form.html',{
+        }, context_instance=RequestContext(request))
 
 def join_id_check(request):
     user_id = request.GET.get('id','')
