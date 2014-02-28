@@ -67,3 +67,22 @@ function reg_mb_passwd_check(){
         JoinCheck.password = true;
     }
 }
+
+function join_submit(){
+    if (!JoinCheck.id){
+        alert('아이디가 올바르지 않습니다.');
+    }else if(!JoinCheck.password){
+        var passwd = $('input[type=password]')[0].value;
+        if (passwd.length<1)
+            alert('비밀번호를 입력해 주세요.');
+        else
+            alert('비밀번호가 올바르지 않습니다.');
+    }else if(!JoinCheck.name){
+        alert('이름이 올바르지 않습니다.');
+    }else if(!JoinCheck.nick){
+        alert('닉네임이 올바르지 않습니다.');
+    }else if(!JoinCheck.birth){
+        alert('생년월일을 입력해 주세요.');
+    }else{
+    }
+}

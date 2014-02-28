@@ -9,6 +9,11 @@
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script language="javascript" src="{{ MEDIA_URL }}js/default.js"></script>
         <script language="javascript" src="{{ MEDIA_URL }}js/account.js"></script>
+        <script>
+            $(document).ready(function(){
+                JoinCheck.initialize();
+            });
+        </script>
     </head>
     <body>
         <div id="join-form">
@@ -187,7 +192,7 @@
             <div class="box_component">
                 <img class="box_bottom_corner" src="{{ MEDIA_URL }}image/account/join_box_lbtm.gif">
                 <div class="box_bottom">
-                    <img id="submit-button" src="{{ MEDIA_URL }}image/account/btn_join_ok.gif">
+                    <img id="submit-button" src="{{ MEDIA_URL }}image/account/btn_join_ok.gif" onclick="join_submit();">
                 </div>
                 <img class="box_bottom_corner" src="{{ MEDIA_URL }}image/account/join_box_rbtm.gif">
             </div>
