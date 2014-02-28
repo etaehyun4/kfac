@@ -45,10 +45,14 @@ def join(request):
     return render_to_response('account/join.html',{
     }, context_instance=RequestContext(request))
 
+def join_success(request):
+    return render_to_response('account/join_success.html',{
+    }, context_instance=RequestContext(request))
+
+
 def join_form(request):
     if request.method == 'POST':
-        return render_to_response('account/join_success.html',{
-        }, context_instance=RequestContext(request))
+        return HttpResponseRedirect('/account/join_success/')
     else:
         return render_to_response('account/join_form.html',{
         }, context_instance=RequestContext(request))

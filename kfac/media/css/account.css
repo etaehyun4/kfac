@@ -71,8 +71,8 @@
 
 #join-form
 {
-    float:left;
     width:750px;
+    margin:auto;
 }
 
 #join-form #text-signup
@@ -271,4 +271,99 @@ div.ui-datepicker
 #join-form select
 {
     border:1px solid #CCCCCC;
+}
+
+#join-success
+{
+    width:750px;
+    margin:auto;
+}
+
+#join-success #text-signup
+{
+    float:left;
+    width:155px;
+    height:44px;
+    margin-right:595px;
+    margin-bottom:10px;
+}
+
+#join-success .box_component
+{
+    float:left;
+    width:740px;
+}
+
+#join-success .box_top_corner
+{
+    float:left;
+    width:20px;
+    height:30px;
+}
+
+#join-success .box_top
+{
+    float:left;
+    width:700px;
+    height:30px;
+    background-image:url('/media/image/account/join_box_topbg.gif');
+}
+
+#join-success .box_left
+{
+    float:left;
+    width:20px;
+    height:170px;
+    background-image:url('/media/image/account/join_box_lbg.gif');
+}
+
+#join-success .box_right
+{
+    float:left;
+    width:20px;
+    height:170px;
+    background-image:url('/media/image/account/join_box_rbg.gif');
+}
+
+#join-success .box_bottom_corner
+{
+    float:left;
+    width:20px;
+    height:58px;
+}
+
+#join-success .box_bottom
+{
+    float:left;
+    width:700px;
+    height:58px;
+    background-image:url('/media/image/account/join_box_btmbg.gif');
+}
+
+#join-success .box_content
+{
+    float:left;
+    width:700px;
+    height:170px;
+}
+
+#join-success pre
+{
+    margin:20px;
+    font-size:9pt;
+    line-height:26px;
+}
+
+#join-success b
+{
+    font-size:9pt;
+    line-height:26px;
+}
+
+#join-success #close-button
+{
+    margin:10px 295px;
+    width:110px;
+    height:27px;
+    cursor:pointer;
 }

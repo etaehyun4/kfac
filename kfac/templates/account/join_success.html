@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>KFAC</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/default.css" />
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/account.css" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script language="javascript" src="{{ MEDIA_URL }}js/default.js"></script>
+    </head>
+    <body>
+        <div id="join-success">
+            <img id="text-signup" src="{{ MEDIA_URL }}image/account/text_signup.gif">
+            <div class="box_component">
+                <img class="box_top_corner" src="{{ MEDIA_URL }}image/account/join_box_ltop.gif">
+                <div class="box_top">
+                    <img id="join-box-title" src="{{ MEDIA_URL }}image/account/join_box_title04.gif">
+                </div>
+                <img class="box_top_corner" src="{{ MEDIA_URL }}image/account/join_box_rtop.gif">
+            </div>
+            <div class="box_component">
+                <div class="box_left"></div>
+                <div class="box_content">
+                    <pre><b>{{ name }}</b>님의 회원가입을 진심으로 축하합니다.
+회원님의 아이디는 <b>{{ id }}</b> 입니다.
+회원님의 패스워드는 아무도 알 수 없는 암호화 코드로 저장되므로 안심하셔도 좋습니다.
+아이디, 패스워드 분실시에는 회원가입시 입력하신 패스워드 분실시 질문, 답변을 이용하여 찾을 수 있습니다.
+회원의 탈퇴는 언제든지 가능하며 탈퇴 후 일정기간이 지난 후, 회원님의 모든 소중한 정보는 삭제하고 있습니다.
+감사합니다.</pre>
+                </div>
+                <div class="box_right"></div>
+            </div>
+            <div class="box_component">
+                <img class="box_bottom_corner" src="{{ MEDIA_URL }}image/account/join_box_lbtm.gif">
+                <div class="box_bottom">
+                    <img id="close-button" src="{{ MEDIA_URL }}image/account/btn_link_home.gif" onclick="window.close();">
+                </div>
+                <img class="box_bottom_corner" src="{{ MEDIA_URL }}image/account/join_box_rbtm.gif">
+            </div>
+        </div>
+    </body>
+</html>
