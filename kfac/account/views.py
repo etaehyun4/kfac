@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext, Context
 from django.utils import simplejson as json
 from django.http import HttpResponse, HttpResponseRedirect
+from account.models import UserProfile
 
 def _login(request):
     '''
@@ -34,8 +35,11 @@ def _login(request):
             'section':'login',
         }, context_instance=RequestContext(request))
     '''
-    return render_to_response('account/login.html',{
-    }, context_instance=RequestContext(request))
+
+    if request.method == 'POST':
+    else:
+        return render_to_response('account/login.html',{
+        }, context_instance=RequestContext(request))
 
 def _login_window(request):
     return render_to_response('account/login_window.html',{
@@ -46,13 +50,47 @@ def join(request):
     }, context_instance=RequestContext(request))
 
 def join_success(request):
+    name = request.GET.get('name','')
+    user_id = request.GET.get('id','')
     return render_to_response('account/join_success.html',{
+        'name':name,
+        'id':user_id,
     }, context_instance=RequestContext(request))
-
 
 def join_form(request):
     if request.method == 'POST':
-        return HttpResponseRedirect('/account/join_success/')
+        user_id = request.POST.get('mb_id','')
+        password = request.POST.get('mb_password','')
+        question = request.POST.get('mb_password_q','')
+        answer = request.POST.get('mb_password_a','')
+        name = request.POST.get('mb_name','')
+        nick = request.POST.get('mb_nick','')
+        email = request.POST.get('mb_email','')
+        birth = request.POST.get('mb_birth','')
+        sex = request.POST.get('mb_sex','')
+        phone = request.POST.get('mb_hp','')
+        profile_text = request.POST.get('mb_profile','')
+        is_mailing = request.POST.get('mb_mailing','')
+        is_sms = request.POST.get('mb_sms','')
+        is_open = request.POST.get('mb_open','')
+
+        user = User.objects.create_user(username=user_id, password=password, email=email)
+        profile = UserProfile(
+                user=user,
+                question=question,
+                answer=answer,
+                name=name,
+                nick=nick,
+                birth=birth,
+                sex=sex,
+                phone=phone,
+                text=profile_text,
+                mailing=(len(is_mailing)>0),
+                sms=(len(is_sms)>0),
+                info_open=(len(is_open)>0)
+                )
+        profile.save()
+        return HttpResponseRedirect('/account/join_success/?name='+name+'&id='+user_id)
     else:
         return render_to_response('account/join_form.html',{
         }, context_instance=RequestContext(request))
