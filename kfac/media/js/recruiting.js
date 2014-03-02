@@ -60,6 +60,7 @@ var faq = {
 
 					var answer = $('<div>', {'class':'question_answer'});
 					answer.text(q['answer']);
+					answer.css({'border-top': '1px dotted #E6E6E6'});
 					answer.css({'display':'none'});
 					answer.appendTo(list);
 					$('<div>', {'class':'question_line'}).appendTo(list);
