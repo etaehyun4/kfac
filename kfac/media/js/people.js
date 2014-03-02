@@ -37,7 +37,8 @@ var people = {
 				
 				profile_intro.appendTo(text);
 
-				var edu = $('<div>', {'class': 'profile_edu'}).text("Education");
+				var edu = $('<div>', {'class': 'profile_edu'});
+				$('<div>', {'class': 'profile_exp_title'}).text("· Education").appendTo(edu);
 				for(var i=0;i<all["edu"].length;i++)
 				{
 					var item = all["edu"][i];
@@ -56,7 +57,8 @@ var people = {
 				}
 				edu.appendTo(text);
 
-				var work = $('<div>', {'class': 'profile_work'}).text("Work Experience");
+				var work = $('<div>', {'class': 'profile_work'});
+				$('<div>', {'class': 'profile_exp_title'}).text("· Work Experience").appendTo(work);
 				for(var i=0;i<all["work"].length;i++)
 				{
 					var item = all["work"][i];
@@ -90,10 +92,30 @@ var people = {
 				for(var i=0;i<all.length;i++)
 				{
 					var generation = all[i];
-					var generation_name = $('<div>', {'class': 'generation_name'});
-					generation_name.text(generation['word']+" generation");
-					generation_name.appendTo(list);
+					var title = $('<div>', {'class':'generation_title'});
 
+					var img = $('<img>', {'class':'people_image', 'src':'/media/image/people/sub03_01.png'});
+					if(i==0)
+						title.css({'margin-top':'0px'});
+
+					img.appendTo(title);
+
+					var generation_name = $('<div>', {'class': 'generation_name'});
+					generation_name.text(generation['word']);
+					generation_name.appendTo(title);
+
+					generation_name = $('<div>', {'class': 'generation_name'});
+					generation_name.css({'font-size':'3px', 'margin-right':'5px'});
+					generation_name.text(generation['order']);
+					generation_name.appendTo(title);
+					
+					generation_name = $('<div>', {'class': 'generation_name'}).text("Generation");
+					generation_name.appendTo(title);
+
+					var title_image = $('<img>', {'class':'member_title', 'src':'/media/image/people/member_title.jpg'});
+					title_image.appendTo(title);
+
+					title.appendTo(list);
 					generation = $('<div>', {'class':'generation'});
 
 					for(var j=0;j<all[i]['member'].length;j++)

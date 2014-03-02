@@ -1,8 +1,32 @@
 @charset "utf-8";
 
+.people
+{
+    margin-left:53px;
+}
+
 #people_content
 {
     margin-left:41px;
+}
+
+.people_image
+{
+    margin-right:4px;
+    float:left;
+    width:12px;
+    margin-top:5px;
+}
+
+.member_info_title
+{
+    float:left;
+    font-family:tahoma;
+    margin-top:12px;
+    margin-bottom:12px;
+    color:#3380CC;
+    width:400px;
+    font-size:16px;
 }
 
 .member_information
@@ -40,9 +64,8 @@
 .profile_frame
 {
     float:left;
-    width:145px;
-    padding-top:6px;
-    padding-bottom:6px;
+    width:144px;
+    height:164px;
     border-style:solid;
     border-width:1px;
     border-color:#636363;
@@ -51,13 +74,16 @@
 
 .profile_picture
 {
+    padding-top:5px;
+    padding-left:6px;
     width:132px;
-    height:153px;
+    height:154px;
 }
 
 .profile_text
 {
     float:left;
+    width:448px;
     margin-left:17px;
     display:table-cell;
     font-size:9pt;
@@ -69,9 +95,8 @@
 {
     float:left;
     width:431px;
-    height:37px;
-    padding-top:7px;
-    padding-bottom:7px;
+    padding-top:12px;
+    padding-bottom:12px;
     padding-left:13px;
     border-style:solid;
     border-width:1px;
@@ -91,12 +116,26 @@
 
 .profile_edu
 {
-
+    float:left;
+    width:446px;
+    margin-top:20px;
+    font-family:Tahoma;
 }
 
 .profile_work
 {
+    float:left;
+    width:446px;
+    margin-top:20px;
+    font-family:Tahoma;
+}
 
+.profile_exp_title
+{
+    font-size:13px;
+    font-weight:bold;
+    color: royalblue;
+    padding-bottom:8px;
 }
 
 .profile_e
@@ -112,7 +151,6 @@
 .profile_cell
 {
     display:table-cell;
-    text-align:center;
 }
 
 .profile_date
@@ -122,30 +160,49 @@
 
 .profile_content
 {
-    width:314px;
+    width:325px;
 }
+
 .member_list
 {
+    margin-top:40px;
+    margin-bottom:20px;
+    font-family: Tahoma;
+    float:left;
     width:670px;
     height:400px;
     overflow-y:scroll;
 }
 
+.generation_title
+{
+    margin-top:40px;
+}
+
 .generation_name
 {
-    margin-top:10px;
-    font-size:20px;
+    float:left;
+    color:#3380CC;
+    font-size:16px;
 }
+
 .generation
 {
     display:table;
 }
 
+.member_title
+{
+    margin-top:10px;
+}
+
 .member
 {
+    float:left;
     display:table-row;
     font-size:9pt;
     font-family:"Verdana, Arial, Helvetica, sans-serif";
+    padding-top:10px;
     padding-bottom:10px;
 }
 
@@ -171,7 +228,7 @@
     float:left;
     width:152px;
     padding-right:4px;
-    height:38px;
+    padding-top:12px;
 }
 
 .member_major
@@ -179,18 +236,20 @@
     float:left;
     width:303px;
     padding-right:1px;
-    height:38px;
+    padding-top:12px;
+    text-align:initial;
 }
 
 .member_status
 {
     float:left;
     width:132px;
-    height:38px;
+    padding-top:12px;
 }
 
 .member_line
 {
+    float:left;
     height:1px;
     width:650px;
     background-color:#dedede;

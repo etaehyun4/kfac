@@ -31,7 +31,8 @@ def getList(request):
                 word = 'nd'
             elif item['num']%10 == 3:
                 word = 'rd'
-            item['word']=str(item['num'])+word
+            item['word']=str(item['num'])
+            item['order']=word
             item['member'] = []
             all.append(item)
 
