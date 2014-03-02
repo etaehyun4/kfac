@@ -53,8 +53,13 @@
         </div>
         <div id="account-bar">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/home.gif" onclick="window.location='/'">
+            {% if user.is_authenticated %}
+            <img class="account_button" src="{{MEDIA_URL}}image/layout/main_logout_06.gif" onclick="window.location='/account/logout/';">
+            <img class="account_button" src="{{MEDIA_URL}}image/layout/main_logout_07.gif" onclick="window.location='/account/my_info/';">
+            {% else %}
             <img class="account_button" src="{{MEDIA_URL}}image/layout/login.gif" onclick="newWindow('/account/login_window/',668,320);">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/join.gif" onclick="newWindow('/account/join/',765,500);">
+            {% endif %}
             <img class="account_button" src="{{MEDIA_URL}}image/layout/id_password_lost.gif" onclick="newWindow('/account/id_password_lost/',300,300);">
         </div>
         <div id="container">
