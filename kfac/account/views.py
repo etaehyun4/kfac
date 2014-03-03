@@ -28,6 +28,10 @@ def _login(request):
         return render_to_response('account/login.html',{
         }, context_instance=RequestContext(request))
 
+def _logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
 def _login_window(request):
     return render_to_response('account/login_window.html',{
     }, context_instance=RequestContext(request))
@@ -86,3 +90,9 @@ def join_id_check(request):
     user_id = request.GET.get('id','')
     user = User.objects.filter(username=user_id)
     return HttpResponse(len(user))
+
+def mypage(request):
+    user = User.objects.get(username=request.user)
+    return render_to_response('account/mypage.html',{
+        'user_id':user.username,
+    }, context_instance=RequestContext(request))

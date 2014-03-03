@@ -367,3 +367,99 @@ div.ui-datepicker
     height:27px;
     cursor:pointer;
 }
+
+#mypage
+{
+    float:left;
+    margin-left:41px;
+    width:750px;
+}
+
+#mypage #mypage-title
+{
+    float:left;
+    margin-top:50px;
+}
+
+#mypage #mypage-subtitle
+{
+    float:left;
+    margin:0px;
+    margin-top:20px;
+    width:83px;
+    height:27px;
+    background-image:url('/media/image/account/tab1_1.gif');
+}
+
+#mypage #mypage-table
+{
+    margin-top:-10px;
+}
+
+#mypage .m_row td
+{
+    font-size:9pt;
+    padding:10px 0px;
+}
+
+#mypage .m_title
+{
+    background:#F7F7F7;
+    text-align:center;
+}
+
+#mypage .readonly
+{
+    margin-left:10px;
+}
+
+#mypage input, #mypage select
+{
+    margin-left:10px;
+    border:1px solid #CCCCCC;
+}
+
+#mypage #question
+{
+    margin-right:200px;
+}
+
+#mypage textarea
+{
+    margin-left:10px;
+    width:530px;
+    height:200px;
+    border:1px solid #CCCCCC;
+    resize:none;
+}
+
+#mypage .m_text
+{
+    width:122px;
+    height:18px;
+    border:1px solid #CCCCCC;
+}
+
+#mypage #reg_mb_nick
+{
+    margin-right:10px;
+}
+
+#mypage .permit_text
+{
+    float:left;
+    line-height:19px;
+    margin-left:5px;
+}
+
+#mypage input[type=checkbox]
+{
+    float:left;
+}
+
+#mypage #change-info
+{
+    margin:auto;
+    margin:10px 0px 20px 336px;
+    cursor:pointer;
+}
