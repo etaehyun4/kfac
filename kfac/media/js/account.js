@@ -99,3 +99,30 @@ function join_submit(){
         $('form')[0].submit();
     }
 }
+
+function password_check(){
+    var password = document.getElementsByName('mb_password')[0].value;
+    var password_re = document.getElementsByName('mb_password_re')[0].value;
+
+    if(password == password_re){
+        conditions = {'password':password};
+        $.ajax({
+            type: 'GET',
+            url: '/account/my_info/password_check/',
+            data: conditions,
+            dataType: 'json',
+            success: $.proxy(function(check){
+                try{
+                    if(check){
+                        $('form')[0].submit();
+                    }else{
+                        alert('비밀번호가 올바르지 않습니다.');
+                    }
+                }catch(e){
+                }
+            }, this)
+        });
+    }else{
+        alert('비밀번호가 일치하지 않습니다.');
+    }
+}

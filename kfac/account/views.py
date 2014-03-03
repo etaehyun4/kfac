@@ -52,7 +52,7 @@ def join_form(request):
     if request.method == 'POST':
         user_id = request.POST.get('mb_id','')
         password = request.POST.get('mb_password','')
-        question = request.POST.get('mb_password_q','')
+        question = int(request.POST.get('mb_password_q','0'))
         answer = request.POST.get('mb_password_a','')
         name = request.POST.get('mb_name','')
         nick = request.POST.get('mb_nick','')
@@ -93,6 +93,43 @@ def join_id_check(request):
 
 def mypage(request):
     user = User.objects.get(username=request.user)
-    return render_to_response('account/mypage.html',{
-        'user_id':user.username,
-    }, context_instance=RequestContext(request))
+    profile = user.userprofile
+    if request.method == 'POST':
+        profile.question = int(request.POST.get('mb_password_q','0'))
+        profile.answer = request.POST.get('mb_password_a','')
+        profile.name = request.POST.get('mb_name','')
+        profile.nick = request.POST.get('mb_nick','')
+        user.email = request.POST.get('mb_email','')
+        profile.birth = request.POST.get('mb_birth','')
+        profile.sex = request.POST.get('mb_sex','')
+        profile.phone = request.POST.get('mb_hp','')
+        profile.text = request.POST.get('mb_profile','')
+        profile.is_mailing = request.POST.get('mb_mailing','')
+        profile.is_sms = request.POST.get('mb_sms','')
+        profile.is_open = request.POST.get('mb_open','')
+        
+        user.save();
+        profile.save();
+        return HttpResponseRedirect('/account/my_info/')
+    else:
+        return render_to_response('account/mypage.html',{
+            'user_id':user.username,
+            'question':profile.question,
+            'answer':profile.answer,
+            'name':profile.name,
+            'nick':profile.nick,
+            'email':user.email,
+            'birth':profile.birth,
+            'sex':profile.sex,
+            'phone':profile.phone,
+            'text':profile.text,
+            'mailing':profile.mailing,
+            'sms':profile.sms,
+            'info_open':profile.info_open,
+        }, context_instance=RequestContext(request))
+
+def password_check(request):
+    password = request.GET.get('password','')
+    user = User.objects.get(username=request.user)
+    check = user.check_password(password)
+    return HttpResponse(json.dumps(check, indent=4, ensure_ascii=False))

@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     (ur'^join_form/$', 'account.views.join_form'),
     (ur'^join_success/$', 'account.views.join_success'),
     (ur'^my_info/$', 'account.views.mypage'),
+    (ur'^my_info/password_check/$', 'account.views.password_check'),
 )

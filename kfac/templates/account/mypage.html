@@ -1,124 +1,126 @@
 {% extends 'layout.html' %}
 {% block header %}
 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/account.css" />
+<script language="javascript" src="{{ MEDIA_URL }}js/account.js"></script>
 {% endblock %}
 {% block content %}
 <div id="mypage">
     <img id="mypage-title" src="{{ MEDIA_URL }}image/account/mypage_10.gif">
     <div id="mypage-subtitle"></div>
-    <table id='mypage-table' width="100%" cellspacing="0" cellpadding="0">
-        <tr>
-            <td bgcolor="#CCCCCC">
-                <TABLE cellSpacing=1 cellPadding=0 width=100%>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD width="160" class=m_title>아이디</TD>
-                        <TD class=m_padding>
-                            <p class=readonly>{{ user_id }}</p>
-                        </TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>패스워드</TD>
-                        <TD class=m_padding><INPUT class=m_text type=password name="mb_password" size=20 maxlength=20></TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>패스워드 확인</TD>
-                        <TD class=m_padding><INPUT class=m_text type=password name="mb_password_re" size=20 maxlength=20></TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>패스워드 분실시 질문</TD>
-                        <TD class=m_padding>
-                            <select name=mb_password_q_select id="question">
-                                <option value="">선택하십시오.</option>
-                                <option value="내가 좋아하는 캐릭터는?">내가 좋아하는 캐릭터는?</option>
-                                <option value="타인이 모르는 자신만의 신체비밀이 있다면?">타인이 모르는 자신만의 신체비밀이 있다면?</option>
-                                <option value="자신의 인생 좌우명은?">자신의 인생 좌우명은?</option>
-                                <option value="초등학교 때 기억에 남는 짝꿍 이름은?">초등학교 때 기억에 남는 짝꿍 이름은?</option>
-                                <option value="유년시절 가장 생각나는 친구 이름은?">유년시절 가장 생각나는 친구 이름은?</option>
-                                <option value="가장 기억에 남는 선생님 성함은?">가장 기억에 남는 선생님 성함은?</option>
-                                <option value="친구들에게 공개하지 않은 어릴 적 별명이 있다면?">친구들에게 공개하지 않은 어릴 적 별명이 있다면?</option>
-                                <option value="다시 태어나면 되고 싶은 것은?">다시 태어나면 되고 싶은 것은?</option>
-                                <option value="가장 감명깊게 본 영화는?">가장 감명깊게 본 영화는?</option>
-                                <option value="읽은 책 중에서 좋아하는 구절이 있다면?">읽은 책 중에서 좋아하는 구절이 있다면?</option>
-                                <option value="기억에 남는 추억의 장소는?">기억에 남는 추억의 장소는?</option>
-                                <option value="인상 깊게 읽은 책 이름은?">인상 깊게 읽은 책 이름은?</option>
-                                <option value="자신의 보물 제1호는?">자신의 보물 제1호는?</option>
-                                <option value="받았던 선물 중 기억에 남는 독특한 선물은?">받았던 선물 중 기억에 남는 독특한 선물은?</option>
-                                <option value="자신이 두번째로 존경하는 인물은?">자신이 두번째로 존경하는 인물은?</option>
-                                <option value="아버지의 성함은?">아버지의 성함은?</option>
-                                <option value="어머니의 성함은?">어머니의 성함은?</option>
-                            </select>
-                        </TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>패스워드 분실시 답변</TD>
-                        <TD class=m_padding><input class=m_text type=text name='mb_password_a' size=38 value=''></TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD width="160" class=m_title>이름</TD>
-                        <TD class=m_padding>
-                            <INPUT class=m_text type=text name=mb_name itemname="이름" value=""> 
-                        </TD>
-                    </TR>
+    <form action="/account/my_info/" method='POST'>
+        {% csrf_token %}
+        <table id='mypage-table' width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td bgcolor="#CCCCCC">
+                    <TABLE cellSpacing=1 cellPadding=0 width=100%>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD width="160" class=m_title>아이디</TD>
+                            <TD class=m_padding>
+                                <p class=readonly>{{ user_id }}</p>
+                            </TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>패스워드</TD>
+                            <TD class=m_padding><INPUT class=m_text type=password name="mb_password" size=20 maxlength=20></TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>패스워드 확인</TD>
+                            <TD class=m_padding><INPUT class=m_text type=password name="mb_password_re" size=20 maxlength=20></TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>패스워드 분실시 질문</TD>
+                            <TD class=m_padding>
+                                <select name=mb_password_q id="question">
+                                    <option value="">선택하십시오.</option>
+                                    <option value=1 {% if question == 1 %}selected{% endif %}>내가 좋아하는 캐릭터는?</option>
+                                    <option value=2 {% if question == 2 %}selected{% endif %}>타인이 모르는 자신만의 신체비밀이 있다면?</option>
+                                    <option value=3 {% if question == 3 %}selected{% endif %}>자신의 인생 좌우명은?</option>
+                                    <option value=4 {% if question == 4 %}selected{% endif %}>초등학교 때 기억에 남는 짝꿍 이름은?</option>
+                                    <option value=5 {% if question == 5 %}selected{% endif %}>유년시절 가장 생각나는 친구 이름은?</option>
+                                    <option value=6 {% if question == 6 %}selected{% endif %}>가장 기억에 남는 선생님 성함은?</option>
+                                    <option value=7 {% if question == 7 %}selected{% endif %}>친구들에게 공개하지 않은 어릴 적 별명이 있다면?</option>
+                                    <option value=8 {% if question == 8 %}selected{% endif %}>다시 태어나면 되고 싶은 것은?</option>
+                                    <option value=9 {% if question == 9 %}selected{% endif %}>가장 감명깊게 본 영화는?</option>
+                                    <option value=10 {% if question == 10 %}selected{% endif %}>읽은 책 중에서 좋아하는 구절이 있다면?</option>
+                                    <option value=11 {% if question == 11 %}selected{% endif %}>기억에 남는 추억의 장소는?</option>
+                                    <option value=12 {% if question == 12 %}selected{% endif %}>인상 깊게 읽은 책 이름은?</option>
+                                    <option value=13 {% if question == 13 %}selected{% endif %}>자신의 보물 제1호는?</option>
+                                    <option value=14 {% if question == 14 %}selected{% endif %}>받았던 선물 중 기억에 남는 독특한 선물은?</option>
+                                    <option value=15 {% if question == 15 %}selected{% endif %}>자신이 두번째로 존경하는 인물은?</option>
+                                    <option value=16 {% if question == 16 %}selected{% endif %}>아버지의 성함은?</option>
+                                    <option value=17 {% if question == 17 %}selected{% endif %}>어머니의 성함은?</option>
+                                </select>
+                            </TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>패스워드 분실시 답변</TD>
+                            <TD class=m_padding><input class=m_text type=text name='mb_password_a' size=38 value='{{ answer }}'></TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD width="160" class=m_title>이름</TD>
+                            <TD class=m_padding>
+                                <INPUT class=m_text type=text name=mb_name itemname="이름" value="{{ name }}"> 
+                            </TD>
+                        </TR>
 
-                    <input type=hidden name=mb_nick_default value=''>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>별명</TD>
-                        <TD class='m_padding lh'>
-                            <input class=m_text type=text id='reg_mb_nick' name='mb_nick' maxlength=20 value='' onkeyup="reg_mb_nick_check();">
-                            공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)
-                        </TD>
-                    </TR>
-                    <input type=hidden name="mb_nick_default" value=''>
-                    <input type=hidden name="mb_nick" value="">
-                    <input type=hidden name='old_email' value=''>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>E-mail</TD>
-                        <TD class='m_padding lh'>
-                            <INPUT class=m_text type=text id='reg_mb_email' name='mb_email' size=38 maxlength=100 value=''
-                            onkeyup="reg_mb_email_check()">
-                            <span id='msg_mb_email'></span>
-                        </TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>생년월일</TD>
-                        <TD class=m_padding><input class=m_text type=text id=mb_birth name='mb_birth' size=8 maxlength=8 value='' readonly></TD>
-                    </TR>
-                    <input type=hidden name=mb_sex value=''>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>성별</TD>
-                        <TD class=m_padding>
-                            <select id=mb_sex name=mb_sex>
-                                <option value=''>선택하세요
-                                <option value='F'>여자
-                                <option value='M'>남자
-                            </select>
-                        </td>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD class=m_title>핸드폰번호</TD>
-                        <TD class=m_padding><input class=m_text type=text name='mb_hp' size=21 maxlength=20></TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD width="160" class=m_title>자기소개</TD>
-                        <TD class=m_padding><textarea name=mb_profile class=m_textarea rows=3 style='width:95%;'></textarea></TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD width="160" class=m_title>메일링서비스</TD>
-                        <TD class=m_padding><input type=checkbox name=mb_mailling value='1' ><p class='permit_text'>정보 메일을 받겠습니다.</p></TD>
-                    </TR>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD width="160" class=m_title>SMS 수신여부</TD>
-                        <TD class=m_padding><input type=checkbox name=mb_sms value='1'><p class='permit_text'>핸드폰 문자메세지를 받겠습니다.</p></TD>
-                    </TR>
-                    <input type=hidden name=mb_open_default value=''>
-                    <TR bgcolor="#FFFFFF" class='m_row'>
-                        <TD width="160" class=m_title>정보공개</TD>
-                        <TD class=m_padding><input type=checkbox name=mb_open value='1'><p class='permit_text'>다른분들이 나의 정보를 볼 수 있도록 합니다.</p>
-                    </TR>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <img id='change-info' src='{{ MEDIA_URL }}image/account/login_modify.gif'>
+                        <input type=hidden name=mb_nick_default value=''>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>별명</TD>
+                            <TD class='m_padding lh'>
+                                <input class=m_text type=text id='reg_mb_nick' name='mb_nick' maxlength=20 value='{{ nick }}'>
+                                공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)
+                            </TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>E-mail</TD>
+                            <TD class='m_padding lh'>
+                                <INPUT class=m_text type=text id='reg_mb_email' name='mb_email' size=38 maxlength=100 value='{{ email }}'>
+                                <span id='msg_mb_email'></span>
+                            </TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>생년월일</TD>
+                            <TD class=m_padding><input class=m_text type=text id=mb_birth name='mb_birth' size=8 maxlength=8 value='{{ birth|date:"Y-m-d" }}' readonly></TD>
+                        </TR>
+                        <input type=hidden name=mb_sex value=''>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>성별</TD>
+                            <TD class=m_padding>
+                                <select id=mb_sex name=mb_sex>
+                                    <option value=''>선택하세요
+                                    <option value='F' {% if sex == "F" %}selected{% endif %}>여자
+                                    <option value='M' {% if sex == "M" %}selected{% endif %}>남자
+                                </select>
+                            </td>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD class=m_title>핸드폰번호</TD>
+                            <TD class=m_padding><input class=m_text type=text name='mb_hp' size=21 maxlength=20 value='{{ phone }}'></TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD width="160" class=m_title>자기소개</TD>
+                            <TD class=m_padding><textarea name=mb_profile class=m_textarea rows=3 style='width:95%;'>{{ text }}</textarea></TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD width="160" class=m_title>메일링서비스</TD>
+                            <TD class=m_padding><input type=checkbox name=mb_mailing value='1' {% if mailing %}checked{% endif %}><p class='permit_text'>정보 메일을 받겠습니다.</p></TD>
+                        </TR>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD width="160" class=m_title>SMS 수신여부</TD>
+                            <TD class=m_padding><input type=checkbox name=mb_sms value='1' {% if sms %}checked{% endif %}><p class='permit_text'>핸드폰 문자메세지를 받겠습니다.</p></TD>
+                        </TR>
+                        <input type=hidden name=mb_open_default value=''>
+                        <TR bgcolor="#FFFFFF" class='m_row'>
+                            <TD width="160" class=m_title>정보공개</TD>
+                            <TD class=m_padding><input type=checkbox name=mb_open value='1' {% if info_open %}checked{% endif %}>
+                                <p class='permit_text'>다른분들이 나의 정보를 볼 수 있도록 합니다.</p>
+                            </TD>
+                        </TR>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <img id='change-info' src='{{ MEDIA_URL }}image/account/login_modify.gif'onclick="password_check();">
 </div>
 {% endblock %}

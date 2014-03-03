@@ -5,7 +5,7 @@ from django.contrib import admin
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    question = models.CharField(max_length=100)
+    question = models.IntegerField(default=0)
     answer = models.CharField(max_length=100)
     name = models.CharField(max_length=20)
     nick = models.CharField(max_length=20)
