@@ -463,3 +463,199 @@ div.ui-datepicker
     margin:10px 0px 20px 336px;
     cursor:pointer;
 }
+
+.plus
+{
+    float:left;
+    width:25px;
+    height:40px;
+    background-image:url('/media/image/account/icon_01.gif');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+#passwd-lost-window
+{
+    width:600px;
+    margin:auto;
+}
+
+#passwd-lost-window #title
+{
+    width:590px;
+    height:40px;
+    border:5px solid #EBEBEB;
+}
+
+#passwd-lost-window #title-text
+{
+    float:left;
+    font-size:9pt;
+    line-height:40px;
+    width:175px;
+    font-weight:bold;
+    color:#666666;
+}
+
+#passwd-lost-window #title-img
+{
+    float:right;
+    width:110px;
+    height:40px;
+    background-image:url('/media/image/account/step_01.gif');
+    background-repeat:no-repeat;
+    background-position:right;
+}
+
+#passwd-lost-window #find-password
+{
+    float:left;
+    width:540px;
+    height:115px;
+    background-image:url('/media/image/account/dot_bg_img.gif');
+    margin:30px;
+}
+
+#passwd-lost-window #find-password #content
+{
+    margin:auto;
+    width:315px;
+    height:68px;
+    margin-top:23px;
+}
+
+#passwd-lost-window .icon 
+{
+    float:left;
+    width:15px;
+    height:40px;
+    background-image:url('/media/image/account/icon_02.gif');
+    background-repeat:no-repeat;
+    background-position:center left;
+}
+
+#passwd-lost-window #find-password #title-img
+{
+    float:left;
+    width:300px;
+    height:40px;
+    background-image:url('/media/image/account/text_title_01.gif');
+    background-repeat:no-repeat;
+    background-position:center left;
+}
+
+#passwd-lost-window #find-password #id
+{
+    float:left;
+    width:100px;
+    line-height:28px;
+    font-weight:bold;
+    font-size:9pt;
+    margin-left:15px;
+}
+
+#passwd-lost-window #find-password input
+{
+    width:110px;
+    height:16px;
+    font-size:9pt;
+    margin:3px 0px;
+    border:1px solid gray;
+    padding:2px;
+}
+
+#passwd-lost-window #find-id
+{
+    float:left;
+    width:540px;
+    height:170px;
+    background-image:url('/media/image/account/gray_bg_img.gif');
+    margin:30px;
+    margin-top:0px;
+}
+
+#passwd-lost-window #find-id #content
+{
+    margin:auto;
+    width:315px;
+    height:68px;
+    margin-top:37px;
+}
+
+#passwd-lost-window #find-id #title-img
+{
+    float:left;
+    width:300px;
+    height:40px;
+    background-image:url('/media/image/account/text_title_02.gif');
+    background-repeat:no-repeat;
+    background-position:center left;
+}
+
+#passwd-lost-window #find-id #name
+{
+    float:left;
+    width:100px;
+    line-height:28px;
+    font-weight:bold;
+    font-size:9pt;
+    margin-left:15px;
+}
+
+#passwd-lost-window #find-id input
+{
+    width:110px;
+    height:16px;
+    font-size:9pt;
+    margin:3px 0px;
+    border:1px solid gray;
+    padding:2px;
+}
+
+#passwd-lost-window #find-id input[type=email]
+{
+    width:170px;
+}
+
+#passwd-lost-window #next
+{
+    margin-left:250px;
+    cursor:pointer;
+}
+
+#passwd-lost-window #close
+{
+    margin-left:12px;
+    cursor:pointer;
+}
+
+#find-password
+{
+}
+
+#find-password #title
+{
+    width:590px;
+    height:40px;
+    border:5px solid #EBEBEB;
+}
+
+#find-password #title-text
+{
+    float:left;
+    font-size:9pt;
+    line-height:40px;
+    width:175px;
+    font-weight:bold;
+    color:#666666;
+}
+
+#find-password #title-img
+{
+    float:right;
+    width:110px;
+    height:40px;
+    background-image:url('/media/image/account/step_01.gif');
+    background-repeat:no-repeat;
+    background-position:right;
+}

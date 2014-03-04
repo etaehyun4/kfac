@@ -86,7 +86,7 @@ def join_form(request):
         return render_to_response('account/join_form.html',{
         }, context_instance=RequestContext(request))
 
-def join_id_check(request):
+def id_check(request):
     user_id = request.GET.get('id','')
     user = User.objects.filter(username=user_id)
     return HttpResponse(len(user))
@@ -133,3 +133,31 @@ def password_check(request):
     user = User.objects.get(username=request.user)
     check = user.check_password(password)
     return HttpResponse(json.dumps(check, indent=4, ensure_ascii=False))
+
+def name_email_check(request):
+    name = request.GET.get('name','')
+    email = request.GET.get('email','')
+    user = User.objects.filter(email=email)
+    print user
+    if len(user)<1:
+        return HttpResponse(json.dumps(False, indent=4, ensure_ascii=False))
+    user = user[0]
+    profile = user.userprofile
+    print profile.name
+    if profile.name == name:
+        return HttpResponse(json.dumps(True, indent=4, ensure_ascii=False))
+    return HttpResponse(json.dumps(False, indent=4, ensure_ascii=False))
+
+def id_password_lost(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('id','')
+        name = request.POST.get('name','')
+        email = request.POST.get('email','')
+        return HttpResponseRedirect('/account/find_password/')
+    else:
+        return render_to_response('account/id_password_lost.html',{
+        }, context_instance=RequestContext(request))
+
+def find_password(request):
+    return render_to_response('account/find_password.html',{
+    }, context_instance=RequestContext(request))

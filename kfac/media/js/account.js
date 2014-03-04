@@ -26,7 +26,7 @@ function reg_mb_id_check(){
         conditions = {'id':id};
         $.ajax({
             type: 'GET',
-            url: '/account/join/id_check/',
+            url: '/account/id_check/',
             data: conditions,
             dataType: 'json',
             success: $.proxy(function(check){
@@ -108,7 +108,7 @@ function password_check(){
         conditions = {'password':password};
         $.ajax({
             type: 'GET',
-            url: '/account/my_info/password_check/',
+            url: '/account/password_check/',
             data: conditions,
             dataType: 'json',
             success: $.proxy(function(check){
@@ -124,5 +124,56 @@ function password_check(){
         });
     }else{
         alert('비밀번호가 일치하지 않습니다.');
+    }
+}
+
+function find_password_id_check(id){
+    conditions = {'id':id};
+    $.ajax({
+        type: 'GET',
+        url: '/account/id_check/',
+        data: conditions,
+        dataType: 'json',
+        success: $.proxy(function(check){
+            try{
+                if(check){
+                    $('form')[0].submit();
+                }else{
+                    alert('존재하지 않는 아이디입니다.');
+                }
+            }catch(e){
+            }
+        }, this)
+    });
+}
+
+function find_password_name_email_check(name,email){
+    conditions = {'name':name, 'email':email};
+    $.ajax({
+        type: 'GET',
+        url: '/account/name_email_check/',
+        data: conditions,
+        dataType: 'json',
+        success: $.proxy(function(check){
+            try{
+                if(check){
+                    $('form')[0].submit();
+                }else{
+                    alert('이름과 이메일이 일치하지 않습니다.');
+                }
+            }catch(e){
+            }
+        }, this)
+    });
+}
+
+function find_password(){
+    var input = $('input');
+    if(input[1].value.length<1 && input[2].value.length<1 && input[3].value.length<2){
+        alert("회원아이디를\n\n아실 경우에는 회원아이디를\n\n모르실 경우에는 이름과 E-mail을\n\n입력하여 주십시오.");
+    }else if(input[1].value.length>0){
+        find_password_id_check(input[1].value);
+    }else{
+        find_password_name_email_check(input[2].value,input[3].value);
     }
 }
