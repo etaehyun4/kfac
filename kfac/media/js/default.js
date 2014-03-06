@@ -7,7 +7,7 @@ function isHangul(val) { return val >= 12592 && val <= 12687; }
 function isLower(val) { return val >= 97 && val <= 122; }
 function isUpper(val) { return val >= 65 && val <= 90; }
 function isAlphabet(val) { return isLower(val) || isUpper(val); }
-function isNumber(val) { console.log(val); return val >= 48 && val <= 57; }
+function isNumber(val) { return val >= 48 && val <= 57; }
 
 $(function() {
     $.datepicker.regional['ko'] = {
