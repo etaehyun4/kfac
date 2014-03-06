@@ -177,3 +177,24 @@ function find_password(){
         find_password_name_email_check(input[2].value,input[3].value);
     }
 }
+
+function find_password_answer_check(user_id){
+    var answer = $('input[type=text]')[0].value;
+    conditions = {'answer':answer, 'user_id':user_id};
+    $.ajax({
+        type: 'GET',
+        url: '/account/answer_check/',
+        data: conditions,
+        dataType: 'json',
+        success: $.proxy(function(check){
+            try{
+                if(check){
+                    window.location='/account/find_password_finish/?user_id='+user_id;
+                }else{
+                    alert('올바르지 않은 대답입니다.');
+                }
+            }catch(e){
+            }
+        }, this)
+    });
+}

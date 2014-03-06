@@ -631,6 +631,8 @@ div.ui-datepicker
 
 #find-password
 {
+    width:600px;
+    margin:auto;
 }
 
 #find-password #title
@@ -655,7 +657,143 @@ div.ui-datepicker
     float:right;
     width:110px;
     height:40px;
-    background-image:url('/media/image/account/step_01.gif');
+    background-image:url('/media/image/account/step_02.gif');
     background-repeat:no-repeat;
     background-position:right;
+}
+
+#find-password #question
+{
+    float:left;
+    width:600px;
+    height:300px;
+    background-image:url('/media/image/account/dot_bg_img_01.gif');
+    background-repeat:no-repeat;
+}
+
+#find-password #question #content
+{
+    margin:auto;
+    width:400px;
+    height:200px;
+    margin-top:50px;
+}
+
+#find-password #question p
+{
+    padding-left:15px;
+    font-size:9pt;
+    line-height:40px;
+}
+
+#find-password #question .sub_title
+{
+    font-weight:bold;
+    background-image:url('/media/image/account/icon_02.gif');
+    background-repeat:no-repeat;
+    background-position:center left;
+}
+
+#find-password #question .question
+{
+    margin-top:-10px;
+    margin-bottom:10px;
+}
+
+#find-password #question input
+{
+    margin-left:15px;
+    font-size:9pt;
+    width:300px;
+}
+
+#find-password #next
+{
+    margin-left:250px;
+    cursor:pointer;
+}
+
+#find-password #close
+{
+    margin-left:12px;
+    cursor:pointer;
+}
+
+#find-password-finish
+{
+    width:600px;
+    margin:auto;
+}
+
+#find-password-finish #title
+{
+    width:590px;
+    height:40px;
+    border:5px solid #EBEBEB;
+}
+
+#find-password-finish #title-text
+{
+    float:left;
+    font-size:9pt;
+    line-height:40px;
+    width:200px;
+    font-weight:bold;
+    color:#666666;
+}
+
+#find-password-finish #title-img
+{
+    float:right;
+    width:110px;
+    height:40px;
+    background-repeat:no-repeat;
+    background-position:right;
+}
+
+#find-password-finish #result
+{
+    float:left;
+    width:600px;
+    height:200px;
+    background-image:url('/media/image/account/dot_bg_img_02.gif');
+    background-repeat:no-repeat;
+}
+
+#find-password-finish #result #content
+{
+    margin:auto;
+    width:400px;
+    height:200px;
+    margin-top:40px;
+}
+
+#find-password-finish #result p
+{
+    float:left;
+    padding-left:15px;
+    font-size:9pt;
+    line-height:40px;
+    width:253px;
+}
+
+#find-password-finish #result .sub_title
+{
+    float:left;
+    font-weight:bold;
+    background-image:url('/media/image/account/icon_02.gif');
+    background-repeat:no-repeat;
+    background-position:center left;
+    width:117px;
+}
+
+#find-password-finish #result .full
+{
+    width:400px;
+}
+
+#find-password-finish #close
+{
+    margin-left:276px;
+    cursor:pointer;
 }

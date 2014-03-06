@@ -7,6 +7,7 @@ from django.template import RequestContext, Context
 from django.utils import simplejson as json
 from django.http import HttpResponse, HttpResponseRedirect
 from account.models import UserProfile
+import string, random
 
 def _login(request):
     if request.method == 'POST':
@@ -138,26 +139,88 @@ def name_email_check(request):
     name = request.GET.get('name','')
     email = request.GET.get('email','')
     user = User.objects.filter(email=email)
-    print user
     if len(user)<1:
         return HttpResponse(json.dumps(False, indent=4, ensure_ascii=False))
     user = user[0]
     profile = user.userprofile
-    print profile.name
     if profile.name == name:
         return HttpResponse(json.dumps(True, indent=4, ensure_ascii=False))
     return HttpResponse(json.dumps(False, indent=4, ensure_ascii=False))
+
+def answer_check(request):
+    user_id = request.GET.get('user_id','')
+    answer = request.GET.get('answer','')
+    user = User.objects.get(username=user_id)
+    profile = user.userprofile
+    return HttpResponse(json.dumps(profile.answer==answer, indent=4, ensure_ascii=False))
 
 def id_password_lost(request):
     if request.method == 'POST':
         user_id = request.POST.get('id','')
         name = request.POST.get('name','')
         email = request.POST.get('email','')
-        return HttpResponseRedirect('/account/find_password/')
+        return HttpResponseRedirect('/account/find_password/?user_id='+user_id+'&name='+name+'&email='+email)
     else:
         return render_to_response('account/id_password_lost.html',{
         }, context_instance=RequestContext(request))
 
 def find_password(request):
+    user_id = request.GET.get('user_id','')
+    name = request.GET.get('name','')
+    email = request.GET.get('email','')
+    if len(user_id):
+        user = User.objects.get(username=user_id)
+    else:
+        user = User.objects.filter(email=email)[0]
+    profile = user.userprofile
+    q = profile.question
+    if q==1:
+        question = '내가 좋아하는 캐릭터는?'
+    elif q==2:
+        question = '타인이 모르는 자신만의 신체비밀이 있다면?'
+    elif q==3:
+        question = '자신의 인생 좌우명은?'
+    elif q==4:
+        question = '초등학교 때 기억에 남는 짝꿍 이름은?'
+    elif q==5:
+        question = '유년시절 가장 생각나는 친구 이름은?'
+    elif q==6:
+        question = '가장 기억에 남는 선생님 성함은?'
+    elif q==7:
+        question = '친구들에게 공개하지 않은 어릴 적 별명이 있다면?'
+    elif q==8:
+        question = '다시 태어나면 되고 싶은 것은?'
+    elif q==9:
+        question = '가장 감명깊게 본 영화는?'
+    elif q==10:
+        question = '읽은 책 중에서 좋아하는 구절이 있다면?'
+    elif q==11:
+        question = '기억에 남는 추억의 장소는?'
+    elif q==12:
+        question = '인상 깊게 읽은 책 이름은?'
+    elif q==13:
+        question = '자신의 보물 제1호는?'
+    elif q==14:
+        question = '받았던 선물 중 기억에 남는 독특한 선물은?'
+    elif q==15:
+        question = '자신이 두번째로 존경하는 인물은?'
+    elif q==16:
+        question = '아버지의 성함은?'
+    elif q==17:
+        question = '어머니의 성함은?'
     return render_to_response('account/find_password.html',{
+        'question':question,
+        'user_id':user_id,
+    }, context_instance=RequestContext(request))
+
+def find_password_finish(request):
+    user_id = request.GET.get('user_id','')
+    user = User.objects.get(username=user_id)
+    chars = string.ascii_uppercase + string.ascii_lowercase
+    code = ''.join(random.choice(chars) for x in range(10))
+    user.set_password(code)
+    user.save()
+    return render_to_response('account/find_password_finish.html',{
+        'user_id':user_id,
+        'given_password':code,
     }, context_instance=RequestContext(request))
