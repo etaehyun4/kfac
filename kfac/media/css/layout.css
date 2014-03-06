@@ -51,6 +51,7 @@ body
     background-image:url('/media/image/layout/submenu_left.gif');
     background-repeat:no-repeat;
     background-position:0px;
+    text-transform:uppercase;
 }
 
 #header .menu:hover, #header .submenu:hover, #header .selected, #header .sselected

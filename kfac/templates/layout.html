@@ -36,6 +36,14 @@
 
             <!-- activities -->
             <p class="menu{% ifequal menu 'activities' %} selected{% endifequal %}" onclick="window.location='/activities/'">ACTIVITIES</p>
+            {% ifequal menu 'activities' %}
+            {% for activity in activities %}
+            <p class="submenu{% ifequal submenu activity.name %} sselected {% endifequal %}" onclick="window.location='/activities/view/{{ forloop.counter|add:"-1" }}/'">{{ activity.name }}</p>
+            {% endfor %}
+            {% if user.is_staff %}
+            <p class="submenu{% ifequal submenu 'edit' %} sselected {% endifequal %}" onclick="window.location='/activities/edit/'">EDIT</p>
+            {% endif %}
+            {% endifequal %}
 
             <!-- people -->
             <p class="menu{% ifequal menu 'people' %} selected{% endifequal %}" onclick="window.location='/people/'">PEOPLE</p>

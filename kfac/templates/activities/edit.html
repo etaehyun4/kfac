@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/activities.css" />
+<script>
+    function handleFileSelect(evt){
+        var f = evt.target.files[0];
+
+        // image type 인가 검사
+        if(!f.type.match('image.*')){
+            alert("image file이 아닙니다.");
+        }
+
+        // image file을 data ULR로 읽는 과정
+        reader.readAsDataURL(f);
+    }
+    $(document).ready(function(){
+        document.getElementById("image").addEventListener("change", handleFileSelect, false);
+    });
+</script>
+{% endblock %}
+{% block content %}
+<div id="edit-activities">
+    <p id="title">edit</p>
+    <div class="line"></div>
+    <div id="edit">
+        <table id="content">
+            <tr id="submenu-title">
+                <td class="name bold">메뉴 이름</td>
+                <td class="button">위로</td>
+                <td class="button">아래로</td>
+                <td class="button">지우기</td>
+            </tr>
+            {% for activity in activities %}
+            <tr class="submenu">
+                <td class="name">{{ activity.name }}</td>
+                <td class="button up"></td>
+                <td class="button down"></td>
+                <td class="button del"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form action="/activities/add/" method='POST' enctype="multipart/form-data">
+            {% csrf_token %}
+            <table id="add-menu">
+                <tr>
+                    <td colspan=2 class="title">[ 메뉴 추가 ]</td>
+                </tr>
+                <tr>
+                    <td class="name">메뉴 이름</td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                    <td class="name">이미지 (가로 750px)</td>
+                    <td><input id="image" type="file" name="image"></td>
+                <tr>
+                    <td colspan=2><input type="submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock %}

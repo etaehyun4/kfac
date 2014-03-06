@@ -1,3 +1,4 @@
 *.swp
 *.pyc
 *.db
+kfac/media/image/activities/contents/*.*

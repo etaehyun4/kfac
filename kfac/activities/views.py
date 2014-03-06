@@ -1,35 +1,39 @@
-# Create your views here.
+# -*- coding: utf-8-*-
 
-from django.template import RequestContext
-from django.shortcuts import render
-from django import template
-from django.core.exceptions import ValidationError
-from models import Activity
-
-template.add_to_builtins('django.templatetags.i18n')
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response
+from django.template import RequestContext, Context
+from activities.models import Activity
 
 def view(request, act_num):
-    activity = None
-    try:
-        activity = Activity.objects.get(order=int(act_num))
-    except:
-        raise ValidationError('Corresponding activity does not exist')
-    ctx = {'title':activity.name, 'filename':activity.filename}
-    return render(request, 'activities/view.html', ctx)
+    activities = Activity.objects.all().order_by('order')
+    act_num = int(act_num)
+    if len(activities) <= act_num:
+        return HttpResponseRedirect('/activities/edit/')
+
+    activity = activities[act_num]
+    return render_to_response('activities/view.html',{
+        'menu':'activities',
+        'submenu':activity.name,
+        'activities':activities,
+        'filename':activity.img.name,
+    }, context_instance=RequestContext(request))
+
+def edit(request):
+    activities = Activity.objects.all().order_by('order')
+    return render_to_response('activities/edit.html',{
+        'menu':'activities',
+        'submenu':'edit',
+        'activities':activities,
+    }, context_instance=RequestContext(request))
 
 def add(request):
-    if request.method == 'GET':
-        return render(request, 'view.html', {'title':Activity.objects.get(order=1)})
-    else:
-        title = str(request.POST.get('title','Untitled Activity'))
-        new_image = request.POST.get('upload',None)
-        a = Activity(name=title, order=Activity.objects.all().count()+1, new_image.name)
-        a.save()
-        ctx = {'title':title, 'filename':filename}
-        return render(request, 'activities/view.html', ctx)
+    name = request.POST.get('name','')
+    img = request.FILES.get('image','')
+    order = len(Activity.objects.all())
 
-def delete(request):
-    pass
+    img.name = name + '.' + img.name.split('.')[-1]
+    activity = Activity(name=name,order=order,img=img)
+    activity.save()
 
-def reorder(request):
-    pass
+    return HttpResponseRedirect('/activities/edit/')

@@ -1,0 +1,155 @@
+#edit-activities
+{
+    float:left;
+    margin-top:49px;
+    margin-left:41px;
+    width:750px;
+}
+
+#edit-activities #title
+{
+    float:left;
+    text-transform:capitalize;
+    width:750px;
+    line-height:53px;
+    font-size:23pt;
+    color:gray;
+}
+
+#edit-activities .line
+{
+    float:left;
+    width:750px;
+    height:1px;
+    background:gray;
+}
+
+#edit-activities #edit
+{
+    float:left;
+    width:750px;
+}
+
+#edit-activities #content
+{
+    width:600px;
+    margin:auto;
+    margin-top:50px;
+    border:1px solid gray;
+    border-spacing:0px;
+}
+
+#edit-activities #content #submenu-title
+{
+    float:left;
+    height:30px;
+    border-bottom:1px solid gray;
+}
+
+#edit-activities #content #submenu-title .bold
+{
+    font-weight:bold;
+}
+
+#edit-activities #content .submenu
+{
+    float:left;
+    height:30px;
+}
+
+#edit-activities #content .name
+{
+    float:left;
+    width:436px;
+    line-height:30px;
+    text-align:center;
+    font-size:9pt;
+    text-transform:capitalize;
+}
+
+#edit-activities #content .button
+{
+    float:left;
+    width:50px;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    font-size:9pt;
+    text-transform:capitalize;
+    border-left:1px dashed gray;
+    cursor:pointer;
+}
+
+#edit-activities #content .up
+{
+    background-image:url('/media/image/activities/arrow_up.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:20px 20px;
+}
+
+#edit-activities #content .up:hover
+{
+    background-image:url('/media/image/activities/arrow_up_green.png');
+}
+
+#edit-activities #content .down
+{
+    background-image:url('/media/image/activities/arrow_down.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:20px 20px;
+}
+
+#edit-activities #content .down:hover
+{
+    background-image:url('/media/image/activities/arrow_down_green.png');
+}
+
+#edit-activities #content .del
+{
+    background-image:url('/media/image/activities/X_icon.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:20px 20px;
+}
+
+#edit-activities #add-menu
+{
+    width:400px;
+    margin:auto;
+    margin-top:50px;
+    background:#DBDBDB;
+}
+
+#edit-activities #add-menu .title
+{
+    text-align:center;
+    font-weight:bold;
+    font-size:9pt;
+    line-height:30px;
+    padding-bottom:10px;
+}
+
+#edit-activities #add-menu .name
+{
+    width:150px;
+    line-height:30px;
+    text-align:center;
+    font-size:9pt;
+}
+
+#edit-activities #add-menu input
+{
+    font-size:9pt;
+    width:200px;
+    margin:0px;
+}
+
+#edit-activities #add-menu input[type=submit]
+{
+    width:50px;
+    margin-top:30px;
+    margin-left:170px;
+    margin-bottom:10px;
+}
