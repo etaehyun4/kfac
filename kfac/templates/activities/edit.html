@@ -8,10 +8,8 @@
         // image type 인가 검사
         if(!f.type.match('image.*')){
             alert("image file이 아닙니다.");
+            window.location='/activities/edit/';
         }
-
-        // image file을 data ULR로 읽는 과정
-        reader.readAsDataURL(f);
     }
     $(document).ready(function(){
         document.getElementById("image").addEventListener("change", handleFileSelect, false);
@@ -33,9 +31,20 @@
             {% for activity in activities %}
             <tr class="submenu">
                 <td class="name">{{ activity.name }}</td>
-                <td class="button up"></td>
-                <td class="button down"></td>
-                <td class="button del"></td>
+
+                {% if forloop.counter == 1 %}
+                <td class="button no_click_up"></td>
+                {% else %}
+                <td class="button up" onclick="window.location='/activities/up/{{ forloop.counter|add:"-1" }}/'"></td>
+                {% endif %}
+
+                {% if forloop.counter == activities|length %}
+                <td class="button no_click_down"></td>
+                {% else %}
+                <td class="button down" onclick="window.location='/activities/down/{{ forloop.counter|add:"-1" }}/'"></td>
+                {% endif %}
+
+                <td class="button del" onclick="window.location='/activities/del/{{ forloop.counter|add:"-1" }}/'"></td>
             </tr>
             {% endfor %}
         </table>

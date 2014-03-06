@@ -118,7 +118,8 @@
 {
     width:400px;
     margin:auto;
-    margin-top:50px;
+    margin-top:100px;
+    margin-bottom:200px;
     background:#DBDBDB;
 }
 
@@ -152,4 +153,22 @@
     margin-top:30px;
     margin-left:170px;
     margin-bottom:10px;
+}
+
+#edit-activities .no_click_up
+{
+    cursor:default!important;
+    background-image:url('/media/image/activities/arrow_up.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:20px 20px;
+}
+
+#edit-activities .no_click_down
+{
+    cursor:default!important;
+    background-image:url('/media/image/activities/arrow_down.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:20px 20px;
 }

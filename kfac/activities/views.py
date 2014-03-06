@@ -37,3 +37,42 @@ def add(request):
     activity.save()
 
     return HttpResponseRedirect('/activities/edit/')
+
+def up(request, act_num):
+    activities = Activity.objects.all().order_by('order')
+    act_num = int(act_num)
+
+    target = activities[act_num]
+    up_target = activities[act_num-1]
+
+    target.order = act_num-1
+    up_target.order = act_num
+
+    target.save()
+    up_target.save()
+
+    return HttpResponseRedirect('/activities/edit/')
+
+def down(request, act_num):
+    activities = Activity.objects.all().order_by('order')
+    act_num = int(act_num)
+
+    target = activities[act_num]
+    down_target = activities[act_num+1]
+
+    target.order = act_num+1
+    down_target.order = act_num
+
+    target.save()
+    down_target.save()
+
+    return HttpResponseRedirect('/activities/edit/')
+
+def delete(request, act_num):
+    activities = Activity.objects.all().order_by('order')
+    act_num = int(act_num)
+
+    target = activities[act_num]
+    target.delete()
+
+    return HttpResponseRedirect('/activities/edit/')
