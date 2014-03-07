@@ -58,6 +58,9 @@
 
             <!-- only -->
             <p class="menu{% ifequal menu 'only' %} selected{% endifequal %}" onclick="window.location='/only/'">KFACIAN-ONLY</p>
+            {% if user.is_staff %}
+            <div id="admin" onclick="window.location=('/admin/');"><p>관리자 페이지</p></div>
+            {% endif %}
         </div>
         <div id="account-bar">
             <img class="account_button" src="{{MEDIA_URL}}image/layout/home.gif" onclick="window.location='/'">
