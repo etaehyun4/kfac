@@ -20,6 +20,8 @@ def view(request, act_num):
     }, context_instance=RequestContext(request))
 
 def edit(request):
+    if not request.user.is_staff:
+        return HttpResponseRedirect('/')
     activities = Activity.objects.all().order_by('order')
     return render_to_response('activities/edit.html',{
         'menu':'activities',
