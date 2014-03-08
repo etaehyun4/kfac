@@ -16,3 +16,8 @@ class UserProfile(models.Model):
     mailing = models.BooleanField()
     sms = models.BooleanField()
     info_open = models.BooleanField()
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('user', 'name', 'sex')
+
+admin.site.register(UserProfile, UserAdmin)
