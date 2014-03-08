@@ -5,7 +5,5 @@ from django.db import models
 
 class Group(models.Model):
     name = models.CharField(max_length=50)
+    text = models.CharField(max_length=100000)
 
-class Contents(models.Model):
-    name = models.CharField(max_length=50)
-    group = models.ForeignKey('Group')

@@ -8,4 +8,7 @@ urlpatterns = patterns('',
     (ur'^vision/', 'about.views.vision'),
     (ur'^organization/', 'about.views.organization'),
     (ur'^achievements/', 'about.views.achievements'),
+    (ur'^edit/', 'about.views.edit_achievements'),
+    (ur'^do_edit/', 'about.views.edit'),
+
 )
