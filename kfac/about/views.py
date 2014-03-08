@@ -3,6 +3,7 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext, Context
+from about.models import *
 from django import template
 
 template.add_to_builtins('django.templatetags.i18n')
@@ -26,7 +27,11 @@ def organization(request):
     }, context_instance=RequestContext(request))
 
 def achievements(request):
+    groups = Group.objects.all()
+    contents = Contents.objects.all()
     return render_to_response('about/achievements.html',{
         'menu':'about',
         'submenu':'achievements',
+        'groups':groups,
+        'contents':contents,
     }, context_instance=RequestContext(request))
