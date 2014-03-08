@@ -4,16 +4,21 @@ var people = {
 		this.info.css({'background':'url("/media/image/people/clickphoto.png")', 'background-repeat':'no-repeat', 'background-position': 'center'});
 		this.infocall = 0;
 		this.showMembers();
-	
 	},
-	showProfile:function(data){
+	layout:function(){
+		var member_profile = $($('<div>', {'class':'.member_profile'})[0]);
+		if(member_profile.height())
+			$('.member_information').css({'height':member_profile.height()});
+
+		$('#header').css({'height':$('#container').height()});
+	},
+	showProfile:function(data){	
 		people.info.empty();
 		if(people.infocall == 0)
 		{
 			people.infocall = 1;
 			people.info.css({'background':'none'});
 			people.info.css({'border':'none'});
-			people.info.css({'overflow-y':'scroll'});
 		}
 		people.info.empty();
 		$.ajax({
@@ -79,6 +84,7 @@ var people = {
 
 				text.appendTo(profile);
 				profile.appendTo(info);
+				people.layout();
 			}, this)
 		});
 	},
@@ -144,6 +150,7 @@ var people = {
 					}
 					generation.appendTo(list);	
 				}
+				people.layout();
 			}, this)
 		});
 	},
