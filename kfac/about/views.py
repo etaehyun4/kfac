@@ -53,3 +53,18 @@ def edit(request):
         g.text = text
         g.save()
     return HttpResponseRedirect('/about/achievements')
+
+def add_achievements(request):
+#    if not request.user.is_staff:
+#        return HttpResponseRedirect('/')
+    return render_to_response('about/add.html',{
+        'menu':'about',
+    }, context_instance=RequestContext(request))
+
+def add(request):
+    name = request.POST.get('name','')
+    text = request.POST.get('text','')
+    g = Group(name=name,text=text)
+    g.save()
+    return HttpResponseRedirect('/about/achievements')
+

@@ -10,5 +10,7 @@ urlpatterns = patterns('',
     (ur'^achievements/', 'about.views.achievements'),
     (ur'^edit/', 'about.views.edit_achievements'),
     (ur'^do_edit/', 'about.views.edit'),
+    (ur'^add/', 'about.views.add_achievements'),
+    (ur'^do_add/', 'about.views.add'),
 
 )
