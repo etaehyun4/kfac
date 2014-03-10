@@ -16,6 +16,8 @@ class UserProfile(models.Model):
     mailing = models.BooleanField()
     sms = models.BooleanField()
     info_open = models.BooleanField()
+    def __str__(self):
+        return str(self.user)
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('user', 'name', 'sex')

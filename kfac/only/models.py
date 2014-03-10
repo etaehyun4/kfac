@@ -6,6 +6,8 @@ from django.contrib import admin
 class Board(models.Model):
     name = models.CharField(max_length=50)
     order = models.IntegerField()
+    def __str__(self):
+        return self.name
 
 class Article(models.Model):
     author = models.OneToOneField("account.UserProfile")
