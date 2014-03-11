@@ -16,15 +16,14 @@ class Article(models.Model):
     contents = models.CharField(max_length=10000)
     notice = models.BooleanField()
     date = models.DateTimeField()
-    recommend = models.IntegerField()
     read = models.IntegerField()
-    ip = models.CharField(max_length=20)
+    recommend = models.IntegerField()
 
 class BoardAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'board', 'contents', 'notice', 'date', 'recommend', 'read', 'ip')
+    list_display = ('author', 'title', 'board', 'contents', 'notice', 'date', 'recommend', 'read')
 
 admin.site.register(Board, BoardAdmin)
 admin.site.register(Article, ArticleAdmin)
