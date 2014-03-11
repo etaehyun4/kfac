@@ -6,7 +6,7 @@
     <img src="{{MEDIA_URL}}image/about/sub01_4_10.gif" width="750" height="53" style="float:left;">
     <form method="POST" action="/about/do_add/">
         New type<br/><input type="text" name="name"><br/>
-        Contents<br/><input type="text" name="text"><br/>
+        Contents<br/><TEXTAREA name="text_left" rows="10" cols="40">{{g.text}}</TEXTAREA><TEXTAREA name="text_right" rows="10" cols="40">{{g.text}}</TEXTAREA><br/>
     {% csrf_token %}
     <input type="submit">
     </form>
