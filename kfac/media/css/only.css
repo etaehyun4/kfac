@@ -1,0 +1,159 @@
+#board
+{
+    float:left;
+    width:727px;
+    margin-top:50px;
+    margin-left:10px;
+    border-spacing:0px;
+}
+
+#board th
+{
+    height:32px;
+    line-height:32px;
+    font-weight:bold;
+    text-align:center;
+    font-size:10pt;
+    background-image:url('/media/image/only/title_bg.gif');
+    border-top:1px solid #DDDDDD;
+    border-bottom:1px solid #DDDDDD;
+    padding:0px;
+}
+
+#board td
+{
+    height:31px;
+    line-height:31px;
+    text-align:center;
+    font-size:10pt;
+    border-bottom:1px solid #DDDDDD;
+    padding:0px;
+}
+
+#board td p
+{
+    color:#999999;
+}
+
+#board .even_tr
+{
+    background:#FAFAFA;
+}
+
+#board .title
+{
+    color:#466C8A;
+    text-align:left;
+}
+
+#board .writer
+{
+    font-weight:bold;
+}
+
+#bottom
+{
+    float:left;
+    height:25px;
+    width:727px;
+    margin-left:10px;
+    margin-top:12px;
+}
+
+#bottom .left_btn
+{
+    float:left;
+    width:66px;
+    height:23px;
+    margin:1px 0px;
+    margin-right:5px;
+    cursor:pointer;
+}
+
+#bottom #write
+{
+    float:right;
+    cursor:pointer;
+}
+
+#write-table
+{
+    float:left;
+    width:727px;
+    border-spacing:0px;
+    margin-top:50px;
+}
+
+#write-table th p
+{
+    float:left;
+    width:727px;
+    height:34px;
+    background-image:url('/media/image/only/title_bg.gif');
+    border:1px solid #DDDDDD;
+    font-weight:bold;
+    line-height:36px;
+    padding-left:10px;
+}
+
+#write-table td
+{
+    border-bottom:1px solid #DDDDDD;
+}
+
+#write-table td p
+{
+    font-size:9pt;
+    line-height:36px;
+}
+
+#write-table .td_title
+{
+    height:36px;
+    line-height:36px;
+    font-size:9pt;
+    color:#8492A0;
+    text-align:center;
+}
+
+#write-table input[type=text]
+{
+    height:18px;
+    width:637px;
+    font-size:9pt;
+}
+
+form
+{
+    float:left;
+    position:relative;
+}
+
+#cke_editor
+{
+    width:727px;
+    margin:5px;
+}
+
+#write-bottom
+{
+    width:130px;
+    height:25px;
+    margin:auto;
+    margin-top:30px;
+}
+
+#write-bottom #write
+{
+    float:left;
+    height:25px;
+    width:73px;
+}
+
+#write-bottom #list
+{
+    float:left;
+    height:25px;
+    width:48px;
+    margin-left:9px;
+}

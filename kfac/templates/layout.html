@@ -58,6 +58,13 @@
 
             <!-- only -->
             <p class="menu{% ifequal menu 'only' %} selected{% endifequal %}" onclick="window.location='/only/'">KFACIAN-ONLY</p>
+            {% ifequal menu 'only' %}
+            {% for board in boards %}
+            <p class="submenu{% ifequal submenu board.name %} sselected {% endifequal %}" onclick="window.location='/only/board/{{ forloop.counter0 }}/'">{{ board.name }}</p>
+            {% endfor %}
+            {% endifequal %}
+
+            <!-- admin page -->
             {% if user.is_staff %}
             <div id="admin" onclick="window.location=('/admin/');"><p>관리자 페이지</p></div>
             {% endif %}

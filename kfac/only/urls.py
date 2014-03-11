@@ -5,4 +5,5 @@ from django.contrib import admin
 urlpatterns = patterns('',
     (ur'^$', lambda request: HttpResponseRedirect('/only/board/0/')),
     (ur'^board/(\d+)/$', 'only.views.board'),
+    (ur'^board/(\d+)/write/$', 'only.views.write'),
 )
