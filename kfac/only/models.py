@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib import admin
+from django.db.models.signals import post_delete
+from django.core.files.storage import default_storage
 
 # Create your models here.
 
@@ -22,6 +24,11 @@ class Article(models.Model):
 class ArticleFile(models.Model):
     upload_file = models.FileField(upload_to='files/only')
     article = models.ForeignKey(Article, related_name='files')
+
+def delete_filefield(sender, **kwargs):
+    article_file = kwargs.get('instance')
+    default_storage.delete(article_file.upload_file.path)
+post_delete.connect(delete_filefield, ArticleFile)
 
 class BoardAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')
