@@ -2,13 +2,16 @@
 {% block header %}
 {% endblock %}
 {% block content %}
-<div id="greeting" style="margin-top:49px;margin-left:41px;float:left;width:750px;height:1827px">
+<div id="greeting" style="margin-top:49px;margin-left:41px;float:left;width:750px;">
     <img src="{{MEDIA_URL}}image/about/sub01_4_10.gif" width="750" height="53" style="float:left;">
     {% for g in groups %}
     {{g.name}}<br/>
-    {{g.text}}<br/>
+    <div id="text_left" style="width:375px;float:left">{% for c in g.text_left %}{% if c == '-' %}<br/>-{% else %}{{c}}{% endif %}{% endfor %}</div>
+    <div id="text_right" style="width:375px;float:left">{% for c in g.text_right %}{% if c == '-' %}<br/>-{% else %}{{c}}{% endif %}{% endfor %}</div><br/>
     {% endfor %}
-    <a href="/about/edit/">Edit</a>
-    <a href="/about/add/">Add</a>
+</div>
+<div id="edit_link" style="margin-left:41px;float:left;width:750px;">
+<a href="/about/edit/">Edit</a>
+<a href="/about/add/">Add</a>
 </div>
 {% endblock %}

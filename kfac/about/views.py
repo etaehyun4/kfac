@@ -48,9 +48,11 @@ def edit(request):
     groups = Group.objects.all()
     for g in groups:
         name = request.POST.get(g.name+'_name','')
-        text = request.POST.get(g.name+'_text','')
+        text_left = request.POST.get(g.name+'_text_left','')
+        text_right = request.POST.get(g.name+'_text_right','')
         g.name = name
-        g.text = text
+        g.text_left = text_left
+        g.text_right = text_right
         g.save()
     return HttpResponseRedirect('/about/achievements')
 
@@ -63,8 +65,9 @@ def add_achievements(request):
 
 def add(request):
     name = request.POST.get('name','')
-    text = request.POST.get('text','')
-    g = Group(name=name,text=text)
+    text_left = request.POST.get('text_left','')
+    text_right = request.POST.get('text_right','')
+    g = Group(name=name,text_left=text_left,text_right=text_right)
     g.save()
     return HttpResponseRedirect('/about/achievements')
 
