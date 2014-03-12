@@ -4,11 +4,11 @@
 <script language="javascript" src="{{ MEDIA_URL }}js/ckeditor/config.js"></script>
 <script language="javascript" src="{{ MEDIA_URL }}js/ckeditor/build-config.js"></script>
 <script language="javascript" src="{{ MEDIA_URL }}js/ckeditor/styles.js"></script>
+<script language="javascript" src="{{ MEDIA_URL }}js/only.js"></script>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/only.css" />
 <script>
     $(document).ready(function(){
-        CKEDITOR.replace('editor', {
-        });
+        initialize();
     });
 </script>
 <!--
@@ -37,6 +37,19 @@
                     {% csrf_token %}
                     <textarea name="editor" id="editor"></textarea>
                 </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="td_title">파일 첨부</p>
+                <div id="small_btn">
+                    <img src="{{ MEDIA_URL }}image/only/btn_file_add.gif" onclick="fileAdd();">
+                    <img src="{{ MEDIA_URL }}image/only/btn_file_minus.gif" onclick="fileDelete();">
+                </div>
+                <input type="hidden" name="file_num" value=1>
+            </td>
+            <td id="file-list">
+                <input type="file" name="file1">
             </td>
         </tr>
     </table>

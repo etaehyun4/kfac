@@ -94,6 +94,7 @@
     font-weight:bold;
     line-height:36px;
     padding-left:10px;
+    text-align:left;
 }
 
 #write-table td
@@ -123,6 +124,28 @@
     font-size:9pt;
 }
 
+#write-table input[type=file]
+{
+    border:1px solid #DDDDDD;
+    margin-right:300px;
+}
+
+#write-table #small_btn
+{
+    float:left;
+    width:50px;
+    margin-left:23px;
+    margin-top:-5px;
+    margin-bottom:5px;
+}
+
+#write-table #small_btn img
+{
+    margin:0px 3px;
+    float:left;
+    cursor:pointer;
+}
+
 form
 {
     float:left;
@@ -137,10 +160,12 @@ form
 
 #write-bottom
 {
+    float:left;
     width:130px;
     height:25px;
-    margin:auto;
     margin-top:30px;
+    margin-left:310px;
+    margin-bottom:30px;
 }
 
 #write-bottom #write
@@ -148,6 +173,7 @@ form
     float:left;
     height:25px;
     width:73px;
+    cursor:pointer;
 }
 
 #write-bottom #list
@@ -156,4 +182,5 @@ form
     height:25px;
     width:48px;
     margin-left:9px;
+    cursor:pointer;
 }
