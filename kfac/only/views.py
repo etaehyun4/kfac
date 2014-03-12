@@ -43,8 +43,9 @@ def write(request, board_num):
         file_num = int(request.POST.get('file_num',''))
         for i in range(file_num):
             upload_file = request.FILES.get('file'+str(i+1), None)
-            article_file = ArticleFile(upload_file=upload_file,article=article)
-            article_file.save()
+            if upload_file:
+                article_file = ArticleFile(upload_file=upload_file,article=article)
+                article_file.save()
 
         return HttpResponseRedirect('/only/board/'+board_num+'/write/')
         #return HttpResponseRedirect('/only/board/'+board+num+'/'+article_num+'/')
