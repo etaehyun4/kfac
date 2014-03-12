@@ -10,20 +10,24 @@ class Board(models.Model):
         return self.name
 
 class Article(models.Model):
-    author = models.OneToOneField("account.UserProfile")
+    author = models.ForeignKey("account.UserProfile")
     title = models.CharField(max_length=50)
     board = models.ForeignKey(Board)
     contents = models.CharField(max_length=10000)
     notice = models.BooleanField()
-    date = models.DateTimeField()
-    read = models.IntegerField()
-    recommend = models.IntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    read = models.IntegerField(default=0)
+    recommend = models.IntegerField(default=0)
+
+class ArticleFile(models.Model):
+    upload_file = models.FileField(upload_to='files/only')
+    article = models.ForeignKey(Article, related_name='files')
 
 class BoardAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'board', 'contents', 'notice', 'date', 'recommend', 'read')
+    list_display = ('author', 'title', 'board', 'contents', 'notice', 'recommend', 'read')
 
 admin.site.register(Board, BoardAdmin)
 admin.site.register(Article, ArticleAdmin)

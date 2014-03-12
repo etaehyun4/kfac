@@ -35,6 +35,12 @@
     color:#999999;
 }
 
+#board input[type=checkbox]
+{
+    margin:10px 0px;
+    float:left;
+}
+
 #board .even_tr
 {
     background:#FAFAFA;
@@ -58,16 +64,6 @@
     width:727px;
     margin-left:10px;
     margin-top:12px;
-}
-
-#bottom .left_btn
-{
-    float:left;
-    width:66px;
-    height:23px;
-    margin:1px 0px;
-    margin-right:5px;
-    cursor:pointer;
 }
 
 #bottom #write
@@ -115,6 +111,14 @@
     font-size:9pt;
     color:#8492A0;
     text-align:center;
+}
+
+#write-table input[type=checkbox]
+{
+    float:left;
+    margin:12px 5px;
+    margin-left:0px;
+    height:12px;
 }
 
 #write-table input[type=text]
