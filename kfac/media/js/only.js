@@ -1,5 +1,6 @@
 var file_num = 1;
 var max_file = 5;
+var count = 0;
 
 function initialize(){
     header = $('#header')[0];
@@ -24,7 +25,47 @@ function fileDelete(){
     if(file_num>1){
         file_num=file_num-1;
         file_list = $('#file-list')[0].children;
-        file_list[file_num-1].remove();
+        file_list[file_num].remove();
         document.getElementsByName('file_num')[0].value=file_num;
     }
+}
+
+function delSelect(){
+    checkbox = $('input[type=checkbox');
+    selected = checkbox.filter(function(k, obj){ return obj.checked; });
+    count = 0;
+    selected.each(function(k, obj){
+        conditions = {'article_id':obj.id};
+        $.ajax({
+            type: 'GET',
+            url: '/only/board/'+board_num+'/delete/',
+            data: conditions,
+            dataType: 'json',
+            success: $.proxy(function(){
+                try{
+                    count++;
+                    if (count == selected.length){
+                        window.location.reload();
+                    }
+                }catch(e){
+                }
+            }, this)
+        });
+    });
+}
+
+function delArticle(article_id){
+    conditions = {'article_id':article_id};
+    $.ajax({
+        type: 'GET',
+        url: '/only/board/'+board_num+'/delete/',
+        data: conditions,
+        dataType: 'json',
+        success: $.proxy(function(){
+            try{
+                window.location='/only/board/'+board_num+'/';
+            }catch(e){
+            }
+        }, this)
+    });
 }

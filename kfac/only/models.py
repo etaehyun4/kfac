@@ -19,7 +19,6 @@ class Article(models.Model):
     notice = models.BooleanField()
     created = models.DateTimeField(auto_now_add=True)
     read = models.IntegerField(default=0)
-    recommend = models.IntegerField(default=0)
 
 class ArticleFile(models.Model):
     upload_file = models.FileField(upload_to='files/only')
@@ -34,7 +33,7 @@ class BoardAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'board', 'contents', 'notice', 'recommend', 'read')
+    list_display = ('author', 'title', 'board', 'contents', 'notice', 'read')
 
 admin.site.register(Board, BoardAdmin)
 admin.site.register(Article, ArticleAdmin)
