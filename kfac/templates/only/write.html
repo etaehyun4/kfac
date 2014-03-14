@@ -4,45 +4,71 @@
 <script language="javascript" src="{{ MEDIA_URL }}js/ckeditor/config.js"></script>
 <script language="javascript" src="{{ MEDIA_URL }}js/ckeditor/build-config.js"></script>
 <script language="javascript" src="{{ MEDIA_URL }}js/ckeditor/styles.js"></script>
+<script language="javascript" src="{{ MEDIA_URL }}js/only.js"></script>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/only.css" />
 <script>
     $(document).ready(function(){
-        CKEDITOR.replace('editor', {
-        });
+        {% if article %}
+        file_num = {{ article.files.all|length }};
+        {% endif %}
+        board_num = {{ board_num|safe }};
+        initialize();
     });
 </script>
-<!--
-<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}js/ckeditor/contents.css" />
--->
 {% endblock %}
 {% block content %}
 <div style="float:left;margin-top:49px;margin-left:41px;width:750px">
     <p style="float:left;text-transform:capitalize;width:750px;line-height:53px;font-size:23pt;color:gray;">{{ submenu }}</p>
     <div style="float:left;width:750px;height:1px;background:gray;"></div>
-    <table id="write-table">
-        <tr>
-            <th colspan=2><p>:: 글쓰기 ::</p></th>
-        </tr>
-        <tr>
-            <td style="width:90px;"><p class="td_title">옵 션</p></td>
-            <td><p>공지</p></td>
-        </tr>
-        <tr>
-            <td><p class="td_title">제 목</p></td>
-            <td><input type="text" id="title" name="title"></td>
-        </tr>
-        <tr>
-            <td colspan=2>
-                <form action="/only/write/" method='POST'>
-                    {% csrf_token %}
-                    <textarea name="editor" id="editor"></textarea>
-                </form>
-            </td>
-        </tr>
-    </table>
-    <div id="write-bottom">
-        <img id="write" src="{{ MEDIA_URL }}image/only/btn_write.gif" onclick="window.location='/only/board/{{ board_num }}/write/'">
-        <img id="list" src="{{ MEDIA_URL }}image/only/btn_list.gif" onclick="window.location='/only/board/{{ board_num }}/'">
-    </div>
+    <form action="/only/board/{{ board_num }}/{% if article %}edit/{% else %}write/{% endif %}" method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table id="write-table">
+            <tr>
+                <th colspan=2><p>:: 글쓰기 ::</p></th>
+            </tr>
+            <tr>
+                <td style="width:90px;"><p class="td_title">옵 션</p></td>
+                <td><input type="checkbox" name="notice" value="true" {% if article.notice %}checked{% endif %}><p>공지</p></td>
+            </tr>
+            <tr>
+                <td><p class="td_title">제 목</p></td>
+                <td><input type="text" id="title" name="title" value="{{ article.title }}"></td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <textarea name="editor" id="editor">
+                        {% autoescape off %}
+                        {{ article.contents }}
+                        {% endautoescape %}
+                    </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="td_title">파일 첨부</p>
+                    <div id="small_btn">
+                        <img src="{{ MEDIA_URL }}image/only/btn_file_add.gif" onclick="blockAdd();">
+                        <img src="{{ MEDIA_URL }}image/only/btn_file_minus.gif" onclick="blockDelete();">
+                    </div>
+                    <input type="hidden" name="file_num" value=1>
+                    {% if article %}
+                    <input type="hidden" name="article_id" value="{{ article.id }}">
+                    {% endif %}
+                </td>
+                <td id="file-list">
+                    {% for file in article.files.all %}
+                    <div class="file" id="{{ file.id }}">
+                        <p> {{ file.name }} </p>
+                        <img src="{{ MEDIA_URL }}image/only/btn_file_minus.gif" onclick="fileDelete(this);">
+                    </div>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+        <div id="write-bottom">
+            <img id="write" src="{{ MEDIA_URL }}image/only/{% if article %}btn_modify{% else %}btn_write{% endif %}.gif" onclick="$('form')[0].submit();">
+            <img id="list" src="{{ MEDIA_URL }}image/only/btn_list.gif" onclick="window.location='/only/board/{{ board_num }}/'">
+        </div>
+    </form>
 </div>
 {% endblock %}

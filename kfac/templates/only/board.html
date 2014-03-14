@@ -2,7 +2,13 @@
 {% block header %}
 <script language="javascript" src="{{ MEDIA_URL }}js/ckeditor/ckeditor.js"></script>
 <script language="javascript" src="{{ MEDIA_URL }}js/ckeditor/styles.js"></script>
+<script language="javascript" src="{{ MEDIA_URL }}js/only.js"></script>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/only.css" />
+<script>
+    $(document).ready(function(){
+        board_num = {{ board_num|safe }};
+    });
+</script>
 {% endblock %}
 {% block content %}
 <div style="float:left;margin-top:49px;margin-left:41px;width:750px">
@@ -11,41 +17,31 @@
     <table id="board">
         <tr>
             <th style="width:50px;"><p>번호</p></th>
-            <th style="width:40px"></th>
-            <th style="width:397px"><p>제 목</p></th>
+            <th style="width:40px"><input type="checkbox" onclick="cbToggle();"></th>
+            <th style="width:387px"><p>제 목</p></th>
             <th style="width:110px"><p>글쓴이</p></th>
-            <th style="width:40px"><p>날짜</p></th>
+            <th style="width:90px"><p>날짜</p></th>
             <th style="width:50px"><p>조회</p></th>
-            <th style="width:40px"><p>추천</p></th>
         </tr>
         {% for article in articles %}
         <tr {% if forloop.counter0|divisibleby:2 %}class="even_tr"{% endif %}>
-            <td><p>{{ articles|length|add:forloop.counter0 }} </p></td>
-            <td></td>
-            <td class="title"><p>{{ article.title }}</p></td>
+            <td><p>{{ forloop.revcounter }} </p></td>
+            <td><input id="{{ article.id }}" type="checkbox" name="check{{ forloop.revcounter }}"></td>
+            <td class="title">
+                <p onclick="window.location='/only/board/{{ board_num }}/read/?article_num={{ article.id }}'">{{ article.title }}</p>
+                {% if article.files.all|length > 0 %}
+                <img src="{{ MEDIA_URL }}image/only/icon_file.gif">
+                {% endif %}
+            </td>
             <td class="writer"><p>{{ article.author }}</p></td>
-            <td><p>{{ article.date }}</p></td>
+            <td><p>{{ article.created|date:"Y-m-d" }}</p></td>
             <td><p>{{ article.read }}</p></td>
-            <td><p>{{ article.recommend }}</p></td>
         </tr>
         {% endfor %}
     </table>
     <div id="bottom">
-        <img class="left_btn" src="{{ MEDIA_URL }}image/only/btn_select_delete.gif">
-        <img class="left_btn" src="{{ MEDIA_URL }}image/only/btn_select_copy.gif">
-        <img class="left_btn" src="{{ MEDIA_URL }}image/only/btn_select_move.gif">
+        <img id="delete" src="{{ MEDIA_URL }}image/only/btn_select_delete.gif" onclick="delSelect()">
         <img id="write" src="{{ MEDIA_URL }}image/only/btn_write.gif" onclick="window.location='/only/board/{{ board_num }}/write/'">
     </div>
-    <!--
-    <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}js/ckeditor/contents.css" />
-    <form action="/only/write/" method='POST'>
-        {% csrf_token %}
-        <textarea name="editor" id="editor"></textarea>
-        <input type="submit">
-    </form>
-    <script>
-        CKEDITOR.replace('editor');
-    </script>
-    -->
 </div>
 {% endblock %}

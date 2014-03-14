@@ -35,6 +35,12 @@
     color:#999999;
 }
 
+#board input[type=checkbox]
+{
+    margin:10px 0px;
+    float:left;
+}
+
 #board .even_tr
 {
     background:#FAFAFA;
@@ -44,6 +50,18 @@
 {
     color:#466C8A;
     text-align:left;
+}
+
+#board .title p
+{
+    float:left;
+    cursor:pointer;
+}
+
+#board .title img
+{
+    margin-top:9px;
+    margin-left:5px;
 }
 
 #board .writer
@@ -60,19 +78,15 @@
     margin-top:12px;
 }
 
-#bottom .left_btn
-{
-    float:left;
-    width:66px;
-    height:23px;
-    margin:1px 0px;
-    margin-right:5px;
-    cursor:pointer;
-}
-
 #bottom #write
 {
     float:right;
+    cursor:pointer;
+}
+
+#bottom #delete
+{
+    float:left;
     cursor:pointer;
 }
 
@@ -94,6 +108,7 @@
     font-weight:bold;
     line-height:36px;
     padding-left:10px;
+    text-align:left;
 }
 
 #write-table td
@@ -116,11 +131,61 @@
     text-align:center;
 }
 
+#write-table input[type=checkbox]
+{
+    float:left;
+    margin:12px 5px;
+    margin-left:0px;
+    height:12px;
+}
+
 #write-table input[type=text]
 {
     height:18px;
     width:637px;
     font-size:9pt;
+}
+
+#write-table input[type=file]
+{
+    border:1px solid #DDDDDD;
+    margin-right:300px;
+}
+
+#write-table #small_btn
+{
+    float:left;
+    width:50px;
+    margin-left:23px;
+    margin-top:-5px;
+    margin-bottom:5px;
+}
+
+#write-table #small_btn img
+{
+    margin:0px 3px;
+    float:left;
+    cursor:pointer;
+}
+
+#write-table #file-list .file
+{
+    float:left;
+    width:629px;
+}
+
+#write-table #file-list p
+{
+    line-height:24px;
+    color:#8492A0;
+    float:left;
+}
+
+#write-table #file-list img
+{
+    margin:5px;
+    float:left;
+    cursor:pointer;
 }
 
 form
@@ -137,17 +202,19 @@ form
 
 #write-bottom
 {
+    float:left;
     width:130px;
     height:25px;
-    margin:auto;
     margin-top:30px;
+    margin-left:310px;
+    margin-bottom:30px;
 }
 
 #write-bottom #write
 {
     float:left;
     height:25px;
-    width:73px;
+    cursor:pointer;
 }
 
 #write-bottom #list
@@ -156,4 +223,189 @@ form
     height:25px;
     width:48px;
     margin-left:9px;
+    cursor:pointer;
+}
+
+#read
+{
+    float:left;
+    width:726px;
+    margin-left:12px;
+    margin-top:50px;
+}
+
+#read #date-icon
+{
+    margin-top:5px;
+    float:left;
+}
+
+#read #date
+{
+    float:left;
+    color:#888888;
+    font-size:9pt;
+    margin-top:5px;
+    margin-left:3px;
+}
+
+#read #title
+{
+    float:left;
+    background-image:url('/media/image/only/title_bg.gif');
+    width:714px;
+    height:34px;
+    line-height:34px;
+    font-weight:bold;
+    font-size:9pt;
+    margin-top:5px;
+    padding:0px;
+    padding-left:10px;
+    border:1px solid #DDDDDD;
+}
+
+#read .right_btn
+{
+    float:right;
+    cursor:pointer;
+    margin-left:5px;
+}
+
+#read .block
+{
+    float:left;
+    width:726px;
+    height:30px;
+    border-bottom:1px dotted #DDDDDD;
+}
+
+#read .block .file_image
+{
+    float:left;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:9px;
+}
+
+#read .block .file
+{
+    float:left;
+    cursor:pointer;
+}
+
+#read .block p
+{
+    font-size:9pt;
+    color:#888888;
+    line-height:30px;
+}
+
+#read #writer-title
+{
+    float:left;
+    margin-left:5px;
+}
+
+#read #writer
+{
+    float:left;
+    margin-left:5px;
+    font-weight:bold;
+}
+
+#read #read-count-img
+{
+    margin:6px 5px;
+    float:right;
+}
+
+#read #read-count
+{
+    float:right;
+    margin-right:10px;
+}
+
+#read #article-content
+{
+    float:left;
+    width:686px;
+    padding:20px;
+    font-size:9pt;
+    color:black;
+    min-height:200px;
+}
+
+#read #comment-write-box
+{
+    float:left;
+    width:706px;
+    padding:10px;
+    border:1px solid #DDDDDD;
+    margin-bottom:10px;
+}
+
+#read #comment-write-box #comment
+{
+    float:left;
+    width:560px;
+    resize:none;
+    height:100px;
+}
+
+#read #comment-write-box #write
+{
+    margin-top:24px;
+    margin-left:35px;
+    cursor:pointer;
+}
+
+#read .comment_box
+{
+    width:726px;
+    float:left;
+}
+
+#read .comment_box .top
+{
+    float:left;
+    width:726px;
+    background:#F7F7F7;
+    border-top:1px solid #DDDDDD;
+    border-bottom:1px dotted #DDDDDD;
+    height:28px;
+}
+
+#read .comment_box .comment_writer
+{
+    float:left;
+    font-size:9pt;
+    color:#888888;
+    line-height:28px;
+    margin-left:10px;
+}
+
+#read .comment_box .comment_date
+{
+    float:left;
+    font-size:7pt;
+    color:#888888;
+    line-height:28px;
+    margin-left:10px;
+}
+
+#read .comment_box img
+{
+    float:right;
+    margin:8px;
+    margin-left:-3px;
+    cursor:pointer;
+}
+
+#read .comment_box .comment_content
+{
+    float:left;
+    width:726px;
+    margin:10px;
+    font-size:9pt;
+    min-height:50px;
 }
