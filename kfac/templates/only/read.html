@@ -31,6 +31,12 @@
             <p id="read-count">조회 : {{ article.read }}</p>
             <img id="read-count-img" src="{{ MEDIA_URL }}image/only/icon_view.gif">
         </div>
+        {% for file in article.files.all %}
+        <div class="block">
+            <img class="file_image"src="{{ MEDIA_URL }}image/only/icon_file.gif">
+            <a href="{{ MEDIA_URL }}{{ file.upload_file.name }}"><p class="file">{{ file.name }}</p></a>
+        </div>
+        {% endfor %}
         <div id="article-content">
             {% autoescape off %}
             {{ article.contents }}
@@ -53,7 +59,7 @@
         <p id="date">작성일 : {{ article.created|date:"Y-m-d, h:m" }}</p>
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_write.gif" onclick="window.location='/only/board/{{ board_num }}/write/'">
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_delete.gif" onclick="delArticle({{ article.id }});">
-        <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_modify.gif" onclick="window.location='/only/board/{{ board_num }}/'">
+        <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_modify.gif" onclick="window.location='/only/board/{{ board_num }}/write/?article_num={{ article.id }}'">
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_list.gif" onclick="window.location='/only/board/{{ board_num }}/'">
     </div>
 </div>

@@ -52,7 +52,7 @@ def write(request, board_num):
         for i in range(file_num):
             upload_file = request.FILES.get('file'+str(i+1), None)
             if upload_file:
-                article_file = ArticleFile(upload_file=upload_file,article=article)
+                article_file = ArticleFile(upload_file=upload_file,article=article,name=upload_file.name)
                 article_file.save()
 
         return HttpResponseRedirect('/only/board/'+board_num+'/read/?article_num='+str(article.id))
@@ -75,6 +75,27 @@ def write(request, board_num):
             'board_num':board_num,
         })
         return render_to_response('only/write.html', result_dic, context_instance=RequestContext(request))
+
+def edit(request, board_num):
+    title = request.POST.get('title','')
+    contents = request.POST.get('editor','')
+    notice = len(request.POST.get('notice',''))>0
+
+    article_id = int(request.POST.get('article_id','0'))
+    article = Article.objects.get(id=article_id)
+    article.title = title
+    article.contents = contents
+    article.notice = notice
+    article.save()
+
+    file_num = int(request.POST.get('file_num',''))
+    for i in range(file_num):
+        upload_file = request.FILES.get('file'+str(i+1), None)
+        if upload_file:
+            article_file = ArticleFile(upload_file=upload_file,article=article,name=upload_file.name)
+            article_file.save()
+
+    return HttpResponseRedirect('/only/board/'+board_num+'/read/?article_num='+str(article.id))
 
 def read(request, board_num):
     boards = Board.objects.all().order_by('order')
@@ -100,5 +121,12 @@ def delete(request, board_num):
     article_id = int(request.GET.get('article_id',''))
     article = Article.objects.get(id=article_id)
     article.delete()
+
+    return HttpResponse(0);
+
+def file_delete(request, board_num):
+    file_id = int(request.GET.get('file_id',''))
+    _file = ArticleFile.objects.get(id=file_id)
+    _file.delete()
 
     return HttpResponse(0);

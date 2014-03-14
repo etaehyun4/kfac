@@ -27,7 +27,12 @@
         <tr {% if forloop.counter0|divisibleby:2 %}class="even_tr"{% endif %}>
             <td><p>{{ forloop.revcounter }} </p></td>
             <td><input id="{{ article.id }}" type="checkbox" name="check{{ forloop.revcounter }}"></td>
-            <td class="title"><p onclick="window.location='/only/board/{{ board_num }}/read/?article_num={{ article.id }}'">{{ article.title }}</p></td>
+            <td class="title">
+                <p onclick="window.location='/only/board/{{ board_num }}/read/?article_num={{ article.id }}'">{{ article.title }}</p>
+                {% if article.files.all|length > 0 %}
+                <img src="{{ MEDIA_URL }}image/only/icon_file.gif">
+                {% endif %}
+            </td>
             <td class="writer"><p>{{ article.author }}</p></td>
             <td><p>{{ article.created|date:"Y-m-d" }}</p></td>
             <td><p>{{ article.read }}</p></td>

@@ -54,7 +54,14 @@
 
 #board .title p
 {
+    float:left;
     cursor:pointer;
+}
+
+#board .title img
+{
+    margin-top:9px;
+    margin-left:5px;
 }
 
 #board .writer
@@ -161,6 +168,26 @@
     cursor:pointer;
 }
 
+#write-table #file-list .file
+{
+    float:left;
+    width:629px;
+}
+
+#write-table #file-list p
+{
+    line-height:24px;
+    color:#8492A0;
+    float:left;
+}
+
+#write-table #file-list img
+{
+    margin:5px;
+    float:left;
+    cursor:pointer;
+}
+
 form
 {
     float:left;
@@ -187,7 +214,6 @@ form
 {
     float:left;
     height:25px;
-    width:73px;
     cursor:pointer;
 }
 
@@ -251,6 +277,20 @@ form
     width:726px;
     height:30px;
     border-bottom:1px dotted #DDDDDD;
+}
+
+#read .block .file_image
+{
+    float:left;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:9px;
+}
+
+#read .block .file
+{
+    float:left;
+    cursor:pointer;
 }
 
 #read .block p

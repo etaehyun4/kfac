@@ -23,6 +23,7 @@ class Article(models.Model):
 class ArticleFile(models.Model):
     upload_file = models.FileField(upload_to='files/only')
     article = models.ForeignKey(Article, related_name='files')
+    name = models.CharField(max_length=100)
 
 def delete_filefield(sender, **kwargs):
     article_file = kwargs.get('instance')

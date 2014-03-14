@@ -8,6 +8,10 @@
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/only.css" />
 <script>
     $(document).ready(function(){
+        {% if article %}
+        file_num = {{ article.files.all|length }};
+        {% endif %}
+        board_num = {{ board_num|safe }};
         initialize();
     });
 </script>
@@ -16,7 +20,7 @@
 <div style="float:left;margin-top:49px;margin-left:41px;width:750px">
     <p style="float:left;text-transform:capitalize;width:750px;line-height:53px;font-size:23pt;color:gray;">{{ submenu }}</p>
     <div style="float:left;width:750px;height:1px;background:gray;"></div>
-    <form action="/only/board/{{ board_num }}/write/{% if article %}?article_num={{ article.id }}{% endif %}" method='POST' enctype="multipart/form-data">
+    <form action="/only/board/{{ board_num }}/{% if article %}edit/{% else %}write/{% endif %}" method='POST' enctype="multipart/form-data">
         {% csrf_token %}
         <table id="write-table">
             <tr>
@@ -43,18 +47,26 @@
                 <td>
                     <p class="td_title">파일 첨부</p>
                     <div id="small_btn">
-                        <img src="{{ MEDIA_URL }}image/only/btn_file_add.gif" onclick="fileAdd();">
-                        <img src="{{ MEDIA_URL }}image/only/btn_file_minus.gif" onclick="fileDelete();">
+                        <img src="{{ MEDIA_URL }}image/only/btn_file_add.gif" onclick="blockAdd();">
+                        <img src="{{ MEDIA_URL }}image/only/btn_file_minus.gif" onclick="blockDelete();">
                     </div>
                     <input type="hidden" name="file_num" value=1>
+                    {% if article %}
+                    <input type="hidden" name="article_id" value="{{ article.id }}">
+                    {% endif %}
                 </td>
                 <td id="file-list">
-                    <input type="file" name="file1">
+                    {% for file in article.files.all %}
+                    <div class="file" id="{{ file.id }}">
+                        <p> {{ file.name }} </p>
+                        <img src="{{ MEDIA_URL }}image/only/btn_file_minus.gif" onclick="fileDelete(this);">
+                    </div>
+                    {% endfor %}
                 </td>
             </tr>
         </table>
         <div id="write-bottom">
-            <img id="write" src="{{ MEDIA_URL }}image/only/btn_write.gif" onclick="$('form')[0].submit();">
+            <img id="write" src="{{ MEDIA_URL }}image/only/{% if article %}btn_modify{% else %}btn_write{% endif %}.gif" onclick="$('form')[0].submit();">
             <img id="list" src="{{ MEDIA_URL }}image/only/btn_list.gif" onclick="window.location='/only/board/{{ board_num }}/'">
         </div>
     </form>
