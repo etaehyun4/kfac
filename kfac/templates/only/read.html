@@ -9,6 +9,7 @@
     }
     $(document).ready(function(){
         adjustHeight();
+        article_id = {{ article.id|safe }};
         board_num = {{ board_num|safe }};
     });
 </script>
@@ -42,18 +43,25 @@
             {{ article.contents }}
             {% endautoescape %}
         </div>
+        {% for comment in article.comments.all %}
         <div class="comment_box">
             <div class="top">
-                <p class="comment_writer">정희재</p>
-                <p class="comment_date">13-09-12 01:26</p>
-                <img src="{{ MEDIA_URL }}image/only/co_btn_delete.gif">
-                <img src="{{ MEDIA_URL }}image/only/co_btn_modify.gif">
+                <p class="comment_writer">{{ comment.writer }}</p>
+                <p class="comment_date">{{ comment.created|date:"Y-m-d, h:m" }}</p>
+                {% if comment.writer == user.userprofile or user.is_superuser %}
+                <img src="{{ MEDIA_URL }}image/only/co_btn_delete.gif" onclick="delComment(this, '{{ comment.id }}');">
+                {% endif %}
             </div>
-            <pre class="comment_content">ㄴㅇ리ㅏㅓㄴㅇ린아ㅓㄴㅇㄹ</pre>
+            <pre class="comment_content">{{ comment.text }}</pre>
         </div>
+        {% endfor %}
         <div id="comment-write-box">
-            <textarea id="comment"></textarea>
-            <img id="write" src="{{ MEDIA_URL }}image/only/co_btn_write.gif">
+            <form action="/only/board/{{ board_num }}/add_comment/" method='POST'>
+                {% csrf_token %}
+                <textarea id="comment" name="text"></textarea>
+                <input type="hidden" name="article_id" value="{{ article.id }}">
+                <img id="write" src="{{ MEDIA_URL }}image/only/co_btn_write.gif" onclick="$('form')[0].submit();">
+            </form>
         </div>
         <img id="date-icon" src="{{ MEDIA_URL }}image/only/icon_date.gif">
         <p id="date">작성일 : {{ article.created|date:"Y-m-d, h:m" }}</p>

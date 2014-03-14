@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext, Context
-from only.models import Board, Article, ArticleFile
+from only.models import Board, Article, ArticleFile, Comment
 
 def index(request):
     boards = Board.objects.all().order_by('order')
@@ -130,3 +130,22 @@ def file_delete(request, board_num):
     _file.delete()
 
     return HttpResponse(0);
+
+def add_comment(request, board_num):
+    user = User.objects.get(username=request.user)
+    writer = user.userprofile
+    article_id = int(request.POST.get('article_id', '0'))
+    article = Article.objects.get(id=article_id)
+    text = request.POST.get('text', '')
+
+    comment = Comment(writer=writer,article=article, text=text)
+    comment.save()
+
+    return HttpResponseRedirect('/only/board/'+board_num+'/read/?article_num='+str(article.id))
+
+def del_comment(request, board_num):
+    comment_id = int(request.GET.get('comment_id', '0'))
+    comment = Comment.objects.get(id=comment_id)
+    comment.delete()
+
+    return HttpResponse(0)

@@ -7,7 +7,7 @@ from django.core.files.storage import default_storage
 
 class Board(models.Model):
     name = models.CharField(max_length=50)
-    order = models.IntegerField()
+    order = models.IntegerField(primary_key=True)
     def __str__(self):
         return self.name
 
@@ -24,6 +24,12 @@ class ArticleFile(models.Model):
     upload_file = models.FileField(upload_to='files/only')
     article = models.ForeignKey(Article, related_name='files')
     name = models.CharField(max_length=100)
+
+class Comment(models.Model):
+    writer = models.ForeignKey("account.UserProfile")
+    text = models.CharField(max_length=300)
+    article = models.ForeignKey(Article, related_name='comments')
+    created = models.DateTimeField(auto_now_add=True)
 
 def delete_filefield(sender, **kwargs):
     article_file = kwargs.get('instance')

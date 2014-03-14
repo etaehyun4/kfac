@@ -9,13 +9,13 @@ class UserProfile(models.Model):
     answer = models.CharField(max_length=100)
     name = models.CharField(max_length=20)
     nick = models.CharField(max_length=20)
-    birth = models.DateField()
+    birth = models.DateField(null=True)
     sex = models.CharField(max_length=5)
     phone = models.CharField(max_length=20)
     text = models.CharField(max_length=200)
-    mailing = models.BooleanField()
-    sms = models.BooleanField()
-    info_open = models.BooleanField()
+    mailing = models.BooleanField(default=False)
+    sms = models.BooleanField(default=False)
+    info_open = models.BooleanField(default=False)
     def __str__(self):
         return str(self.user)
 

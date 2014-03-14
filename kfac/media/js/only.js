@@ -56,27 +56,29 @@ function fileDelete(obj){
 }
 
 function delSelect(){
-    checkbox = $('input[type=checkbox');
+    checkbox = $('input[type=checkbox]');
     selected = checkbox.filter(function(k, obj){ return obj.checked; });
-    count = 0;
-    selected.each(function(k, obj){
-        conditions = {'file_id':obj.id};
-        $.ajax({
-            type: 'GET',
-            url: '/only/board/'+board_num+'/delete/',
-            data: conditions,
-            dataType: 'json',
-            success: $.proxy(function(){
-                try{
-                    count++;
-                    if (count == selected.length){
-                        window.location.reload();
+    if (selected.length>0 && confirm('이 파일들을 모두 지우겠습니까?')){
+        count = 0;
+        selected.each(function(k, obj){
+            conditions = {'article_id':obj.id};
+            $.ajax({
+                type: 'GET',
+                url: '/only/board/'+board_num+'/delete/',
+                data: conditions,
+                dataType: 'json',
+                success: $.proxy(function(){
+                    try{
+                        count++;
+                        if (count == selected.length){
+                            window.location.reload();
+                        }
+                    }catch(e){
                     }
-                }catch(e){
-                }
-            }, this)
+                }, this)
+            });
         });
-    });
+    }
 }
 
 function delArticle(article_id){
@@ -93,4 +95,21 @@ function delArticle(article_id){
             }
         }, this)
     });
+}
+
+function delComment(obj, comment_id){
+    if (confirm('이 댓글을 삭제하시겠습니까?')){
+        box = obj.parentElement.parentElement;
+        $.ajax({
+            type: 'GET',
+            url: '/only/board/'+board_num+'/del_comment/?comment_id='+comment_id,
+            dataType: 'json',
+            success: $.proxy(function(){
+                try{
+                    box.remove();
+                }catch(e){
+                }
+            }, this)
+        });
+    }
 }
