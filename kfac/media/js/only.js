@@ -113,3 +113,10 @@ function delComment(obj, comment_id){
         });
     }
 }
+
+function cbToggle()
+{
+    $('td input[type=checkbox]').each(function(k, obj){
+        obj.click();
+    });
+}
