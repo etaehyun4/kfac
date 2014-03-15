@@ -1,14 +1,16 @@
 # -*- coding: utf-8-*-
 
+from django.utils import simplejson as json
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext, Context
 from only.models import Board, Article, ArticleFile, Comment
-from django.utils import simplejson as json
 
 MAX_ARTICLES_PER_PAGE = 15
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def index(request):
     boards = Board.objects.all().order_by('order')
     if len(boards)<1:
@@ -16,6 +18,7 @@ def index(request):
     board = boards[0]
     return HttpResponseRedirect('/only/board/'+str(board.order))
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def board(request, board_num):
     boards = Board.objects.all().order_by('order')
     order = int(board_num)
@@ -36,6 +39,7 @@ def board(request, board_num):
         'numbers':range(1,numbers+1),
     }, context_instance=RequestContext(request))
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def write(request, board_num):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
@@ -82,6 +86,7 @@ def write(request, board_num):
         })
         return render_to_response('only/write.html', result_dic, context_instance=RequestContext(request))
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def edit(request, board_num):
     title = request.POST.get('title','')
     contents = request.POST.get('editor','')
@@ -103,6 +108,7 @@ def edit(request, board_num):
 
     return HttpResponseRedirect('/only/board/'+board_num+'/read/?article_num='+str(article.id))
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def read(request, board_num):
     boards = Board.objects.all().order_by('order')
     board_num = int(board_num)
@@ -123,6 +129,7 @@ def read(request, board_num):
         'article':article,
     }, context_instance=RequestContext(request))
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def delete(request, board_num):
     article_id = int(request.GET.get('article_id',''))
     article = Article.objects.get(id=article_id)
@@ -130,6 +137,7 @@ def delete(request, board_num):
 
     return HttpResponse(0);
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def file_delete(request, board_num):
     file_id = int(request.GET.get('file_id',''))
     _file = ArticleFile.objects.get(id=file_id)
@@ -137,6 +145,7 @@ def file_delete(request, board_num):
 
     return HttpResponse(0);
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def add_comment(request, board_num):
     user = User.objects.get(username=request.user)
     writer = user.userprofile
@@ -149,6 +158,7 @@ def add_comment(request, board_num):
 
     return HttpResponseRedirect('/only/board/'+board_num+'/read/?article_num='+str(article.id))
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def del_comment(request, board_num):
     comment_id = int(request.GET.get('comment_id', '0'))
     comment = Comment.objects.get(id=comment_id)
@@ -156,6 +166,7 @@ def del_comment(request, board_num):
 
     return HttpResponse(0)
 
+@user_passes_test(lambda u:u.is_staff, login_url='/')
 def show_articles(request, board_num):
     page_num = int(request.GET.get('page_num','0'))
     order = int(board_num)

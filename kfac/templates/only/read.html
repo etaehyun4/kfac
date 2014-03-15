@@ -22,13 +22,15 @@
         <img id="date-icon" src="{{ MEDIA_URL }}image/only/icon_date.gif">
         <p id="date">작성일 : {{ article.created|date:"Y-m-d, h:m" }}</p>
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_write.gif" onclick="window.location='/only/board/{{ board_num }}/write/'">
+        {% if article.author == user.userprofile or user.is_superuser %}
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_delete.gif" onclick="delArticle({{ article.id }});">
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_modify.gif" onclick="window.location='/only/board/{{ board_num }}/write/?article_num={{ article.id }}'">
+        {% endif %}
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_list.gif" onclick="window.location='/only/board/{{ board_num }}/'">
         <p id="title">{{ article.title }}</p>
         <div class="block">
             <p id="writer-title">글쓴이 : </p>
-            <p id="writer">{{ article.author }}</p>
+            <p id="writer">{{ article.author.name }}</p>
             <p id="read-count">조회 : {{ article.read }}</p>
             <img id="read-count-img" src="{{ MEDIA_URL }}image/only/icon_view.gif">
         </div>
@@ -46,7 +48,7 @@
         {% for comment in article.comments.all %}
         <div class="comment_box">
             <div class="top">
-                <p class="comment_writer">{{ comment.writer }}</p>
+                <p class="comment_writer">{{ comment.writer.name }}</p>
                 <p class="comment_date">{{ comment.created|date:"Y-m-d, h:m" }}</p>
                 {% if comment.writer == user.userprofile or user.is_superuser %}
                 <img src="{{ MEDIA_URL }}image/only/co_btn_delete.gif" onclick="delComment(this, '{{ comment.id }}');">
@@ -66,8 +68,10 @@
         <img id="date-icon" src="{{ MEDIA_URL }}image/only/icon_date.gif">
         <p id="date">작성일 : {{ article.created|date:"Y-m-d, h:m" }}</p>
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_write.gif" onclick="window.location='/only/board/{{ board_num }}/write/'">
+        {% if article.author == user.userprofile or user.is_superuser %}
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_delete.gif" onclick="delArticle({{ article.id }});">
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_modify.gif" onclick="window.location='/only/board/{{ board_num }}/write/?article_num={{ article.id }}'">
+        {% endif %}
         <img class="right_btn" src="{{ MEDIA_URL }}image/only/btn_list.gif" onclick="window.location='/only/board/{{ board_num }}/'">
     </div>
 </div>

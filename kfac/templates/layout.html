@@ -57,7 +57,7 @@
             {% endifequal %}
 
             <!-- only -->
-            <p class="menu{% ifequal menu 'only' %} selected{% endifequal %}" onclick="window.location='/only/'">KFACIAN-ONLY</p>
+            <p class="menu{% ifequal menu 'only' %} selected{% endifequal %}" onclick="{% if user.is_staff %}window.location='/only/'{% else %}alert('KFAC 회원만 사용할 수 있습니다.'){% endif %}">KFACIAN-ONLY</p>
             {% ifequal menu 'only' %}
             {% for board in boards %}
             <p class="submenu{% ifequal submenu board.name %} sselected {% endifequal %}" onclick="window.location='/only/board/{{ forloop.counter0 }}/'">{{ board.name }}</p>
@@ -65,7 +65,7 @@
             {% endifequal %}
 
             <!-- admin page -->
-            {% if user.is_staff %}
+            {% if user.is_superuser %}
             <div id="admin" onclick="window.location=('/admin/');"><p>관리자 페이지</p></div>
             {% endif %}
         </div>

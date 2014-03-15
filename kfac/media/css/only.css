@@ -120,8 +120,8 @@
 
 #bottom #search
 {
-    float:left;
-    margin-left:160px;
+    float:right;
+    margin-right:160px;
 }
 
 #bottom #search input[type=text]
@@ -154,12 +154,11 @@
     margin-top:10px;
 }
 
-#bottom #numbering a
+#bottom #numbering p
 {
-    color:#8492A0;
+    float:left;
     font-size:9pt;
     margin:0px 3px;
-    text-decoration:none;
 }
 
 #write-table

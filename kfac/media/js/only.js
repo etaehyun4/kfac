@@ -147,8 +147,10 @@ function addArticle(article){
     order_td.appendTo(tr_div);
 
     var notice_td = $('<td>');
-    var notice_input = $('<input>', {'id':article.id, 'type':'checkbox'});
-    notice_input.appendTo(notice_td);
+    if (is_superuser){
+        var notice_input = $('<input>', {'id':article.id, 'type':'checkbox'});
+        notice_input.appendTo(notice_td);
+    }
     notice_td.appendTo(tr_div);
 
     var title_td = $('<td>', {'class':'title'});
@@ -188,6 +190,17 @@ function unfoldPage(page){
             try{
                 articles.forEach(function(article){ addArticle(article); });
                 adjustHeight();
+
+                pages = $('#numbering p');
+                pages.each(function(k, obj){
+                    obj.style.color='#8292A0';
+                    obj.style.cursor='pointer';
+                    obj.onclick = function(){ unfoldPage(k+1); };
+                });
+                selected = pages[parseInt(page)-1];
+                selected.style.color='black';
+                selected.style.cursor='default';
+                selected.onclick=function(){};
             }catch(e){
             }
         }, this)
