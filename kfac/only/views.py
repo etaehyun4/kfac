@@ -191,3 +191,54 @@ def show_articles(request, board_num):
         })
 
     return HttpResponse(json.dumps(result, indent=4, ensure_ascii=False))
+
+@user_passes_test(lambda u:u.is_staff, login_url='/')
+def search(request, board_num):
+    text = request.POST.get('search_text','')
+    boards = Board.objects.all().order_by('order')
+    order = int(board_num)
+    board = Board.objects.filter(order=order)
+    if len(board)<1:
+        return HttpResponseRedirect('/')
+    board = board[0]
+    articles = board.article_set.filter(title__icontains=text).order_by('created')
+    total = len(articles)
+    numbers = (total-1)/MAX_ARTICLES_PER_PAGE+1
+
+    return render_to_response('only/board.html',{
+        'menu':'only',
+        'submenu':board.name,
+        'boards':boards,
+        'board_num':board_num,
+        'total':total,
+        'numbers':range(1,numbers+1),
+        'search_page':True,
+        'text':text,
+    }, context_instance=RequestContext(request))
+
+@user_passes_test(lambda u:u.is_staff, login_url='/')
+def show_selected_articles(request, board_num):
+    text = request.GET.get('text','')
+    page_num = int(request.GET.get('page_num','0'))
+    order = int(board_num)
+    board = Board.objects.get(order=order)
+    articles = board.article_set.filter(title__icontains=text).order_by('created')
+    result = []
+
+    offset = len(articles) - (page_num-1)*MAX_ARTICLES_PER_PAGE
+    length = min(MAX_ARTICLES_PER_PAGE, offset)
+
+    for i in range(length):
+        article = articles[offset-i-1]
+        result.append({
+            'author':article.author.name,
+            'title':article.title,
+            'notice':article.notice,
+            'created':article.created.strftime('%Y-%m-%d'),
+            'read':article.read,
+            'has_file':len(article.files.all())>0,
+            'id':article.id,
+            'order':offset-i,
+        })
+
+    return HttpResponse(json.dumps(result, indent=4, ensure_ascii=False))

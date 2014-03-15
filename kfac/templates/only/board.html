@@ -8,11 +8,9 @@
     $(document).ready(function(){
         board_num = {{ board_num|safe }};
         total = {{ total|safe }};
-        {% if user.is_superuser %}
-        is_superuser = true;
-        {% else %}
-        is_superuser = false;
-        {% endif %}
+        is_superuser = {% if user.is_superuser %}true{% else %}false{% endif %}
+        search_page = {% if search_page %}true{% else %}false{% endif %}
+        search_text = {% if search_page %}'{{ text }}'{% else %}''{% endif %}
         if (total==0){
             showEmpty();
         }else{
@@ -45,8 +43,9 @@
         {% endif %}
         <img id="write" src="{{ MEDIA_URL }}image/only/btn_write.gif" onclick="window.location='/only/board/{{ board_num }}/write/'">
         <form id="search" action="/only/board/{{ board_num }}/search/" method='POST'>
-            <input type="text" name="serach_text">
-            <img id="search-submit" src="{{ MEDIA_URL }}image/only/btn_search.gif">
+            {% csrf_token %}
+            <input type="text" name="search_text">
+            <img onclick="$('form').submit()" id="search-submit" src="{{ MEDIA_URL }}image/only/btn_search.gif">
         </form>
         <div id="numbering-wrap">
             <div id="numbering">

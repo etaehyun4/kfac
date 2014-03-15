@@ -85,6 +85,12 @@
     cursor:pointer;
 }
 
+#board .title b
+{
+    color:red;
+    background:yellow;
+}
+
 #board .title img
 {
     margin-top:9px;

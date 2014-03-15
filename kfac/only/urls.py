@@ -13,4 +13,6 @@ urlpatterns = patterns('',
     (ur'^board/(\d+)/add_comment/$', 'only.views.add_comment'),
     (ur'^board/(\d+)/del_comment/$', 'only.views.del_comment'),
     (ur'^board/(\d+)/show_articles/$', 'only.views.show_articles'),
+    (ur'^board/(\d+)/search/$', 'only.views.search'),
+    (ur'^board/(\d+)/show_selected_articles/$', 'only.views.show_selected_articles'),
 )

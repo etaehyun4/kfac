@@ -127,6 +127,8 @@ function showEmpty()
     var tr_div = $('<tr>');
     var td_div = $('<td>', {'colspan':6});
     var text = $('<p>',{'id':'empty'}).text('비어 있는 게시판입니다.');
+    if (search_page)
+        text.text('검색 결과가 존재하지 않습니다.');
 
     text.appendTo(td_div);
     td_div.appendTo(tr_div);
@@ -154,7 +156,16 @@ function addArticle(article){
     notice_td.appendTo(tr_div);
 
     var title_td = $('<td>', {'class':'title'});
-    var title = $('<p>', {'onclick':'window.location=\'/only/board/'+board_num+'/read/?article_num='+article.id+'\''}).text(article.title);
+    var title = $('<p>', {'onclick':'window.location=\'/only/board/'+board_num+'/read/?article_num='+article.id+'\''});
+    text = article.title;
+    if (search_page){
+        arr = text.split(search_text);
+        text = arr[0];
+        arr.slice(1).forEach(function(str){
+            text+='<b>'+search_text+'</b>'+str;
+        });
+    }
+    title[0].innerHTML = text;
     title.appendTo(title_td);
     if (article.has_file){
         var file_img = $('<img>', {'src':'/media/image/only/icon_file.gif'});
@@ -180,10 +191,17 @@ function addArticle(article){
 
 function unfoldPage(page){
     $('#board tbody tr').slice(1).each(function(k,obj){ obj.remove(); });
-    conditions = {'page_num':page};
+    if (search_page){
+        url = '/only/board/'+board_num+'/show_selected_articles/';
+        conditions = {'page_num':page, 'text':search_text};
+    }else{
+        url = '/only/board/'+board_num+'/show_articles/';
+        conditions = {'page_num':page};
+    }
+
     $.ajax({
         type: 'GET',
-        url: '/only/board/'+board_num+'/show_articles/',
+        url:url,
         data: conditions,
         dataType: 'json',
         success: $.proxy(function(articles){
