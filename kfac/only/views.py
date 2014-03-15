@@ -5,6 +5,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext, Context
 from only.models import Board, Article, ArticleFile, Comment
+from django.utils import simplejson as json
+
+MAX_ARTICLES_PER_PAGE = 15
 
 def index(request):
     boards = Board.objects.all().order_by('order')
@@ -20,14 +23,17 @@ def board(request, board_num):
     if len(board)<1:
         return HttpResponseRedirect('/')
     board = board[0]
+    articles = board.article_set.all()
+    total = len(articles)
+    numbers = (total-1)/MAX_ARTICLES_PER_PAGE+1
 
     return render_to_response('only/board.html',{
         'menu':'only',
         'submenu':board.name,
         'boards':boards,
-        'articles':board.article_set.all().order_by('-created'),
         'board_num':board_num,
-        'page_num':1,
+        'total':total,
+        'numbers':range(1,numbers+1),
     }, context_instance=RequestContext(request))
 
 def write(request, board_num):
@@ -149,3 +155,28 @@ def del_comment(request, board_num):
     comment.delete()
 
     return HttpResponse(0)
+
+def show_articles(request, board_num):
+    page_num = int(request.GET.get('page_num','0'))
+    order = int(board_num)
+    board = Board.objects.get(order=order)
+    articles = board.article_set.all().order_by('created')
+    result = []
+
+    offset = len(articles) - (page_num-1)*MAX_ARTICLES_PER_PAGE
+    length = min(MAX_ARTICLES_PER_PAGE, offset)
+
+    for i in range(length):
+        article = articles[offset-i-1]
+        result.append({
+            'author':article.author.name,
+            'title':article.title,
+            'notice':article.notice,
+            'created':article.created.strftime('%Y-%m-%d'),
+            'read':article.read,
+            'has_file':len(article.files.all())>0,
+            'id':article.id,
+            'order':offset-i,
+        })
+
+    return HttpResponse(json.dumps(result, indent=4, ensure_ascii=False))

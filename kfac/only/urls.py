@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     (ur'^board/(\d+)/file_delete/$', 'only.views.file_delete'),
     (ur'^board/(\d+)/add_comment/$', 'only.views.add_comment'),
     (ur'^board/(\d+)/del_comment/$', 'only.views.del_comment'),
+    (ur'^board/(\d+)/show_articles/$', 'only.views.show_articles'),
 )
