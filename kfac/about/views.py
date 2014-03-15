@@ -29,8 +29,10 @@ def organization(request):
 
 def achievements(request):
     groups = Group.objects.all()
-    group_last = groups[Group.objects.count()-1]
-    groups = groups[:Group.objects.count()-1]
+    group_last = None
+    if Group.objects.count() != 0:
+        group_last = groups[Group.objects.count()-1]
+        groups = groups[:Group.objects.count()-1]
     return render_to_response('about/achievements.html',{
         'menu':'about',
         'submenu':'achievements',
@@ -39,8 +41,8 @@ def achievements(request):
     }, context_instance=RequestContext(request))
 
 def edit_achievements(request):
-#    if not request.user.is_staff:
-#        return HttpResponseRedirect('/')
+    if not request.user.is_superuser:
+        return HttpResponseRedirect('/')
     groups = Group.objects.all()
     return render_to_response('about/edit.html',{
         'menu':'about',
@@ -60,8 +62,8 @@ def edit(request):
     return HttpResponseRedirect('/about/achievements')
 
 def add_achievements(request):
-#    if not request.user.is_staff:
-#        return HttpResponseRedirect('/')
+    if not request.user.is_superuser:
+        return HttpResponseRedirect('/')
     return render_to_response('about/add.html',{
         'menu':'about',
     }, context_instance=RequestContext(request))
