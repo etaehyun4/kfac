@@ -4,11 +4,25 @@
 {% block content %}
 <div id="greeting" style="margin-top:49px;margin-left:41px;float:left;width:750px;">
     <img src="{{MEDIA_URL}}image/about/sub01_4_10.gif" width="750" height="53" style="float:left;">
+    <div id="achievements" style="margin-top:120px;">
+    <div id="blue_line" style="margin-bottom:25px;float:left;background-color:#648AA2;width:750px;height:2px;"></div>
     {% for g in groups %}
-    {{g.name}}<br/>
-    <div id="text_left" style="width:375px;float:left">{% for c in g.text_left %}{% if c == '-' %}<br/>-{% else %}{{c}}{% endif %}{% endfor %}</div>
-    <div id="text_right" style="width:375px;float:left">{% for c in g.text_right %}{% if c == '-' %}<br/>-{% else %}{{c}}{% endif %}{% endfor %}</div><br/>
+    <div id="type" style="float:left;width:750px">
+    <div id="name" style="padding-left:10px;padding-top:3px;width:120px;height:24px;background: #383838"><font size="2.5" color="white">{{g.name}}</font></div><br/>
+    <font size="2"><div id="text_left" style="width:375px;float:left"><pre>{{g.text_left}}</pre></div>
+            <div id="text_right" style="width:375px;float:left"><pre>{{ g.text_right }}</pre></div><br/></font>
+</div>
+<img src="{{MEDIA_URL}}image/about/dotted_line.png" width="750" height="36" style="float:left;">
     {% endfor %}
+    <div id="type" style="float:left;width:750px">
+    <div id="name" style="padding-left:10px;padding-top:3px;width:120px;height:24px;background: #383838"><font size="2.5" color="white">{{group_last.name}}</font></div><br/>
+    <font size="2"><div id="text_left" style="width:375px;float:left"><pre>{{group_last.text_left}}</pre></div>
+            <div id="text_right" style="width:375px;float:left"><pre>{{ group_last.text_right }}</pre></div><br/></font>
+</div>
+
+    <div id="blue_line" style="margin-top:25px;margin-bottom:20px;float:left;background-color:#648AA2;width:750px;height:2px;"></div>
+
+    </div>
 </div>
 <div id="edit_link" style="margin-left:41px;float:left;width:750px;">
 <a href="/about/edit/">Edit</a>

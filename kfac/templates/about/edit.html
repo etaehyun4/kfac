@@ -7,7 +7,7 @@
     <form method="POST" action="/about/do_edit/">
     {% for g in groups %}
     <input type="text" name="{{g.name}}_name" value="{{g.name}}"><br/>
-    <TEXTAREA name="{{g.name}}_text_left" rows="10" cols="40">{{g.text_left}}</TEXTAREA><TEXTAREA name="{{g.name}}_text_right" rows="10" cols="40">{{g.text_right}}</TEXTAREA><br/>
+    <TEXTAREA name="{{g.name}}_text_left" rows="10" cols="50">{{g.text_left}}</TEXTAREA><TEXTAREA name="{{g.name}}_text_right" rows="10" cols="50">{{g.text_right}}</TEXTAREA><br/>
     {% endfor %}
     {% csrf_token %}
     <input type="submit">

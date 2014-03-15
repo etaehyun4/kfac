@@ -29,10 +29,13 @@ def organization(request):
 
 def achievements(request):
     groups = Group.objects.all()
+    group_last = groups[Group.objects.count()-1]
+    groups = groups[:Group.objects.count()-1]
     return render_to_response('about/achievements.html',{
         'menu':'about',
         'submenu':'achievements',
         'groups':groups,
+        'group_last':group_last,
     }, context_instance=RequestContext(request))
 
 def edit_achievements(request):
