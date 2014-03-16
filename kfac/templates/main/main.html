@@ -9,22 +9,12 @@
     <div id="right" style="padding-top:69px;width:276px;margin-right:0px;float:left;">
         <img src="{{MEDIA_URL}}image/main/main_11.gif" width="276" height="48">
         <div id="board" style="float:left;width:211px;height:88px;padding-left:17px;font-size:9pt">
-            <div id="article1" style="width:211px;height:22px">
+            {% for a in articles %}
+            <div id="article" style="width:211px;height:22px;word-wrap;break-word;overflow:hidden">
                 <img src="{{MEDIA_URL}}image/main/box02_bullet.gif" width="9" height="9" style="padding:6.5px 1px">
-                <a href="/">1</a>
+                <a href="/only/board/{{board.order}}/read/?article_num={{a.id}}">{{a.title}}</a>
             </div>
-            <div id="article2" style="width:211px;height:20px">
-                <img src="{{MEDIA_URL}}image/main/box02_bullet.gif" width="9" height="9" style="padding:5.5px 1px">
-                <a href="/">1</a>
-            </div>
-            <div id="article3" style="width:211px;height:20px">
-                <img src="{{MEDIA_URL}}image/main/box02_bullet.gif" width="9" height="9" style="padding:5.5px 1px">
-                <a href="/">1</a>
-            </div>
-            <div id="article4" style="width:211px;height:20px">
-                <img src="{{MEDIA_URL}}image/main/box02_bullet.gif" width="9" height="9" style="padding:5.5px 1px">
-                <a href="/">1</a>
-            </div>
+            {% endfor %}
         </div>
         <a href="/"><img src="{{MEDIA_URL}}image/main/main_17.gif" width="276" height="122" style="padding-bottom:30px;padding-top:46px"></a>
         <a href="/"><img src="{{MEDIA_URL}}image/main/main_19.gif" width="276" height="107"></a>

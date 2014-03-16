@@ -8,7 +8,7 @@
     <div id="blue_line" style="margin-bottom:25px;float:left;background-color:#648AA2;width:750px;height:2px;"></div>
     {% for g in groups %}
     <div id="type" style="float:left;width:750px">
-    <div id="name" style="padding-left:10px;padding-top:3px;width:120px;height:24px;background: #383838"><font size="2.5" color="white">{{g.name}}</font></div><br/>
+        <div id="name" style="padding-left:10px;padding-top:3px;width:120px;height:24px;background-image:url('{{MEDIA_URL}}image/about/background.png')" ><font size="2.5" color="white">{{g.name}}</font></div><br/>
     <font size="2"><div id="text_left" style="width:375px;float:left"><pre>{{g.text_left}}</pre></div>
             <div id="text_right" style="width:375px;float:left"><pre>{{ g.text_right }}</pre></div><br/></font>
 </div>
@@ -16,7 +16,7 @@
     {% endfor %}
     {% if group_last != None %}
     <div id="type" style="float:left;width:750px">
-    <div id="name" style="padding-left:10px;padding-top:3px;width:120px;height:24px;background: #383838"><font size="2.5" color="white">{{group_last.name}}</font></div><br/>
+    <div id="name" style="padding-left:10px;padding-top:3px;width:120px;height:24px;background-image:url('{{MEDIA_URL}}image/about/background.png')"><font size="2.5" color="white">{{group_last.name}}</font></div><br/>
     <font size="2"><div id="text_left" style="width:375px;float:left"><pre>{{group_last.text_left}}</pre></div>
             <div id="text_right" style="width:375px;float:left"><pre>{{ group_last.text_right }}</pre></div><br/></font>
 </div>
@@ -27,8 +27,8 @@
 </div>
 {% if user.is_superuser %}
 <div id="edit_link" style="margin-left:41px;float:left;width:750px;">
-<a href="/about/edit/">Edit</a>
-<a href="/about/add/">Add</a>
+<a href="/about/edit/">Edit Contents</a><br/>
+<a href="/about/add/">Add New Type</a>
 </div>
 {% endif %}
 {% endblock %}
