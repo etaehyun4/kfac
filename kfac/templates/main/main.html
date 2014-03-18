@@ -4,31 +4,31 @@
 {% block content %}
 <div id="total" style="float:left;width:967px;height:750px">
     <div id="left" style="width:691px;float:left;">
-        <img src="{{MEDIA_URL}}image/main/main_02.gif" width="691" height="750">
+        <img src="{{ MEDIA_URL }}image/main/main_02.gif" width="691" height="750">
     </div>
     <div id="right" style="padding-top:69px;width:276px;margin-right:0px;float:left;">
-        <img src="{{MEDIA_URL}}image/main/main_11.gif" width="276" height="48">
+        <img src="{{ MEDIA_URL }}image/main/main_11.gif" width="276" height="48">
         <div id="board" style="float:left;width:211px;height:88px;padding-left:17px;font-size:9pt">
             {% for a,n in articles %}
-            <a href="/only/board/{{board.order}}/read/?article_num={{a.id}}">
-            <div id="article" style="float:left;width:150px;height:23px;word-break:break-all;word-wrap:break-word;text-overflow:ellipsis;overflow:hidden;">
-                <img src="{{MEDIA_URL}}image/main/box02_bullet.gif" width="9" height="9" style="padding-top:8px; padding-left:1px">
-                {{a.title}}
-            </div>
-            <div id="comment" style="padding-top:5px;float:left;width:20px;height:24px;">
-            {% if n > 0%}
-            ({{n}})
-            {% endif %}
-            </div>
+            <a href="/only/board/{{ board.order }}/read/?article_num={{ a.id }}" style="width:211px;float:left;" {% if not user.staff %}onclick="alert('KFAC 회원만 읽을 권한을 가집니다.');{% endif %}">
+                <img src="{{ MEDIA_URL }}image/main/box02_bullet.gif" width="9" height="9" style="float:left;padding-top:11px; padding-left:1px; padding-right:2px;">
+                <div id="article" style="float:left;height:23px;word-break:break-all;word-wrap:break-word;text-overflow:ellipsis;overflow:hidden;-webkit-line-clamp:1;-webkit-box-orient:vertical;display:-webkit-box;">
+                    <p style="max-width:150px;line-height:29px;">{{ a.title }}</p>
+                </div>
+                <p id="comment" style="margin-left:2px;float:left;width:20px;height:24px;line-height:29px;">
+                {% if n > 0 %}
+                ({{ n }})
+                {% endif %}
+                </p>
             </a>
             {% endfor %}
         </div>
-        <a href="/about/vision/"><img src="{{MEDIA_URL}}image/main/main_17.gif" width="276" height="122" style="padding-bottom:30px;padding-top:46px"></a>
-        <a href="https://www.google.com/calendar/embed?src=kfac.president%40gmail.com&ctz=Asia/Seoul"><img src="{{MEDIA_URL}}image/main/main_19.gif" width="276" height="107"></a>
+        <a href="/about/vision/"><img src="{{ MEDIA_URL }}image/main/main_17.gif" width="276" height="122" style="padding-bottom:30px;padding-top:46px"></a>
+        <a href="https://www.google.com/calendar/embed?src=kfac.president%40gmail.com&ctz=Asia/Seoul"><img src="{{ MEDIA_URL }}image/main/main_19.gif" width="276" height="107"></a>
         <div id="right-bottom" style="padding-left:23px;padding-top:30px;height:210px;width:276px">
-            <a href="/activities/"><img src="{{MEDIA_URL}}image/main/main_22.gif" width="176" height="58" style="padding-bottom:5px"></a>
-            <a href="/recruiting/requirements/"><img src="{{MEDIA_URL}}image/main/main_25.gif" width="176" height="58" style="padding-bottom:5px"></a>
-            <a href="/recruiting/faq/"><img src="{{MEDIA_URL}}image/main/main_28.gif" width="176" height="58"></a>
+            <a href="/activities/"><img src="{{ MEDIA_URL }}image/main/main_22.gif" width="176" height="58" style="padding-bottom:5px"></a>
+            <a href="/recruiting/requirements/"><img src="{{ MEDIA_URL }}image/main/main_25.gif" width="176" height="58" style="padding-bottom:5px"></a>
+            <a href="/recruiting/faq/"><img src="{{ MEDIA_URL }}image/main/main_28.gif" width="176" height="58"></a>
         </div>
     </div>
 </div>
