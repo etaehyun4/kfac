@@ -10,7 +10,7 @@
         <img src="{{ MEDIA_URL }}image/main/main_11.gif" width="276" height="48">
         <div id="board" style="float:left;width:211px;height:88px;padding-left:17px;font-size:9pt">
             {% for a,n in articles %}
-            <a href="/only/board/{{ board.order }}/read/?article_num={{ a.id }}" style="width:211px;float:left;" {% if not user.staff %}onclick="alert('KFAC 회원만 읽을 권한을 가집니다.');{% endif %}">
+            <a href="/only/board/{{ board.order }}/read/?article_num={{ a.id }}" style="width:211px;float:left;" {% if not user.is_staff %}onclick="alert('KFAC 회원만 읽을 권한을 가집니다.');{% endif %}">
                 <img src="{{ MEDIA_URL }}image/main/box02_bullet.gif" width="9" height="9" style="float:left;padding-top:11px; padding-left:1px; padding-right:2px;">
                 <div id="article" style="float:left;height:23px;word-break:break-all;word-wrap:break-word;text-overflow:ellipsis;overflow:hidden;-webkit-line-clamp:1;-webkit-box-orient:vertical;display:-webkit-box;">
                     <p style="max-width:150px;line-height:29px;">{{ a.title }}</p>
