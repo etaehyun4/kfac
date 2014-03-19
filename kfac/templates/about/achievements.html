@@ -3,7 +3,8 @@
 {% endblock %}
 {% block content %}
 <div id="greeting" style="margin-top:49px;margin-left:41px;float:left;width:750px;">
-    <img src="{{MEDIA_URL}}image/about/sub01_4_10.gif" width="750" height="53" style="float:left;">
+    <p style="float:left;text-transform:capitalize;width:750px;line-height:53px;font-size:23pt;color:gray;">{{ submenu }}</p>
+    <div style="float:left;width:750px;height:1px;background:gray;"></div>
     <div id="achievements" style="margin-top:120px;">
     <div id="blue_line" style="margin-bottom:25px;float:left;background-color:#648AA2;width:750px;height:2px;"></div>
     {% for g in groups %}
