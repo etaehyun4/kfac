@@ -23,3 +23,4 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('user', 'name', 'sex')
 
 admin.site.register(UserProfile, UserAdmin)
+admin.site.register(User)
